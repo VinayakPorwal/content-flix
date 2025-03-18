@@ -45,8 +45,8 @@ const ServiceCard = ({ title, description, videoSrc, thumbnailSrc, aspectClass, 
         </div>
       </div>
     </motion.div>
-    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-    <p className="text-white/70">{description}</p>
+    <h3 className="text-xl font-bold text-white mb-2 text-center">{title}</h3>
+    <p className="text-white/70 text-center">{description}</p>
   </AnimatedSection>
   </div>
 );
