@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import ProcessSteps from '../components/ProcessSteps';
 import PricingPlans from '../components/PricingPlans';
 import { AnimatePresence } from 'framer-motion';
+import data from '../data/data.json';
 
 const Index = () => {
   
@@ -55,15 +56,15 @@ const Index = () => {
   return (
     <AnimatePresence mode="wait">
       <div className="min-h-screen bg-agency-dark">
-      <div 
-        className="parallax-element fixed top-1/4 -left-20 w-96 h-96 rounded-full bg-agency-gold/10 blur-3xl"
-      />
-      <div 
-        className="parallax-element fixed top-1/3 right-0 w-96 h-96 rounded-full bg-agency-gold/10 blur-3xl"
-      />
-      <div 
-        className="parallax-element fixed -bottom-20 left-1/3 w-80 h-80 rounded-full bg-agency-gold/10 blur-3xl"
-      />
+        <div 
+          className="parallax-element fixed top-1/4 -left-20 w-96 h-96 rounded-full bg-agency-gold/10 blur-3xl"
+        />
+        <div 
+          className="parallax-element fixed top-1/3 right-0 w-96 h-96 rounded-full bg-agency-gold/10 blur-3xl"
+        />
+        <div 
+          className="parallax-element fixed -bottom-20 left-1/3 w-80 h-80 rounded-full bg-agency-gold/10 blur-3xl"
+        />
         <Navbar />
         <Hero />
         <ProcessSteps />

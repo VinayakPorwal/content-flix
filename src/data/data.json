@@ -1,0 +1,297 @@
+
+{
+  "meta": {
+    "siteName": "AgencyFlow",
+    "logoText": "Agency<span>Flow</span>"
+  },
+  "navigation": [
+    { "id": "home", "label": "Home", "url": "#" },
+    { "id": "process", "label": "Process", "url": "#process" },
+    { "id": "services", "label": "Services", "url": "#services" },
+    { "id": "portfolio", "label": "Portfolio", "url": "#portfolio" },
+    { "id": "pricing", "label": "Pricing", "url": "#pricing" },
+    { "id": "testimonials", "label": "Testimonials", "url": "#testimonials" },
+    { "id": "contact", "label": "Contact", "url": "#contact" }
+  ],
+  "hero": {
+    "badge": "Premium Content Creation Agency",
+    "title": "<span class='text-agency-gold'>C<icon>ntent </span>that Converts &<br class='hidden md:block' /> Brands that <span class='text-agency-gold'>Stand Out</span>",
+    "subtitle": "Elevate your brand with expert video craftsmanship and data-driven strategies.",
+    "ctaButton": {
+      "text": "Book a Free Strategy Call",
+      "url": "#contact",
+      "icon": "Calendar"
+    },
+    "videoButton": {
+      "text": "Watch Our Video Sales Letter",
+      "subtitle": "Discover how we transform brands"
+    }
+  },
+  "process": {
+    "badge": "Our 5-Step Process",
+    "title": "Convert Your <span class='text-agency-gold'>Content Into Cash</span>",
+    "subtitle": "Establish your brand as an industry leader with our proven 5-step process to create content that engages, converts, and scales your business.",
+    "ctaButton": {
+      "text": "Book a Strategy Call",
+      "url": "#contact",
+      "icon": "BarChart3"
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Strategy & Discovery",
+        "description": "We analyze your target audience, competition, and market position to create a content strategy that aligns with your business goals."
+      },
+      {
+        "number": 2,
+        "title": "Creative Development",
+        "description": "Our creative team develops compelling concepts and scripts that showcase your brand's unique value proposition and resonate with your target audience."
+      },
+      {
+        "number": 3,
+        "title": "Production Excellence",
+        "description": "Using premium production techniques, we create high-quality video content that positions your brand as an industry leader."
+      },
+      {
+        "number": 4,
+        "title": "Optimization & Distribution",
+        "description": "We optimize your content for each platform and implement strategic distribution plans to maximize reach and engagement."
+      },
+      {
+        "number": 5,
+        "title": "Analysis & Scaling",
+        "description": "Through continuous analysis and optimization, we identify what works best and scale successful strategies to drive consistent growth."
+      }
+    ]
+  },
+  "services": {
+    "badge": "Our Services",
+    "title": "Premium Content <span class='text-agency-gold'>Services</span>",
+    "subtitle": "We offer a comprehensive range of content creation and marketing services to help your business stand out and connect with your audience.",
+    "items": [
+      {
+        "title": "YouTube/Long Form Videos",
+        "description": "High-quality long-form content to engage and inform viewers.",
+        "videoSrc": "/videos/youtube-preview.mp4",
+        "thumbnailSrc": "./og-image.png",
+        "aspectClass": "aspect-video",
+        "icon": "Youtube",
+        "rotate": "-rotate-12"
+      },
+      {
+        "title": "Reels/Shorts",
+        "description": "Eye-catching short videos designed for social media platforms.",
+        "videoSrc": "/videos/reels-preview.mp4",
+        "thumbnailSrc": "./og-image.png",
+        "aspectClass": "aspect-[9/16]",
+        "icon": "Instagram",
+        "rotate": "rotate-0"
+      },
+      {
+        "title": "Content Strategy",
+        "description": "Strategic planning for content that resonates with your audience.",
+        "videoSrc": "/videos/content-strategy-preview.mp4",
+        "thumbnailSrc": "./og-image.png",
+        "aspectClass": "aspect-square",
+        "icon": "Target",
+        "rotate": "rotate-12"
+      }
+    ]
+  },
+  "portfolio": {
+    "badge": "Our Work",
+    "title": "Featured <span class='text-agency-gold'>Projects</span>",
+    "subtitle": "Explore our latest projects and see how we've helped brands transform their digital presence through strategic content.",
+    "ctaButton": {
+      "text": "View All Projects",
+      "url": "#"
+    },
+    "items": [
+      {
+        "id": 1,
+        "title": "Brand Story Film - Oceanic Beauty",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1576073719676-aa95576db207?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "duration": "2:45"
+      },
+      {
+        "id": 2,
+        "title": "Social Campaign - Tech Innovations",
+        "category": "Marketing",
+        "image": "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "duration": "1:32"
+      },
+      {
+        "id": 3,
+        "title": "Product Launch - Quantum Devices",
+        "category": "Strategy",
+        "image": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "duration": "3:10"
+      },
+      {
+        "id": 4,
+        "title": "Branded Content Series - Lifestyle Fit",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "duration": "4:05"
+      },
+      {
+        "id": 5,
+        "title": "E-commerce Video Ads - Fashion Forward",
+        "category": "Marketing",
+        "image": "https://images.unsplash.com/photo-1522335579687-9c718c5184d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "duration": "0:45"
+      },
+      {
+        "id": 6,
+        "title": "Brand Redesign - Modern Finance",
+        "category": "Strategy",
+        "image": "https://images.unsplash.com/photo-1585184394271-4c0a47dc59c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "duration": "2:18"
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Pricing Plans",
+    "title": "Choose Your <span class='text-agency-gold'>Perfect Plan</span>",
+    "subtitle": "Tailored packages designed to meet the specific needs of creators and businesses looking to elevate their content strategy.",
+    "plans": [
+      {
+        "name": "Creator Plan",
+        "subtitle": "Perfect for content creators and small brands",
+        "price": "$1,997",
+        "interval": "per month",
+        "icon": "Users",
+        "features": [
+          "5 Premium Videos Per Month",
+          "Social Media Optimization",
+          "Basic Content Strategy",
+          "2 Revisions Per Video",
+          "Performance Analytics",
+          "Dedicated Account Manager"
+        ],
+        "ctaButton": {
+          "text": "Get Started",
+          "url": "#contact"
+        },
+        "popular": false
+      },
+      {
+        "name": "Business Plan",
+        "subtitle": "For established brands and growing businesses",
+        "price": "$4,997",
+        "interval": "per month",
+        "icon": "Briefcase",
+        "features": [
+          "12 Premium Videos Per Month",
+          "Multi-Platform Strategy",
+          "Custom Brand Style Guide",
+          "Unlimited Revisions",
+          "Advanced Analytics Dashboard",
+          "Priority Support",
+          "Quarterly Strategy Reviews",
+          "Licensed Music Library Access"
+        ],
+        "ctaButton": {
+          "text": "Get Started",
+          "url": "#contact"
+        },
+        "popular": true
+      }
+    ],
+    "customCta": {
+      "text": "Need a custom solution for your specific requirements?",
+      "button": {
+        "text": "Contact Us for Custom Pricing",
+        "url": "#contact"
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What Our <span class='text-agency-gold'>Clients Say</span>",
+    "subtitle": "Don't just take our word for it. Here's what our clients have to say about our work and the results we've delivered.",
+    "items": [
+      {
+        "id": 1,
+        "name": "Sarah Johnson",
+        "role": "Marketing Director, TechNova",
+        "content": "Working with this agency transformed our content strategy completely. Their video production team captured our brand's essence perfectly, and we saw a 45% increase in engagement within just two months.",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+      },
+      {
+        "id": 2,
+        "name": "Michael Chen",
+        "role": "CEO, GrowthLabs",
+        "content": "Their strategic approach to content marketing helped us reach our target audience with precision. The quality of their video content is unmatched, and their team's creativity continues to impress us with each project.",
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+      },
+      {
+        "id": 3,
+        "name": "Elena Rodriguez",
+        "role": "Brand Manager, Horizon Retail",
+        "content": "From concept to execution, their team delivered exceptional content that aligned perfectly with our brand vision. The ROI on our video marketing campaigns has been remarkable, and we're excited to continue our partnership.",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+      }
+    ]
+  },
+  "cta": {
+    "badge": "Get in Touch",
+    "title": "Ready to <span class='text-agency-gold'>Transform</span> Your Content?",
+    "subtitle": "Let's discuss how our content production and marketing services can help your business achieve its goals. Schedule a consultation with our team today.",
+    "ctaButton": {
+      "text": "Schedule a Call",
+      "url": "#"
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": {
+        "label": "Email",
+        "value": "hello@agencyflow.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+1 (555) 123-4567"
+      },
+      "address": {
+        "label": "Address",
+        "value": "123 Creative St, Suite 100<br />New York, NY 10001"
+      }
+    }
+  },
+  "footer": {
+    "logoText": "Agency<span class='text-agency-gold'>Flow</span>",
+    "description": "Premium content marketing and video production agency helping brands tell their stories.",
+    "socialLinks": [
+      { "name": "Facebook", "url": "#" },
+      { "name": "Twitter", "url": "#" },
+      { "name": "Instagram", "url": "#" },
+      { "name": "LinkedIn", "url": "#" }
+    ],
+    "links": {
+      "company": [
+        { "name": "About Us", "url": "#" },
+        { "name": "Our Team", "url": "#" },
+        { "name": "Careers", "url": "#" },
+        { "name": "Press", "url": "#" }
+      ],
+      "services": [
+        { "name": "Video Production", "url": "#" },
+        { "name": "Content Strategy", "url": "#" },
+        { "name": "Marketing Campaigns", "url": "#" },
+        { "name": "Brand Development", "url": "#" }
+      ]
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to our newsletter for the latest updates and insights.",
+      "placeholder": "Your email"
+    },
+    "copyright": "© {year} AgencyFlow. All rights reserved.",
+    "legalLinks": [
+      { "name": "Terms", "url": "#" },
+      { "name": "Privacy", "url": "#" },
+      { "name": "Cookies", "url": "#" }
+    ]
+  }
+}
