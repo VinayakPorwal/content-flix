@@ -8,23 +8,23 @@ import { Calendar, BarChart3, Users, Briefcase, Youtube, Instagram, Target, Arro
 export const getIconComponent = (iconName: string, className = "w-full h-full") => {
   switch (iconName) {
     case 'Calendar':
-      return <Calendar className={className} />;
+      return React.createElement(Calendar, { className });
     case 'BarChart3':
-      return <BarChart3 className={className} />;
+      return React.createElement(BarChart3, { className });
     case 'Users':
-      return <Users className={className} />;
+      return React.createElement(Users, { className });
     case 'Briefcase':
-      return <Briefcase className={className} />;
+      return React.createElement(Briefcase, { className });
     case 'Youtube':
-      return <Youtube className={className} />;
+      return React.createElement(Youtube, { className });
     case 'Instagram':
-      return <Instagram className={className} />;
+      return React.createElement(Instagram, { className });
     case 'Target':
-      return <Target className={className} />;
+      return React.createElement(Target, { className });
     case 'ArrowRight':
-      return <ArrowRight className={className} />;
+      return React.createElement(ArrowRight, { className });
     case 'Play':
-      return <Play className={className} />;
+      return React.createElement(Play, { className });
     default:
       return null;
   }
