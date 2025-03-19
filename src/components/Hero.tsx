@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import AnimatedSection from './AnimatedSection';
 import { Play, ArrowRight, Sparkles, Calendar, Camera, Film, VideoIcon, Video, PlayCircle, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import data from '../data/data.json';
 
 const Hero: React.FC = () => {
 
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
 
   return (
     <section 
-      className="relative overflow-hidden pt-32 pb-40 md:pt-36 md:pb-60 bg-transparent"
+      className="relative overflow-hidden pt-32 pb-30 md:pt-36 bg-transparent"
       // className="relative overflow-hidden pt-32 pb-40 md:pt-36 md:pb-60 bg-gradient-to-br from-black to-gray-900"
    
     >
@@ -94,7 +95,7 @@ const Hero: React.FC = () => {
 
           <AnimatedSection delay={400} animation="fade-up">
             <p className="text-lg md:text-xl text-white/80   max-w-2xl">
-              Elevate your brand with expert video craftsmanship and data-driven strategies.
+              {data.hero.subtitle}
             </p>
           </AnimatedSection>
           <AnimatedSection delay={500} animation="fade-up" className="w-full max-w-5xl mx-auto mt-10">

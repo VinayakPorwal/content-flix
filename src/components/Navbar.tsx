@@ -23,13 +23,18 @@ const Navbar: React.FC = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
         isScrolled 
-          ? 'bg-black/90 backdrop-blur-md shadow-sm py-4 w-[90%] mx-auto rounded-xl mt-2' 
+          ? 'bg-black/40 backdrop-blur-md shadow-sm py-4 w-[85%] mx-auto rounded-xl mt-2' 
           : 'bg-transparent py-6'
       )}
     >
       <div className="container-custom flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <span className="font-bold text-2xl text-white">Content<span className="text-agency-gold">Floww</span></span>
+          <span className="font-bold text-2xl text-white">
+            <img src="/logo.png" alt="Content Finix" className="h-12" />
+          </span>
+          <span className="ml-2 text-white text-2xl font-bold">
+            Content<span className="text-agency-gold">Finix</span> 
+          </span>
         </a>
 
         {/* Desktop Navigation */}

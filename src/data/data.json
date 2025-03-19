@@ -1,8 +1,8 @@
 
 {
   "meta": {
-    "siteName": "AgencyFlow",
-    "logoText": "Agency<span>Flow</span>"
+    "siteName": "Content Finix",
+    "logoText": "Content<span>Finix</span>"
   },
   "navigation": [
     { "id": "home", "label": "Home", "url": "#" },
@@ -16,7 +16,7 @@
   "hero": {
     "badge": "Premium Content Creation Agency",
     "title": "<span class='text-agency-gold'>C<icon>ntent </span>that Converts &<br class='hidden md:block' /> Brands that <span class='text-agency-gold'>Stand Out</span>",
-    "subtitle": "Elevate your brand with expert video craftsmanship and data-driven strategies.",
+    "subtitle": "We don’t just manage content—we craft influence. Our end-to-end content system turns your ideas into high-impact videos that get seen, remembered, and followed.",
     "ctaButton": {
       "text": "Book a Free Strategy Call",
       "url": "#contact",
@@ -29,8 +29,8 @@
   },
   "process": {
     "badge": "Our 5-Step Process",
-    "title": "Convert Your <span class='text-agency-gold'>Content Into Cash</span>",
-    "subtitle": "Establish your brand as an industry leader with our proven 5-step process to create content that engages, converts, and scales your business.",
+    "title": "<p><span class='block'>The Process </span> <span class='text-agency-gold text-3xl'>Your Content Funnel</span></p>",
+    "subtitle": "<span>How We Take You From <span class='text-agency-gold text-xl font-medium'>‘Just Another Guy’</span> to an Industry Leader</span>",
     "ctaButton": {
       "text": "Book a Strategy Call",
       "url": "#contact",
@@ -39,28 +39,33 @@
     "steps": [
       {
         "number": 1,
-        "title": "Strategy & Discovery",
-        "description": "We analyze your target audience, competition, and market position to create a content strategy that aligns with your business goals."
+        "title": "Content Strategy & Planning",
+        "description": "We divide your content into three key categories: Personal Touch Topics, Temporary/Trending Topics, and Evergreen Topics. We analyze upload frequency and research your best-performing competitors to craft a unique content strategy."
       },
       {
         "number": 2,
-        "title": "Creative Development",
-        "description": "Our creative team develops compelling concepts and scripts that showcase your brand's unique value proposition and resonate with your target audience."
+        "title": "Content Ideation",
+        "description": "You'll never run out of banger content ideas. We provide data-backed content ideas tailored to your niche, ensuring every video aligns with your personal brand and audience interests."
       },
       {
         "number": 3,
-        "title": "Production Excellence",
-        "description": "Using premium production techniques, we create high-quality video content that positions your brand as an industry leader."
+        "title": "Scripting & Frameworks",
+        "description": "Once you approve the content ideas, we craft bulletproof scripts and frameworks. Our system ensures that the messaging stays 100% aligned with your values, making your content authentic and powerful."
       },
       {
         "number": 4,
-        "title": "Optimization & Distribution",
-        "description": "We optimize your content for each platform and implement strategic distribution plans to maximize reach and engagement."
+        "title": "Video Production",
+        "description": "You shoot the videos while we guide you through the process to ensure high-quality footage with minimal effort. Then our experts edit based on your niche's specific needs, delivering high-retention content that keeps viewers watching."
       },
       {
         "number": 5,
-        "title": "Analysis & Scaling",
-        "description": "Through continuous analysis and optimization, we identify what works best and scale successful strategies to drive consistent growth."
+        "title": "Visual Design",
+        "description": "We create scroll-stopping thumbnails and graphics that drive clicks. No generic, forgettable visuals—only bold, eye-catching designs tailored for your audience."
+      },
+      {
+        "number": 6,
+        "title": "Distribution & Optimization",
+        "description": "Our expert content managers handle every technical aspect—from YouTube SEO and metadata optimization to strategic posting schedules—ensuring maximum visibility and reach for your content."
       }
     ]
   },

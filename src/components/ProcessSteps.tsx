@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import AnimatedSection from './AnimatedSection';
 import { Sparkles, Camera, Film, Presentation, BarChart3, TrendingUp, Video } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import data from "../data/data.json"
 
 interface StepCardProps {
   number: number;
@@ -61,33 +62,7 @@ const ProcessSteps: React.FC = () => {
     return () => unsubscribe();
   }, [scrollYProgress]);
   
-  const steps = [
-    {
-      number: 1,
-      title: "Strategy & Discovery",
-      description: "We analyze your target audience, competition, and market position to create a content strategy that aligns with your business goals."
-    },
-    {
-      number: 2,
-      title: "Creative Development", 
-      description: "Our creative team develops compelling concepts and scripts that showcase your brand's unique value proposition and resonate with your target audience."
-    },
-    {
-      number: 3,
-      title: "Production Excellence",
-      description: "Using premium production techniques, we create high-quality video content that positions your brand as an industry leader."
-    },
-    {
-      number: 4,
-      title: "Optimization & Distribution",
-      description: "We optimize your content for each platform and implement strategic distribution plans to maximize reach and engagement."
-    },
-    {
-      number: 5,
-      title: "Analysis & Scaling",
-      description: "Through continuous analysis and optimization, we identify what works best and scale successful strategies to drive consistent growth."
-    }
-  ];
+ 
 
   const floatingIconVariants = {
     animate: {
@@ -156,14 +131,11 @@ const ProcessSteps: React.FC = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={200} animation="fade-up">
-              <h2 className="text-white mb-6">Convert Your <span className="text-agency-gold">Content Into Cash</span></h2>
+              <h2 className="text-white mb-6" dangerouslySetInnerHTML={{ __html: data.process.title }}></h2>
             </AnimatedSection>
             
             <AnimatedSection delay={300} animation="fade-up">
-              <p className="text-white/80 text-lg">
-                Establish your brand as an industry leader with our proven 5-step process
-                to create content that engages, converts, and scales your business.
-              </p>
+              <p className="text-white/80 text-lg" dangerouslySetInnerHTML={{ __html: data.process.subtitle }}></p>
             </AnimatedSection>
 
             <AnimatedSection delay={400} animation="fade-up">
@@ -181,7 +153,7 @@ const ProcessSteps: React.FC = () => {
           </motion.div>
           
           <div className="md:w-2/3">
-            {steps.map((step, index) => (
+            {data.process.steps.map((step, index) => (
               <StepCard
                 key={index}
                 number={step.number}

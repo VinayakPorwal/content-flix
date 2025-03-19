@@ -11,7 +11,9 @@ const Footer: React.FC = () => {
           <div className="md:col-span-1">
             <div className="flex flex-col">
               <a href="#" className="mb-4">
-                <span className="font-bold text-2xl text-white">Agency<span className="text-agency-gold">Flow</span></span>
+                <span className="font-bold text-2xl text-white">
+                  <img src="/logowithname.png" alt="Content Finix" className="h-16" />
+                </span>
               </a>
               <p className="text-gray-400 mb-6">
                 Premium content marketing and video production agency helping brands tell their stories.
@@ -82,12 +84,10 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} AgencyFlow. All rights reserved.
+            © {new Date().getFullYear()} Content Finix. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-500 hover:text-agency-gold text-sm transition-colors">Terms</a>
-            <a href="#" className="text-gray-500 hover:text-agency-gold text-sm transition-colors">Privacy</a>
-            <a href="#" className="text-gray-500 hover:text-agency-gold text-sm transition-colors">Cookies</a>
+            <a href="https://linkedin.com/in/vinayakporwal" className="hover:text-agency-gold transition-colors hover:underline transition-all duration-300 text-gray-400 text-sm">Made by Vinayak</a>
           </div>
         </div>
       </div>

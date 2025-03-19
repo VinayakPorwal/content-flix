@@ -23,13 +23,13 @@ const ServiceCard = ({ title, description, videoSrc, thumbnailSrc, aspectClass, 
   <div className={`${rotate}`}>
     <AnimatedSection
       delay={100 * index}
-      className={`rounded-xl p-4 transition-all duration-300 ${aspectClass}`}
+      className={`rounded-xl p-4 transition-all duration-300`}
     >
       <motion.div className="rounded-lg overflow-hidden mb-4" whileHover={{ scale: 1.05 }}>
         <div className="relative w-full h-full group rounded-xl border border-agency-gold/20 bg-black/20 backdrop-blur-sm hover:border-agency-gold/40 transition-all duration-300 glow-on-hover">
           <video
             src={videoSrc}
-            className={`w-full h-full object-cover rounded-xl ${aspectClass}`}
+            className={`w-full h-full object-cover rounded-xl ${icon!=="Instagram" ?  aspectClass : "aspect-[9/16]"}`}
             loop
             muted
             playsInline
@@ -78,7 +78,7 @@ const Services = () => {
           </AnimatedSection>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center lg:grid-cols-3 gap-8 w-[90%] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center lg:grid-cols-3 gap-12 w-[90%] mx-auto">
           {items.map((service, index) => (
             <ServiceCard
               key={index}
