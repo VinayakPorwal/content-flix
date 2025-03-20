@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import AnimatedSection from './AnimatedSection';
@@ -21,23 +22,22 @@ const StepCard: React.FC<StepCardProps> = ({ number, title, description, index, 
     <div 
       ref={cardRef}
       className={cn(
-        "process-card bg-black p-10 rounded-2xl border border-agency-gold/20 min-h-[250px]",
+        "process-card bg-white p-10 rounded-2xl border border-agency-orange/20 min-h-[250px]",
         "transition-all duration-800 ease-out",
         "sticky",
-        // isActive ? "opacity-100" : "opacity-0 translate-y-[500px]"
       )}
       style={{
-        top: `${index*10 + 200}px`, // Adjust this value to control spacing between cards
+        top: `${index*10 + 200}px`,
         zIndex: index
       }}
     >
       <div className="flex items-start gap-6">
-        <div className="flex-shrink-0 w-16 h-16 rounded-full bg-agency-gold/30 flex items-center justify-center glass">
-          <span className="text-2xl font-bold text-white">{number}</span>
+        <div className="flex-shrink-0 w-16 h-16 rounded-full bg-agency-orange/30 flex items-center justify-center glass">
+          <span className="text-2xl font-bold text-agency-dark">{number}</span>
         </div>
         <div>
-          <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
-          <p className="text-white/80 text-lg">{description}</p>
+          <h3 className="text-2xl font-bold text-agency-dark mb-4">{title}</h3>
+          <p className="text-gray-600 text-lg">{description}</p>
         </div>
       </div>
     </div>
@@ -62,8 +62,6 @@ const ProcessSteps: React.FC = () => {
     return () => unsubscribe();
   }, [scrollYProgress]);
   
- 
-
   const floatingIconVariants = {
     animate: {
       y: [0, -15, 0],
@@ -77,12 +75,11 @@ const ProcessSteps: React.FC = () => {
   };
 
   return (
-    <section id="process" className="process-section bg-transparent" ref={sectionRef}>
-    {/* <section id="process" className="process-section bg-gradient-to-br from-black to-gray-900" ref={sectionRef}> */}
+    <section id="process" className="process-section" ref={sectionRef}>
       <div className="container-custom py-32 relative">
         {/* Floating icons */}
         <motion.div 
-          className="absolute left-[40%] top-[5%] text-agency-gold/30"
+          className="absolute left-[40%] top-[5%] text-agency-orange/30"
           variants={floatingIconVariants}
           animate="animate"
         >
@@ -90,7 +87,7 @@ const ProcessSteps: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="absolute right-[15%] top-[30%] text-agency-gold/20"
+          className="absolute right-[15%] top-[30%] text-agency-orange/20"
           variants={floatingIconVariants}
           animate="animate"
           transition={{ delay: 1 }}
@@ -99,7 +96,7 @@ const ProcessSteps: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="absolute right-[10%] bottom-[25%] text-agency-gold/30"
+          className="absolute right-[10%] bottom-[25%] text-agency-orange/30"
           variants={floatingIconVariants}
           animate="animate"
           transition={{ delay: 0.5 }}
@@ -107,7 +104,7 @@ const ProcessSteps: React.FC = () => {
           <Video size={70} />
         </motion.div>
         <motion.div 
-          className="absolute left-[40%] bottom-[2%] text-agency-gold/30"
+          className="absolute left-[40%] bottom-[2%] text-agency-orange/30"
           variants={floatingIconVariants}
           animate="animate"
           transition={{ delay: 0.5 }}
@@ -124,24 +121,24 @@ const ProcessSteps: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <AnimatedSection animation="fade-in">
-              <div className="inline-flex items-center gap-2 rounded-full bg-agency-dark/40 dark-glass px-5 py-2 mb-4 border border-agency-gold/20">
-                <Sparkles className="h-4 w-4 text-agency-gold" />
-                <span className="text-white font-medium text-sm">Our 5-Step Process</span>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 mb-4 border border-agency-orange/20 shadow-sm">
+                <Sparkles className="h-4 w-4 text-agency-orange" />
+                <span className="text-agency-dark font-medium text-sm">Our 5-Step Process</span>
               </div>
             </AnimatedSection>
             
             <AnimatedSection delay={200} animation="fade-up">
-              <h2 className="text-white mb-6" dangerouslySetInnerHTML={{ __html: data.process.title }}></h2>
+              <h2 className="text-agency-dark mb-6" dangerouslySetInnerHTML={{ __html: data.process.title.replace('text-agency-gold', 'text-agency-orange') }}></h2>
             </AnimatedSection>
             
             <AnimatedSection delay={300} animation="fade-up">
-              <p className="text-white/80 text-lg" dangerouslySetInnerHTML={{ __html: data.process.subtitle }}></p>
+              <p className="text-gray-600 text-lg" dangerouslySetInnerHTML={{ __html: data.process.subtitle }}></p>
             </AnimatedSection>
 
             <AnimatedSection delay={400} animation="fade-up">
               <div className="mt-8">
                 <motion.button
-                  className="bg-agency-gold hover:bg-agency-gold/90 text-black font-medium px-6 py-3 rounded-full flex items-center gap-2"
+                  className="bg-agency-orange hover:bg-agency-orange/90 text-white font-medium px-6 py-3 rounded-full flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

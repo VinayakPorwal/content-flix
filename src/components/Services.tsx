@@ -57,7 +57,7 @@ const Services = () => {
   const { badge, title, subtitle, items } = data.services;
 
   return (
-    <section id="services" className="bg-gradient-to-br from-white to-gray-100 section-spacing relative overflow-hidden">
+    <section id="services" className="section-spacing relative overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <AnimatedSection>

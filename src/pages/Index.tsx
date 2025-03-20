@@ -55,16 +55,30 @@ const Index = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <div className="min-h-screen bg-agency-dark">
+      <div className="min-h-screen bg-white relative overflow-x-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="#F97316" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dotPattern)" />
+          </svg>
+        </div>
+        
+        {/* Background Gradient Circles */}
         <div 
-          className="parallax-element fixed top-1/4 -left-20 w-96 h-96 rounded-full bg-agency-gold/10 blur-3xl"
+          className="parallax-element fixed top-1/4 -left-20 w-96 h-96 rounded-full bg-agency-orange/5 blur-3xl"
         />
         <div 
-          className="parallax-element fixed top-1/3 right-0 w-96 h-96 rounded-full bg-agency-gold/10 blur-3xl"
+          className="parallax-element fixed top-1/3 right-0 w-96 h-96 rounded-full bg-agency-gold/5 blur-3xl"
         />
         <div 
-          className="parallax-element fixed -bottom-20 left-1/3 w-80 h-80 rounded-full bg-agency-gold/10 blur-3xl"
+          className="parallax-element fixed -bottom-20 left-1/3 w-80 h-80 rounded-full bg-agency-cream/20 blur-3xl"
         />
+        
         <Navbar />
         <Hero />
         <ProcessSteps />

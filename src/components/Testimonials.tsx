@@ -64,27 +64,22 @@ const Testimonials: React.FC = () => {
   }, [currentIndex, isAnimating]);
 
   return (
-    <section id="testimonials" className="section-spacing bg-transparent relative overflow-hidden">
-    {/* <section id="testimonials" className="section-spacing bg-gradient-to-br from-black to-gray-900 relative overflow-hidden"> */}
-      {/* Background Elements */}
-      {/* <div className="absolute top-40 right-20 w-96 h-96 rounded-full bg-agency-gold/10 blur-[100px]" /> */}
-      {/* <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-agency-gold/10 blur-[100px]" /> */}
-
+    <section id="testimonials" className="section-spacing relative overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <AnimatedSection>
-            <div className="inline-flex items-center gap-2 rounded-full bg-agency-dark/40 dark-glass px-5 py-2 mb-4 border border-agency-gold/20">
-              <Sparkles className="h-4 w-4 text-agency-gold" />
-              <span className="text-white font-medium text-sm">Testimonials</span>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 mb-4 border border-agency-orange/20 shadow-sm">
+              <Sparkles className="h-4 w-4 text-agency-orange" />
+              <span className="text-agency-dark font-medium text-sm">Testimonials</span>
             </div>
           </AnimatedSection>
           
           <AnimatedSection delay={200}>
-            <h2 className="text-white mb-6">What Our <span className="text-agency-gold">Clients Say</span></h2>
+            <h2 className="text-agency-dark mb-6">What Our <span className="text-agency-orange">Clients Say</span></h2>
           </AnimatedSection>
           
           <AnimatedSection delay={300}>
-            <p className="text-white/80 text-lg">
+            <p className="text-gray-600 text-lg">
               Don't just take our word for it. Here's what our clients have to say about our work and the results we've delivered.
             </p>
           </AnimatedSection>
@@ -99,7 +94,7 @@ const Testimonials: React.FC = () => {
               <div
                 key={testimonial.id}
                 className={cn(
-                  "absolute w-full transition-all duration-500 ease-in-out bg-black/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-agency-gold/20",
+                  "absolute w-full transition-all duration-500 ease-in-out bg-white/90 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-agency-orange/20",
                   index === currentIndex 
                     ? "opacity-100 translate-x-0" 
                     : index < currentIndex 
@@ -107,19 +102,19 @@ const Testimonials: React.FC = () => {
                       : "opacity-0 translate-x-full"
                 )}
               >
-                <Quote size={48} className="text-agency-gold/30 mb-6" />
-                <p className="text-white text-lg md:text-xl mb-8 leading-relaxed">
+                <Quote size={48} className="text-agency-orange/30 mb-6" />
+                <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center gap-4">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name} 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-agency-gold/30"
+                    className="w-14 h-14 rounded-full object-cover border-2 border-agency-orange/30"
                   />
                   <div>
-                    <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                    <p className="text-agency-gold/70">{testimonial.role}</p>
+                    <h4 className="text-agency-dark font-semibold">{testimonial.name}</h4>
+                    <p className="text-agency-orange/70">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
@@ -134,8 +129,8 @@ const Testimonials: React.FC = () => {
                 className={cn(
                   "w-3 h-3 rounded-full transition-all duration-300",
                   index === currentIndex 
-                    ? "bg-agency-gold w-12" 
-                    : "bg-white/30 hover:bg-white/50"
+                    ? "bg-agency-orange w-12" 
+                    : "bg-gray-300 hover:bg-gray-400"
                 )}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -144,7 +139,7 @@ const Testimonials: React.FC = () => {
           
           <Button 
             onClick={goToPrev}
-            className="absolute top-1/2 -left-4 md:-left-6 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-black/50 text-agency-gold hover:bg-black/80 border border-agency-gold/30"
+            className="absolute top-1/2 -left-4 md:-left-6 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-white text-agency-orange hover:bg-gray-100 border border-agency-orange/30"
             aria-label="Previous testimonial"
           >
             <ArrowLeft size={20} />
@@ -152,7 +147,7 @@ const Testimonials: React.FC = () => {
           
           <Button 
             onClick={goToNext}
-            className="absolute top-1/2 -right-4 md:-right-6 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-black/50 text-agency-gold hover:bg-black/80 border border-agency-gold/30"
+            className="absolute top-1/2 -right-4 md:-right-6 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-white text-agency-orange hover:bg-gray-100 border border-agency-orange/30"
             aria-label="Next testimonial"
           >
             <ArrowRight size={20} />
