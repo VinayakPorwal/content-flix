@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             </motion.div>
 
             {/* VSL Section */}
-            <div className="vsl-container bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-agency-orange/20">
+            <div className="vsl-container bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-agency-orange/20 mb-16">
               <div className="relative w-full h-0 pb-[56.25%] bg-gray-100 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-agency-dark text-center flex flex-col items-center">
