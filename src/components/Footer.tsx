@@ -7,10 +7,10 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-white py-16 border-t border-gray-200">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="md:col-span-1">
             <div className="flex flex-col">
-              <a href="#" className="mb-4">
+              <a href="/" className="mb-4">
                 <span className="font-bold text-2xl text-agency-dark">
                   <img src="/logowithname.png" alt="Content Finix" className="h-16" />
                 </span>
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           
-          <div className="md:col-span-1">
+          {/* <div className="md:col-span-1">
             <h3 className="font-bold text-agency-dark mb-6">Newsletter</h3>
             <p className="text-gray-600 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
             <div className="flex">
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
                 <Mail size={16} />
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
         
         <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">

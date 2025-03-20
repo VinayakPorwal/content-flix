@@ -15,8 +15,8 @@
   ],
   "hero": {
     "badge": "Premium Content Creation Agency",
-    "title": "<span class='text-agency-gold'>C<icon>ntent </span>that Converts &<br class='hidden md:block' /> Brands that <span class='text-agency-gold'>Stand Out</span>",
-    "subtitle": "We don’t just manage content—we craft influence. Our end-to-end content system turns your ideas into high-impact videos that get seen, remembered, and followed.",
+    "title": "<span class='text-agency-orange'>C<icon>ntent </span>that Converts &<br class='hidden md:block' /> Brands that <span class='text-agency-orange'>Stand Out</span>",
+    "subtitle": "We don’t just manage content—we craft influence. Our <span class='text-agency-orange'>end-to-end content system</span> turns your ideas into <span class='text-agency-orange'>high-impact videos</span> that get seen, remembered, and <span class='text-agency-orange'>followed</span>.",
     "ctaButton": {
       "text": "Book a Free Strategy Call",
       "url": "#contact",
@@ -156,7 +156,7 @@
       }
     ]
   },
-  "pricing": {
+  "whoThisIsFor": {
     "badge": "Pricing Plans",
     "title": "Choose Your <span class='text-agency-gold'>Perfect Plan</span>",
     "subtitle": "Tailored packages designed to meet the specific needs of creators and businesses looking to elevate their content strategy.",
@@ -211,6 +211,32 @@
         "url": "#contact"
       }
     }
+  },
+
+  "caseStudies": {
+    "badge": "Case Studies",
+    "title": "Our <span class='text-agency-gold'>Success Stories</span>",
+    "subtitle": "Discover how we've helped brands achieve their goals through our strategic content and video production services.",
+    "items": [
+      {
+        "title": "TechNova's Brand Transformation",
+        "description": "We helped TechNova revamp their brand identity and content strategy, resulting in a 45% increase in engagement and a stronger market presence.",
+        "thumbnailSrc": "https://images.unsplash.com/photo-1581091870622-1c6b8f8c5b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60",
+        "videoSrc": "https://www.youtube.com/embed/xyz123"
+      },
+      {
+        "title": "GrowthLabs' Targeted Marketing",
+        "description": "Our targeted content marketing approach enabled GrowthLabs to reach their ideal audience with precision, leading to a significant boost in conversions.",
+        "thumbnailSrc": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60",
+        "videoSrc": "https://www.youtube.com/embed/abc456"
+      },
+      {
+        "title": "Horizon Retail's Video Campaign",
+        "description": "We created a series of engaging video campaigns for Horizon Retail, resulting in remarkable ROI and increased brand loyalty.",
+        "thumbnailSrc": "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60",
+        "videoSrc": "https://www.youtube.com/embed/def789"
+      }
+    ]
   },
   "testimonials": {
     "badge": "Testimonials",

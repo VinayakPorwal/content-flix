@@ -8,10 +8,11 @@ import Testimonials from '../components/Testimonials';
 import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
 import ProcessSteps from '../components/ProcessSteps';
-import PricingPlans from '../components/PricingPlans';
+import WhoThisIsFor from '../components/WhoThisIsFor';
 import { AnimatePresence } from 'framer-motion';
 import data from '../data/data.json';
-
+import WhyUs from '@/components/WhyUs';
+import CaseStudies from '@/components/CaseStudies';
 const Index = () => {
   
   useEffect(() => {
@@ -55,7 +56,7 @@ const Index = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <div className="min-h-screen bg-white relative overflow-x-hidden">
+      <div className="min-h-screen bg-white relative  ">
         {/* Background Pattern */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -81,12 +82,14 @@ const Index = () => {
         
         <Navbar />
         <Hero />
+        <WhoThisIsFor />
+        <WhyUs />
         <ProcessSteps />
         <Services />
         <Portfolio />
-        <PricingPlans />
         <Testimonials />
         <CallToAction />
+        <CaseStudies />
         <Footer />
       </div>
     </AnimatePresence>

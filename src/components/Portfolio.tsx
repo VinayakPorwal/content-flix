@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import AnimatedSection from './AnimatedSection';
 import { Button } from '@/components/ui/button';
@@ -6,10 +5,23 @@ import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import data from '../data/data.json';
+// Removed import for yet-another-react-lightbox
+import 'yet-another-react-lightbox/styles.css';
 
 const Portfolio: React.FC = () => {
   const controls = useAnimation();
   const { badge, title, subtitle, ctaButton, items } = data.portfolio;
+  const [isOpen, setIsOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  const openLightbox = (index) => {
+    setPhotoIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+  };
 
   return (
     <section id="portfolio" className="section-spacing relative overflow-hidden">
@@ -53,8 +65,8 @@ const Portfolio: React.FC = () => {
             }
           >
             {/* First Set */}
-            {items.map((item) => (
-              <div key={item.id} className="flex-none w-[300px]">
+            {items.map((item, index) => (
+              <div key={item.id} className="flex-none w-[300px]" onClick={() => openLightbox(index)}>
                 <motion.div
                   className="relative rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10 h-[534px]"
                   whileHover={{ y: -10 }}
@@ -96,8 +108,8 @@ const Portfolio: React.FC = () => {
             ))}
 
             {/* Duplicate Set for Seamless Loop */}
-            {items.map((item) => (
-              <div key={`dup-${item.id}`} className="flex-none w-[300px]">
+            {items.map((item, index) => (
+              <div key={`dup-${item.id}`} className="flex-none w-[300px]" onClick={() => openLightbox(index)}>
                 <motion.div
                   className="relative rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10 h-[534px]"
                   whileHover={{ y: -10 }}
@@ -143,12 +155,15 @@ const Portfolio: React.FC = () => {
           <Button
             variant="outline"
             className="border-agency-orange bg-white hover:text-agency-orange/80 text-agency-orange hover:bg-agency-orange/10 px-8 rounded-full"
+            onClick={() => openLightbox(0)}
           >
             {ctaButton.text}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </AnimatedSection>
       </div>
+
+      {/* Removed Lightbox component */}
     </section>
   );
 };

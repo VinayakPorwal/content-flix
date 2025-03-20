@@ -15,7 +15,7 @@ interface StepCardProps {
 }
 
 const StepCard: React.FC<StepCardProps> = ({ number, title, description, index, progress }) => {
-  const isActive = progress >= index / 6;
+  const isActive = progress >= index / 7;
   const cardRef = useRef<HTMLDivElement>(null);
   
   return (
