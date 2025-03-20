@@ -25,6 +25,7 @@ const StepCard: React.FC<StepCardProps> = ({ number, title, description, index, 
         "process-card bg-white p-10 rounded-2xl border border-agency-orange/20 min-h-[250px]",
         "transition-all duration-800 ease-out",
         "sticky",
+        isActive ? "opacity-100" : "opacity-50 translate-y-[100px]"
       )}
       style={{
         top: `${index*10 + 200}px`,
@@ -75,7 +76,7 @@ const ProcessSteps: React.FC = () => {
   };
 
   return (
-    <section id="process" className="process-section" ref={sectionRef}>
+    <section id="process" className="process-section bg-transparent" ref={sectionRef}>
       <div className="container-custom py-32 relative">
         {/* Floating icons */}
         <motion.div 
@@ -132,7 +133,7 @@ const ProcessSteps: React.FC = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={300} animation="fade-up">
-              <p className="text-gray-600 text-lg" dangerouslySetInnerHTML={{ __html: data.process.subtitle }}></p>
+              <p className="text-gray-600 text-lg" dangerouslySetInnerHTML={{ __html: data.process.subtitle.replace('text-agency-gold', 'text-agency-orange') }}></p>
             </AnimatedSection>
 
             <AnimatedSection delay={400} animation="fade-up">
