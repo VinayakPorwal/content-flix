@@ -71,12 +71,7 @@ const VideoModal = ({ isOpen, onClose, videoUrl, currentIndex }) => {
           autoPlay
           src={videoUrl}
         />
-        {/* <div className="absolute bottom-0 left-0 w-full h-full">
-          <p className="text-white text-center text-sm">
-            {testimonials[currentIndex].name}
-          </p>
-        </div> */}
-        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-agency-orange/50 via-agency-orange/30 to-transparent p-6">
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none bg-gradient-to-t from-agency-orange/50 via-agency-orange/30 to-transparent p-6">
           <h3 className="text-white font-bold text-xl">{testimonials[currentIndex].name}</h3>
           <span className="text-agency-orange font-medium text-sm block mb-2">{testimonials[currentIndex].role}</span>
         </div>
