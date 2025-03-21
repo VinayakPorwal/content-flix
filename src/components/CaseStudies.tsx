@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
@@ -102,6 +103,9 @@ const CaseStudies = () => {
           </div>
         </div>
       )}
+      
+      {/* Add a white fade effect for better transition to footer */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-0"></div>
     </section>
   );
 };

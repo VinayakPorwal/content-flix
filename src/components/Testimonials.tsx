@@ -88,7 +88,7 @@ const Testimonials: React.FC = () => {
         <div ref={testimonialsRef} className="relative max-w-4xl mx-auto px-4">
           <div 
             className="overflow-hidden"
-            style={{ minHeight: '360px' }}
+            style={{ minHeight: '360px', marginBottom: '40px' }}
           >
             {testimonials.map((testimonial, index) => (
               <div
@@ -121,7 +121,7 @@ const Testimonials: React.FC = () => {
             ))}
           </div>
           
-          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex items-center gap-3 mt-8">
+          <div className="flex items-center gap-3 mt-0 justify-center">
             {testimonials.map((_, index) => (
               <button
                 key={index}
@@ -154,6 +154,9 @@ const Testimonials: React.FC = () => {
           </Button>
         </div>
       </div>
+      
+      {/* Add a white fade effect behind the bottom of the section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
     </section>
   );
 };
