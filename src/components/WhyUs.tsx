@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
@@ -55,7 +56,7 @@ const ReasonCard = ({ title, description, index }) => (
     </motion.div>
 );
 
-// This component creates a 500x500 container, draws an SVG circle, and positions each card on the circumference.
+// This component creates a 500x500 container for desktop, but stacks cards vertically on mobile
 const CircleLayout = () => {
     // Dimensions of container and circle
     const containerSize = 500;
@@ -64,57 +65,80 @@ const CircleLayout = () => {
     const radius = 180;
 
     return (
-        <div className="relative w-[500px] h-[500px] mx-auto my-8">
-            {/* Animated rotating SVG circle */}
-            <motion.svg 
-                width={containerSize} 
-                height={containerSize} 
-                className="absolute top-0 left-0"
-                animate={{ rotate: 360 }}
-                transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
-            >
-                <circle
-                    cx={centerX}
-                    cy={centerY}
-                    r={radius}
-                    fill="none"
-                    stroke="#FFA500"
-                    strokeWidth="2"
-                    strokeDasharray="10,10"
-                    className="opacity-50"
-                />
-            </motion.svg>
+        <>
+            {/* Desktop layout - Hidden on mobile */}
+            <div className="relative w-[500px] h-[500px] mx-auto my-8 hidden md:block">
+                {/* Animated rotating SVG circle */}
+                <motion.svg 
+                    width={containerSize} 
+                    height={containerSize} 
+                    className="absolute top-0 left-0"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                >
+                    <circle
+                        cx={centerX}
+                        cy={centerY}
+                        r={radius}
+                        fill="none"
+                        stroke="#FFA500"
+                        strokeWidth="2"
+                        strokeDasharray="10,10"
+                        className="opacity-50"
+                    />
+                </motion.svg>
 
-            {/* Position each card at the computed (x, y) points */}
-            {reasons.map((reason, index) => {
-                return (
+                {/* Position each card at the computed (x, y) points */}
+                {reasons.map((reason, index) => {
+                    return (
+                        <motion.div
+                            key={index}
+                            style={{ left: `${reason.position[0]}px`, top: `${reason.position[1]}px` }}
+                            className="absolute max-w-lg w-max"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.2 }}
+                        >
+                            <ReasonCard index={index} title={reason.title} description={reason.description} />
+                        </motion.div>
+                    );
+                })}
+
+                <motion.div 
+                    className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 }}
+                >
+                    <span className="text-agency-orange font-bold text-5xl">3</span>
+                    <p className="text-gray-600 px-2 text-lg font-medium">Reasons</p>
+                </motion.div>
+            </div>
+
+            {/* Mobile layout - Shown only on mobile */}
+            <div className="md:hidden space-y-6 px-4 py-6">
+                <div className="flex items-center justify-center mb-8">
+                    <span className="text-agency-orange font-bold text-4xl">3</span>
+                    <p className="text-gray-600 px-2 text-lg font-medium">Reasons</p>
+                </div>
+                
+                {reasons.map((reason, index) => (
                     <motion.div
                         key={index}
-                        style={{ left: `${reason.position[0]}px`, top: `${reason.position[1]}px` }}
-                        className="absolute max-w-lg w-max"
+                        className="w-full"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.2 }}
                     >
                         <ReasonCard index={index} title={reason.title} description={reason.description} />
                     </motion.div>
-                );
-            })}
-
-            <motion.div 
-                className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 }}
-            >
-                <span className="text-agency-orange font-bold text-5xl">3</span>
-                <p className="text-gray-600 px-2 text-lg font-medium">Reasons</p>
-            </motion.div>
-        </div>
+                ))}
+            </div>
+        </>
     );
 };
 
