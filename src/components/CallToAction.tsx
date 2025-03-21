@@ -151,7 +151,7 @@ const CallToAction: React.FC = () => {
                     whileHover={{ scale: 1.02 }}
                     className="relative"
                   >
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
+                    <div className="absolute lg:-top-10 top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
                       <motion.div
                         initial={{ scale: 1 }}
                         animate={{ scale: [1, 1.2, 1] }}
