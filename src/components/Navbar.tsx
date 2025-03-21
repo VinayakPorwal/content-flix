@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
         isScrolled 
-          ? 'bg-white lg:bg-white/60 backdrop-blur-md shadow-sm py-4 lg:w-[85%] mx-auto rounded-xl mt-2' 
+          ? 'bg-transparent lg:bg-white/60 lg:backdrop-blur-md lg:shadow-sm py-4 lg:w-[85%] mx-auto rounded-xl mt-2' 
           : 'bg-transparent py-6 '
       )}
     >
@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-agency-dark p-2"
+          className="md:hidden text-agency-dark p-2  backdrop-blur-md bg-white/60 rounded-full"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
