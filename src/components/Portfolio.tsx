@@ -42,7 +42,7 @@ const Portfolio: React.FC = () => {
   }, [controls, isMobile]);
 
   return (
-    <section id="portfolio" className="section-spacing relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="section-spacing relative overflow-hidden">
       <div className="relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
           <AnimatedSection>

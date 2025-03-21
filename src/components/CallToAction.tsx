@@ -1,9 +1,9 @@
-
 import React, { useRef, useEffect } from 'react';
 import AnimatedSection from './AnimatedSection';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, VideoIcon, TrendingUp, Target, Sparkles, Users, Phone, Settings } from 'lucide-react';
+import { ArrowRight, VideoIcon, TrendingUp, Target, Sparkles, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
+import data from '../data/data.json';
 
 const CallToAction: React.FC = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -59,6 +59,8 @@ const CallToAction: React.FC = () => {
     }
   };
 
+  const { ctaButton, steps } = data.callToAction;
+
   return (
     <section id="contact" className="section-spacing relative overflow-hidden" ref={parallaxRef}>
       {/* Floating icons */}
@@ -103,7 +105,7 @@ const CallToAction: React.FC = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={300}>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-md md:text-lg">
               Book a call with us to discuss how we can help you transform your content.
             </p>
           </AnimatedSection>
@@ -118,17 +120,17 @@ const CallToAction: React.FC = () => {
                   size="lg"
                   className="bg-agency-orange hover:bg-agency-orange/90 text-white px-12 rounded-full h-14 text-lg font-medium"
                 >
-                  Schedule Your Discovery Call
+                  {ctaButton.text}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </motion.div>
             </AnimatedSection>
 
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-agency-orange/20 p-12">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-agency-orange/20 p-6 md:p-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Title */}
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-agency-dark flex items-center justify-center gap-3">
+            <AnimatedSection className="text-center mb-8 md:mb-16">
+              <h2 className="text-xl md:text-4xl font-bold text-agency-dark flex items-center justify-center gap-3">
                 <motion.div
                   initial={{ rotate: 0 }}
                   animate={{ rotate: 360 }}
@@ -141,87 +143,30 @@ const CallToAction: React.FC = () => {
             </AnimatedSection>
 
             {/* Horizontal Timeline */}
-            <AnimatedSection delay={200} className="relative mb-16">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="relative"
-                >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
-                    <motion.div
-                      initial={{ scale: 1 }}
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="text-agency-orange font-bold text-2xl"
-                    >
-                      1
-                    </motion.div>
-                  </div>
-                  <div className="pt-20 bg-gray-50/80 p-6 rounded-lg border border-agency-orange/10 h-full">
-                    <h3 className="text-agency-orange text-lg font-medium mb-2">Discovery Call</h3>
-                    <p className="text-gray-600 text-sm">We understand your goals, content vision, and expectations. If it's a good fit, we move forward.</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="relative"
-                >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
-                    <motion.div
-                      initial={{ scale: 1 }}
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="text-agency-orange font-bold text-2xl"
-                    >
-                      2
-                    </motion.div>
-                  </div>
-                  <div className="pt-20 bg-gray-50/80 p-6 rounded-lg border border-agency-orange/10 h-full">
-                    <h3 className="text-agency-orange text-lg font-medium mb-2">Onboarding Call</h3>
-                    <p className="text-gray-600 text-sm">Once we sign the deal, we dive deep into your business and content strategy.</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="relative"
-                >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
-                    <motion.div
-                      initial={{ scale: 1 }}
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="text-agency-orange font-bold text-2xl"
-                    >
-                      3
-                    </motion.div>
-                  </div>
-                  <div className="pt-20 bg-gray-50/80 p-6 rounded-lg border border-agency-orange/10 h-full">
-                    <h3 className="text-agency-orange text-lg font-medium mb-2">Strategy & Execution</h3>
-                    <p className="text-gray-600 text-sm">We create a structured content plan and kickstart the production process.</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="relative"
-                >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
-                    <motion.div
-                      initial={{ scale: 1 }}
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="text-agency-orange font-bold text-2xl"
-                    >
-                      4
-                    </motion.div>
-                  </div>
-                  <div className="pt-20 bg-gray-50/80 p-6 rounded-lg border border-agency-orange/10 h-full">
-                    <h3 className="text-agency-orange text-lg font-medium mb-2">Content Launch</h3>
-                    <p className="text-gray-600 text-sm">Your high-quality videos go live with continuous optimization and analysis.</p>
-                  </div>
-                </motion.div>
+            <AnimatedSection delay={200} className="relative mb-8 md:mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {steps.map((step, index) => (
+                  <motion.div 
+                    key={index}
+                    whileHover={{ scale: 1.02 }}
+                    className="relative"
+                  >
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
+                      <motion.div
+                        initial={{ scale: 1 }}
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="text-agency-orange font-bold text-2xl"
+                      >
+                        {index + 1}
+                      </motion.div>
+                    </div>
+                    <div className="pt-20 bg-gray-50/80 p-4 md:p-6 rounded-lg border border-agency-orange/10 h-full">
+                      <h3 className="text-agency-orange text-lg font-medium mb-2">{step.title}</h3>
+                      <p className="text-gray-600 text-sm">{step.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </AnimatedSection>
           </div>

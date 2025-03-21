@@ -23,16 +23,16 @@ const Navbar: React.FC = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
         isScrolled 
-          ? 'bg-white/60 backdrop-blur-md shadow-sm py-4 w-[85%] mx-auto rounded-xl mt-2' 
-          : 'bg-transparent py-6'
+          ? 'bg-white lg:bg-white/60 backdrop-blur-md shadow-sm py-4 lg:w-[85%] mx-auto rounded-xl mt-2' 
+          : 'bg-transparent py-6 '
       )}
     >
       <div className="container-custom flex items-center justify-between">
-        <a href="#" className="flex items-center">
+        <a href="#" className="items-center lg:flex hidden">
           <span className="font-bold text-2xl text-agency-dark">
             <img src="/logo.png" alt="Content Finix" className="h-12" />
           </span>
-          <span className="ml-2 text-agency-dark text-2xl font-medium">
+          <span className="ml-2 text-agency-dark text-2xl font-semibold">
             Content<span className="text-agency-orange">Finix</span> 
           </span>
         </a>
@@ -65,10 +65,10 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div className={cn(
-        "fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out pt-24 lg:hidden",
+        "fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out pt-24 lg:hidden h-full",
         mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <div className="container flex flex-col space-y-6 p-6">
+        <div className="container flex flex-col space-y-6 p-6 bg-white">
           {/* Close button in top right corner */}
           <button 
             onClick={() => setMobileMenuOpen(false)}

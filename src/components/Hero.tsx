@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
-      className="relative overflow-hidden pt-32 pb-30 md:pt-36"
+      className="relative overflow-hidden pt-24 pb-30 md:pt-36"
     >
       {/* Floating icons */}
       <motion.div
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
         variants={floatingIconVariants}
         animate="animate"
       >
-        <Camera size={60} className='-rotate-12' />
+        <Camera className='-rotate-12 w-[40px] h-[40px] md:w-[60px] md:h-[60px]' />
       </motion.div>
 
       <motion.div
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
         animate="animate"
         transition={{ delay: 0.5 }}
       >
-        <TrendingUp size={70} />
+        <TrendingUp className='w-[45px] h-[45px] md:w-[70px] md:h-[70px]' />
       </motion.div>
       <motion.div
         className="absolute right-[10%] top-[40%] text-agency-gold/40"
@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
         animate="animate"
         transition={{ delay: 1 }}
       >
-        <Film size={80} className='rotate-12' />
+        <Film className='rotate-12 w-[50px] h-[50px] md:w-[80px] md:h-[80px]' />
       </motion.div>
 
       <motion.div
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
         animate="animate"
         transition={{ delay: 0.5 }}
       >
-        <VideoIcon size={70} />
+        <VideoIcon className='w-[45px] h-[45px] md:w-[70px] md:h-[70px]' />
       </motion.div>
 
       <div className="container-custom relative z-10">
@@ -68,25 +68,25 @@ const Hero: React.FC = () => {
               <Sparkles className="h-4 w-4 text-agency-orange" />
               <span className="text-agency-dark font-medium text-sm">{data.hero.badge}</span>
             </div> */}
-            <h1 className='text-agency-orange text-5xl font-bold mb-4'>
-              Content Finix
+            <h1 className='text-agency-orange text-3xl md:text-5xl font-bold mb-4 relative'>
+              <img src="/logowithname.png" alt="Content Finix" className="lg:h-24 h-16 relative" />
             </h1>
 
           </AnimatedSection>
 
           <AnimatedSection delay={200} animation="fade-up">
-            <div className="font-bold text-agency-dark mb-6 text-5xl space-y-4">
+            <div className="font-bold text-agency-dark mb-6 text-3xl md:text-5xl space-y-4">
               <span className="text-agency-orange/90 tracking-wide">
                 {`No More `} 
-                 <span className='text-agency-dark line- text-5xl'>‘Playing the Game’</span>
+                 <span className='text-agency-dark line- text-3xl md:text-5xl'>‘Playing the Game’</span>
               </span>
                 <br className="hidden md:block mb-2" />
-              <span className="text-agency-orange text-6xl tracking-wider"> Start Owning It</span>
+              <span className="text-agency-orange text-4xl md:text-6xl tracking-wider"> Start Owning It</span>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={400} animation="fade-up">
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl" dangerouslySetInnerHTML={{ __html: data.hero.subtitle }} />
+            <p className="text-md md:text-xl text-gray-600 max-w-2xl" dangerouslySetInnerHTML={{ __html: data.hero.subtitle }} />
 
 
           </AnimatedSection>

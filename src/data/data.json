@@ -290,6 +290,31 @@
       }
     }
   },
+  "callToAction": {
+    "ctaButton": {
+      "text": "Schedule a Call",
+      "url": "#"
+    },
+    "steps": [
+      {
+        "title": "Discovery Call",
+        "description": "We understand your goals, content vision, and expectations. If it’s a good fit, we move forward."
+      },
+      {
+        "title": "Onboarding Call",
+        "description": "Once we sign the deal, we dive deep into your business and content strategy to tailor everything to your brand."
+      },
+      {
+        "title": "Strategy & Execution",
+        "description": "We create a structured content plan, finalize topics, and kickstart the production process."
+      },
+      {
+        "title": "Content Launch & Growth",
+        "description": "Your high-quality videos go live, and we continuously optimize, analyze, and scale for maximum reach."
+      }
+    ]
+    
+  },
   "footer": {
     "logoText": "Agency<span class='text-agency-gold'>Flow</span>",
     "description": "Premium content marketing and video production agency helping brands tell their stories.",

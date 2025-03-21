@@ -79,7 +79,7 @@ const Testimonials: React.FC = () => {
           </AnimatedSection>
           
           <AnimatedSection delay={300}>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-md md:text-lg">
               Don't just take our word for it. Here's what our clients have to say about our work and the results we've delivered.
             </p>
           </AnimatedSection>

@@ -42,27 +42,27 @@ const Footer: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="md:col-span-1">
             <h3 className="font-bold text-agency-dark mb-6">Company</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Our Team</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Careers</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Press</a></li>
+              {/* <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">About Us</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Our Team</a></li> */}
+              <li><a href="/terms-of-use" className="text-gray-600 hover:text-agency-orange transition-colors">Terms of use</a></li>
+              <li><a href="/privacy-policy" className="text-gray-600 hover:text-agency-orange transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
-          
+
           <div className="md:col-span-1">
             <h3 className="font-bold text-agency-dark mb-6">Services</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Video Production</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Content Strategy</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Marketing Campaigns</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-agency-orange transition-colors">Brand Development</a></li>
+              <li><a href="#services" className="text-gray-600 hover:text-agency-orange transition-colors">Video Production</a></li>
+              <li><a href="#services" className="text-gray-600 hover:text-agency-orange transition-colors">Content Strategy</a></li>
+              <li><a href="#services" className="text-gray-600 hover:text-agency-orange transition-colors">Marketing Campaigns</a></li>
+              <li><a href="#services" className="text-gray-600 hover:text-agency-orange transition-colors">Brand Development</a></li>
             </ul>
           </div>
-          
+
           {/* <div className="md:col-span-1">
             <h3 className="font-bold text-agency-dark mb-6">Newsletter</h3>
             <p className="text-gray-600 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
@@ -81,13 +81,21 @@ const Footer: React.FC = () => {
             </div>
           </div> */}
         </div>
-        
+
         <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Content Finix. All rights reserved.
-          </p>
+          <div className='flex flex-col md:flex-row justify-between items-center gap-2'>
+            <p className="text-gray-500 text-sm mb-4 md:mb-0">
+              © {new Date().getFullYear()} Content Finix. All rights reserved.
+            </p>
+            <a href="/terms-of-use" className="text-gray-500 hover:text-agency-orange hover:underline transition-colors text-sm mb-4 md:mb-0">
+              Terms of use
+            </a>
+            <a href="/privacy-policy" className="text-gray-500 hover:text-agency-orange hover:underline transition-colors text-sm mb-4 md:mb-0">
+              Privacy Policy
+            </a>
+          </div>
           <div className="flex space-x-6">
-            <a href="https://linkedin.com/in/vinayakporwal" className="hover:text-agency-orange transition-colors hover:underline transition-all duration-300 text-gray-500 text-sm">Made by Vinayak</a>
+            <a href="https://linkedin.com/in/vinayakporwal" className="hover:text-agency-orange hover:underline transition-all duration-300 text-gray-500 text-sm">Made by Vinayak</a>
           </div>
         </div>
       </div>
