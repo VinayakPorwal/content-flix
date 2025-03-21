@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -105,15 +106,15 @@
   }
   
   h1 {
-    @apply text-4xl sm:text-5xl md:text-6xl;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
   }
   
   h2 {
-    @apply text-3xl sm:text-4xl md:text-5xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
   }
   
   h3 {
-    @apply text-2xl sm:text-3xl;
+    @apply text-xl sm:text-2xl md:text-3xl;
   }
 }
 
@@ -162,7 +163,7 @@
 }
 
 .section-spacing {
-  @apply py-20 md:py-32;
+  @apply py-12 sm:py-16 md:py-20 lg:py-32;
 }
 
 /* Smooth section transitions */
@@ -238,3 +239,30 @@
   margin-top: -2rem;
 }
 
+/* Responsive fixes */
+@media (max-width: 640px) {
+  /* Reset rotations on small screens */
+  .sm\:rotate-3,
+  .sm\:-rotate-3 {
+    transform: rotate(0deg) !important;
+  }
+  
+  /* Adjust mobile menu */
+  .mobile-menu-enter {
+    transform: translateX(-100%);
+  }
+  
+  .mobile-menu-enter-active {
+    transform: translateX(0%);
+    transition: transform 300ms;
+  }
+  
+  .mobile-menu-exit {
+    transform: translateX(0%);
+  }
+  
+  .mobile-menu-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms;
+  }
+}

@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
           <span className="font-bold text-2xl text-agency-dark">
             <img src="/logo.png" alt="Content Finix" className="h-12" />
           </span>
-          <span className="ml-2 text-agency-dark text-2xl font-bold">
+          <span className="ml-2 text-agency-dark text-2xl font-medium">
             Content<span className="text-agency-orange">Finix</span> 
           </span>
         </a>
@@ -66,9 +66,18 @@ const Navbar: React.FC = () => {
       {/* Mobile Navigation */}
       <div className={cn(
         "fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out pt-24 lg:hidden",
-        mobileMenuOpen ? "translate-x-0" : "-translate-x-[300px] w-[200px] mx-auto rounded-xl mt-2"
+        mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="container flex flex-col space-y-6 p-6">
+          {/* Close button in top right corner */}
+          <button 
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute top-6 right-6 text-agency-dark p-2"
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+          
           <a 
             href="#services" 
             className="text-xl font-medium text-agency-dark hover:text-agency-orange transition-colors"
