@@ -6,46 +6,7 @@ import { motion } from 'framer-motion';
 import data from '../data/data.json';
 
 const CallToAction: React.FC = () => {
-  const parallaxRef = useRef<HTMLDivElement>(null);
-  const circleOneRef = useRef<HTMLDivElement>(null);
-  const circleTwoRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!parallaxRef.current) return;
-
-      const container = parallaxRef.current;
-      const rect = container.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const deltaX = (mouseX - centerX) / centerX;
-      const deltaY = (mouseY - centerY) / centerY;
-
-      if (circleOneRef.current) {
-        circleOneRef.current.style.transform = `translate(${deltaX * -30}px, ${deltaY * -30}px)`;
-      }
-
-      if (circleTwoRef.current) {
-        circleTwoRef.current.style.transform = `translate(${deltaX * 20}px, ${deltaY * 20}px)`;
-      }
-    };
-
-    const container = parallaxRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
-
+  
   // Floating icons animation variants
   const floatingIconVariants = {
     animate: {
@@ -62,7 +23,7 @@ const CallToAction: React.FC = () => {
   const { ctaButton, steps } = data.callToAction;
 
   return (
-    <section id="contact" className="section-spacing relative overflow-hidden" ref={parallaxRef}>
+    <section id="contact" className="section-spacing relative overflow-hidden">
       {/* Floating icons */}
       <motion.div
         className="absolute right-[55%] top-[10%] text-agency-orange/20"

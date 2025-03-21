@@ -117,6 +117,7 @@
         "title": "Brand Story Film - Oceanic Beauty",
         "category": "Video Production",
         "image": "https://images.unsplash.com/photo-1576073719676-aa95576db207?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtube.com/shorts/rBA7FNyOL1Y?feature=share",
         "duration": "2:45"
       },
       {
@@ -124,6 +125,7 @@
         "title": "Social Campaign - Tech Innovations",
         "category": "Marketing",
         "image": "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtube.com/shorts/Rkq1MGwbeFw?feature=share",
         "duration": "1:32"
       },
       {
@@ -131,6 +133,7 @@
         "title": "Product Launch - Quantum Devices",
         "category": "Strategy",
         "image": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtube.com/shorts/I2ErdqE4i_Y?feature=share",
         "duration": "3:10"
       },
       {
@@ -138,21 +141,8 @@
         "title": "Branded Content Series - Lifestyle Fit",
         "category": "Video Production",
         "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtube.com/shorts/mJBSLGXcCPs?feature=share",
         "duration": "4:05"
-      },
-      {
-        "id": 5,
-        "title": "E-commerce Video Ads - Fashion Forward",
-        "category": "Marketing",
-        "image": "https://images.unsplash.com/photo-1522335579687-9c718c5184d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "duration": "0:45"
-      },
-      {
-        "id": 6,
-        "title": "Brand Redesign - Modern Finance",
-        "category": "Strategy",
-        "image": "https://images.unsplash.com/photo-1585184394271-4c0a47dc59c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "duration": "2:18"
       }
     ]
   },

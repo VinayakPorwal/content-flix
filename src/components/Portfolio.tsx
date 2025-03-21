@@ -1,45 +1,67 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AnimatedSection from './AnimatedSection';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import data from '../data/data.json';
 import { useIsMobile } from '@/hooks/use-mobile';
-// Removed import for yet-another-react-lightbox
-// import 'yet-another-react-lightbox/styles.css';
 
 const Portfolio: React.FC = () => {
   const controls = useAnimation();
   const { badge, title, subtitle, ctaButton, items } = data.portfolio;
-  const [isOpen, setIsOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
   const isMobile = useIsMobile();
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const scrollingRef = useRef<HTMLDivElement>(null);
+  const [setWidth, setSetWidth] = useState(0);
+  // Adjust speed (pixels per second) to control the smoothness
+  const speed = 50;
 
-  const openLightbox = (index) => {
-    setPhotoIndex(index);
-    setIsOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setIsOpen(false);
-  };
-
+  // Measure the width of one set of items (half of the scrolling container)
   useEffect(() => {
-    // Only start auto-scroll animation on non-mobile devices
-    if (!isMobile) {
+    if (scrollingRef.current) {
+      const totalWidth = scrollingRef.current.scrollWidth;
+      setSetWidth(totalWidth / 2);
+    }
+  }, [items]);
+
+  // Control the infinite scroll animation. When paused, the current x position is preserved.
+  useEffect(() => {
+    if (!isMobile && !isVideoPlaying && !isHovering && setWidth) {
       controls.start({
-        x: -1920,
+        x: -setWidth,
         transition: {
           repeat: Infinity,
-          repeatType: "loop",
-          duration: 30,
-          ease: "linear",
+          repeatType: 'loop',
+          duration: setWidth / speed,
+          ease: 'linear',
         },
       });
+    } else {
+      controls.stop();
     }
-  }, [controls, isMobile]);
+  }, [controls, isMobile, isVideoPlaying, isHovering, setWidth]);
+
+  // Note: onPlay/onPause on iframes might not work as expected.
+  // For accurate detection of play events on YouTube shorts,
+  // consider using the YouTube Iframe API.
+  const getYoutubeId = (url: string) => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname === 'youtube.com' || urlObj.hostname === 'www.youtube.com') {
+        if (urlObj.pathname.includes('/shorts/')) {
+          return urlObj.pathname.split('/shorts/')[1];
+        }
+        return urlObj.searchParams.get('v');
+      } else if (urlObj.hostname === 'youtu.be') {
+        return urlObj.pathname.slice(1);
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  };
 
   return (
     <section id="portfolio" className="section-spacing relative overflow-hidden">
@@ -53,7 +75,10 @@ const Portfolio: React.FC = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-agency-dark mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl" dangerouslySetInnerHTML={{ __html: title.replace('text-agency-gold', 'text-agency-orange') }} />
+            <h2
+              className="text-agency-dark mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+              dangerouslySetInnerHTML={{ __html: title.replace('text-agency-gold', 'text-agency-orange') }}
+            />
           </AnimatedSection>
 
           <AnimatedSection delay={300}>
@@ -64,107 +89,59 @@ const Portfolio: React.FC = () => {
         </div>
 
         {/* Horizontal Infinite Scroll */}
-        <div className="relative overflow-hidden">
+        <div 
+          className="relative overflow-hidden"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
           <motion.div
-            className="flex gap-3 sm:gap-6 pt-6"
-            animate={isMobile ? {} : controls}
+            ref={scrollingRef}
+            className="flex gap-3 sm:gap-6 pt-6 pb-6"
+            animate={controls}
             initial={{ x: 0 }}
-            onMouseEnter={() => controls.stop()}
-            onMouseLeave={() => {
-              if (!isMobile) {
-                controls.start({
-                  x: -1920,
-                  transition: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 30,
-                    ease: "linear",
-                  },
-                });
-              }
-            }}
           >
             {/* First Set */}
-            {items.map((item, index) => (
-              <div key={item.id} className="flex-none w-[250px] sm:w-[280px] md:w-[300px]" onClick={() => openLightbox(index)}>
+            {items.map((item) => (
+              <div key={item.id} className={`flex-none w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl border-agency-orange/70 ${isVideoPlaying ? 'p-2' : 'p-0'}`}>
                 <motion.div
                   className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10 h-[400px] sm:h-[480px] md:h-[534px]"
                   whileHover={{ y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <AspectRatio ratio={9 / 16}>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYoutubeId(item.url)}`}
+                      title={item.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full rounded-xl"
+                      onPlay={() => setIsVideoPlaying(true)}
+                      onPause={() => setIsVideoPlaying(false)}
                     />
                   </AspectRatio>
-
-                  {/* Video controls overlay */}
-                  <div className="absolute inset-0 flex flex-col">
-                    <div className="flex-1 flex items-start justify-end p-3 sm:p-4">
-                      <div className="bg-white/70 rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs text-agency-dark">
-                        <span>{item.duration}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex-1 flex items-center justify-center">
-                      <motion.div
-                        className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-agency-orange flex items-center justify-center opacity-0 hover:opacity-100 cursor-pointer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Play className="h-6 w-6 sm:h-8 sm:w-8 text-white" fill="white" />
-                      </motion.div>
-                    </div>
-
-                    <div className="bg-gradient-to-t from-white via-white/70 to-transparent p-4 sm:p-6">
-                      <span className="text-agency-orange font-medium text-xs sm:text-sm block mb-1 sm:mb-2">{item.category}</span>
-                      <h3 className="text-agency-dark font-bold text-base sm:text-xl">{item.title}</h3>
-                    </div>
-                  </div>
                 </motion.div>
               </div>
             ))}
 
             {/* Duplicate Set for Seamless Loop */}
-            {items.map((item, index) => (
-              <div key={`dup-${item.id}`} className="flex-none w-[250px] sm:w-[280px] md:w-[300px]" onClick={() => openLightbox(index)}>
+            {items.map((item) => (
+              <div key={`dup-${item.id}`} className={`flex-none w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl border-agency-orange/70 ${isVideoPlaying ? 'p-2' : 'p-0'}`}>
                 <motion.div
-                  className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10 h-[400px] sm:h-[480px] md:h-[534px]"
+                  className="relative rounded-lg sm:rounded-2xl overflow-hidden shadow-xl border border-agency-orange/20 h-[400px] sm:h-[480px] md:h-[534px]"
                   whileHover={{ y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <AspectRatio ratio={9 / 16}>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYoutubeId(item.url)}`}
+                      title={item.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full rounded-xl"
+                      onPlay={() => setIsVideoPlaying(true)}
+                      onPause={() => setIsVideoPlaying(false)}
                     />
                   </AspectRatio>
-
-                  <div className="absolute inset-0 flex flex-col">
-                    <div className="flex-1 flex items-start justify-end p-3 sm:p-4">
-                      <div className="bg-white/70 rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs text-agency-dark">
-                        <span>{item.duration}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex-1 flex items-center justify-center">
-                      <motion.div
-                        className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-agency-orange flex items-center justify-center opacity-0 hover:opacity-100 cursor-pointer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Play className="h-6 w-6 sm:h-8 sm:w-8 text-white" fill="white" />
-                      </motion.div>
-                    </div>
-
-                    <div className="bg-gradient-to-t from-white via-white/70 to-transparent p-4 sm:p-6">
-                      <span className="text-agency-orange font-medium text-xs sm:text-sm block mb-1 sm:mb-2">{item.category}</span>
-                      <h3 className="text-agency-dark font-bold text-base sm:text-xl">{item.title}</h3>
-                    </div>
-                  </div>
                 </motion.div>
               </div>
             ))}
@@ -175,15 +152,13 @@ const Portfolio: React.FC = () => {
           <Button
             variant="outline"
             className="border-agency-orange bg-white hover:text-agency-orange/80 text-agency-orange hover:bg-agency-orange/10 px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base"
-            onClick={() => openLightbox(0)}
+            onClick={() => window.open('https://www.youtube.com/@YourChannel', '_blank')}
           >
             {ctaButton.text}
             <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
         </AnimatedSection>
       </div>
-
-      {/* Removed Lightbox component */}
     </section>
   );
 };
