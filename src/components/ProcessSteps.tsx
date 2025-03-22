@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import AnimatedSection from './AnimatedSection';
-import { Sparkles, Camera, Film, Presentation, BarChart3, TrendingUp, Video } from 'lucide-react';
+import { Sparkles, Camera, Film, Presentation, BarChart3, TrendingUp, Video, ArrowRight } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import data from "../data/data.json"
 
@@ -140,11 +140,14 @@ const ProcessSteps: React.FC = () => {
               <div className="mt-4 md:mt-8">
                 <motion.button
                   className="bg-agency-orange hover:bg-agency-orange/90 text-white font-medium px-4 py-2 md:px-6 md:py-3 rounded-full flex items-center gap-2 text-xs sm:text-sm md:text-base"
+                  onClick={() => {
+                    window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
+                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                   <span>Book a Strategy Call</span>
+                  <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                 </motion.button>
               </div>
             </AnimatedSection>

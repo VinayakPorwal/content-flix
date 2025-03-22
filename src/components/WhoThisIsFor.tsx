@@ -185,9 +185,12 @@ const PricingPlans: React.FC = () => {
                 </div>
 
                 <Button
-                  className="w-full bg-agency-orange/20 hover:bg-agency-orange/30 text-agency-orange border border-agency-orange/30 rounded-xl h-10 sm:h-12 text-sm sm:text-base"
+                  onClick={() => {
+                    window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
+                  }}
+                  className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white rounded-xl h-10 sm:h-12 text-sm sm:text-base"
                 >
-                  Learn More
+                  Schedule a Call
                   <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </motion.div>
@@ -219,9 +222,12 @@ const PricingPlans: React.FC = () => {
                   </div>
 
                   <Button
+                    onClick={() => {
+                      window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
+                    }}
                     className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white rounded-xl h-10 sm:h-12 text-sm sm:text-base"
                   >
-                    Learn More
+                    Schedule a Call
                     <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                 </motion.div>
@@ -230,14 +236,14 @@ const PricingPlans: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-center mt-8 sm:mt-12">
+        {/* <div className="text-center mt-8 sm:mt-12">
           <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Not sure which path is right for you?</p>
           <Button
             className="bg-transparent hover:bg-agency-orange/10 text-agency-orange border border-agency-orange/30 rounded-full px-4 sm:px-6 py-1 sm:py-2 text-sm sm:text-base"
           >
             Schedule a Free Consultation
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

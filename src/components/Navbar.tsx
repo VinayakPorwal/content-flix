@@ -40,14 +40,18 @@ const Navbar: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#services" className="text-agency-dark hover:text-agency-orange transition-colors font-medium">Services</a>
-          <a href="#pricing" className="text-agency-dark hover:text-agency-orange transition-colors font-medium">Pricing</a>
           <a href="#process" className="text-agency-dark hover:text-agency-orange transition-colors font-medium">Process</a>
+          <a href="#results" className="text-agency-dark hover:text-agency-orange transition-colors font-medium">Results</a>
           <a href="#testimonials" className="text-agency-dark hover:text-agency-orange transition-colors font-medium">Testimonials</a>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button size="sm" className="bg-agency-orange hover:bg-agency-orange/90 text-white font-medium">
+            <Button size="sm" className="bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
+            onClick={() => {
+              window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
+            }}
+            >
               Book Call
             </Button>
           </motion.div>
@@ -109,7 +113,9 @@ const Navbar: React.FC = () => {
           <Button 
             size="lg" 
             className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={() => {
+              window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
+            }}
           >
            Book Call
           </Button>

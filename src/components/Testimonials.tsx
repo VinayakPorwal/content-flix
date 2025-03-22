@@ -9,7 +9,8 @@ const testimonials = [
   {
     id: 1,
     name: "Sahil Kasanna",
-    role: "Marketing Director, TechNova", 
+    role: "Online business expert (have built two 7-figure agencies)",
+    niche: "Business and Marketing",
     content: "I would definitely suggest you rashid if you're looking for someone to help you with Instagram and youtube, you're editing your SEO everything you can manage. He and his agency do a really good work and I can definitely say if you will work with Rashid, you don't have to focus on anything. He will handle each and everything. I would really suggest Rashid. You should work with him.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     videoUrl: "./client1.mp4", // Add actual video URL
@@ -18,7 +19,8 @@ const testimonials = [
   {
     id: 2,
     name: "Joy Aanand",
-    role: "CEO, GrowthLabs",
+    role: "Helps businesses scale",
+    niche: "Business and Marketing",
     content: "I’ve been working with Rashid for the past ten months, and he’s been handling my YouTube channel. He does the market research and has helped me grow faster than anyone else in the industry. I’ve seen the average results of others on YouTube, and they just can’t match my growth rate. Rashid has delivered outstanding results, so if you’re looking to grow on YouTube, I definitely recommend him. He’s a great guy",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     videoUrl: "./client2.mp4", // Add actual video URL
@@ -26,8 +28,9 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
-    role: "Brand Manager, Horizon Retail",
+    name: "Ben Allistor",
+    role: "Helps coaches get 5x more clients",
+    niche: "Online Business Coach",
     content: "I started YouTube from zero, and Rashid's team began creating all my thumbnails—sometimes three per video. They also took over my ads and helped with SEO. As a result, we’ve tripled our subscribers.They guided me through every step, from thumbnail and title testing to leveraging SEO tactics. Thanks to them, I’m confident we’ll reach our goal of 10,000 subscribers. I highly recommend their service to anyone looking to grow on YouTube!",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     videoUrl: "./client3.mp4", // Add actual video URL
@@ -35,8 +38,9 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Elliot Botro",
-    role: "Brand Manager, Horizon Retail",
+    name: "Elliot Botterill",
+    niche: "Digital Marketing",
+    role: "Founder of Botters (Digital Growth Agency)",
     content: "I just want to give a special shout-out to Rashid and his agency, who’ve been helping us edit our videos—long form, short form, and doing our thumbnails. These guys are fantastic, not only high-quality but also extremely responsive. They’re a pleasure to deal with: they get back to you quickly, genuinely care, bring new ideas, and overall are just really fun to work with. I highly recommend them for any sort of video editing or thumbnail design.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     videoUrl: "./client4.mp4", // Add actual video URL
@@ -44,8 +48,9 @@ const testimonials = [
   },
   {
     id: 5,
-    name: "Elena Rodriguez",
-    role: "Brand Manager, Horizon Retail",
+    name: "Usman Kayani",
+    role: "Helped grow multiple 8-figure businesses",
+    niche: "Sales",
     content: "I want to give a quick shout-out to my friend Rashid and his partner Tena for video editing and thumbnail design. I’ve been around social media for over four years and have tried many editors, but these two are among the very few who can effectively edit video and create amazing thumbnails that truly grab attention. I can’t recommend them enough. If you’re serious about social media, make sure to give them a call. They can really take your social media game to the next level.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     videoUrl: "./client5.mp4", // Add actual video URL
@@ -71,9 +76,12 @@ const VideoModal = ({ isOpen, onClose, videoUrl, currentIndex }) => {
           autoPlay
           src={videoUrl}
         />
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none bg-gradient-to-t from-agency-orange/50 via-agency-orange/30 to-transparent p-6">
-          <h3 className="text-white font-bold text-xl">{testimonials[currentIndex].name}</h3>
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <h3 className="text-white font-bold text-xl px-6">{testimonials[currentIndex].name}</h3>
+          <div className='bg-gradient-to-t from-agency-orange/50 via-agency-orange/30 to-transparent p-6 pt-0'>
           <span className="text-agency-orange font-medium text-sm block mb-2">{testimonials[currentIndex].role}</span>
+          <p className="text-xs text-white font-medium border border-agency-orange/20 rounded-full px-2.5 py-0.5 inline-block shadow-sm bg-agency-orange/80">{testimonials[currentIndex].niche}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -117,7 +125,7 @@ const Testimonials: React.FC = () => {
   }, [currentIndex, isAnimating, isVideoModalOpen]);
 
   return (
-    <section id="testimonials" className="section-spacing relative overflow-hidden mb-16">
+    <section id="testimonials" className="section-spacing relative overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <AnimatedSection>
@@ -173,9 +181,12 @@ const Testimonials: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-agency-dark font-semibold">{testimonial.name}</h4>
+                    <div className='flex items-center gap-2'>
+                      <h4 className="text-agency-dark text-xl font-semibold">{testimonial.name}</h4>
+                      <p className="text-xs text-white font-medium border border-agency-orange/20 rounded-full px-2.5 py-0.5 inline-block shadow-sm bg-agency-orange/80">{testimonial.niche}</p>
+                    </div>
                     <p className="text-agency-orange/70 font-medium">{testimonial.role}</p>
-                    <p className="text-gray-600 text-lg md:text-xl mt-2 leading-relaxed lg:block hidden">
+                    <p className="text-gray-600 text-md md:text-lg mt-2 leading-relaxed lg:block hidden">
                       "{testimonial.content}"
                     </p>
                   </div>

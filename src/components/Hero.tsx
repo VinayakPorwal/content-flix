@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
               <Sparkles className="h-4 w-4 text-agency-orange" />
               <span className="text-agency-dark font-medium text-sm">{data.hero.badge}</span>
             </div> */}
-            <h1 className='text-agency-orange text-3xl md:text-5xl font-bold mb-4 relative'>
+            <h1 className='text-agency-orange text-3xl md:text-5xl font-bold mb-4 relative md:hidden block'>
               <img src="/logowithname.png" alt="Content Finix" className="lg:h-24 h-16 relative" />
             </h1>
 

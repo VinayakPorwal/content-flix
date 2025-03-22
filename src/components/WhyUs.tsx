@@ -146,24 +146,24 @@ const WhyUs = () => (
     <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-                <AnimatedSection>
+                {/* <AnimatedSection>
                     <div className="inline-flex items-center gap-2 rounded-full bg-white shadow px-5 py-2 mb-4 border border-agency-orange">
                         <Sparkles className="h-5 w-5 text-agency-orange" />
                         <span className="text-gray-800 font-medium text-sm">Why Choose Us</span>
                     </div>
-                </AnimatedSection>
+                </AnimatedSection> */}
                 <AnimatedSection delay={150}>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                         Why Choose <span className="text-agency-orange">Us?</span>
                     </h2>
                 </AnimatedSection>
-                <AnimatedSection delay={300}>
+                {/* <AnimatedSection delay={300}>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Here's why clients should choose Content Finix, written professionally without mentioning <span className="text-agency-orange">
                             'money'
                         </span> directly, as you requested, and with added ideas for impact.
                     </p>
-                </AnimatedSection>
+                </AnimatedSection> */}
             </div>
             <CircleLayout />
         </div>

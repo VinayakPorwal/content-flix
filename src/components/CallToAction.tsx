@@ -23,7 +23,7 @@ const CallToAction: React.FC = () => {
   const { ctaButton, steps } = data.callToAction;
 
   return (
-    <section id="contact" className="section-spacing relative overflow-hidden">
+    <section id="contact" className="section-sp relative overflow-hidden">
       {/* Floating icons */}
       <motion.div
         className="absolute right-[55%] top-[10%] text-agency-orange/20"
@@ -130,6 +130,8 @@ const CallToAction: React.FC = () => {
                 ))}
               </div>
             </AnimatedSection>
+
+            
           </div>
         </div>
       </div>

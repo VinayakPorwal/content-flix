@@ -105,13 +105,13 @@
   },
   "portfolio": {
     "badge": "Our Work",
-    "title": "Featured <span class='text-agency-gold'>Projects</span>",
+    "title": "Featured <span class='text-agency-orange'>Projects</span>",
     "subtitle": "Explore our latest projects and see how we've helped brands transform their digital presence through strategic content.",
     "ctaButton": {
       "text": "View All Projects",
       "url": "#"
     },
-    "items": [
+    "shorts": [
       {
         "id": 1,
         "title": "Brand Story Film - Oceanic Beauty",
@@ -142,6 +142,48 @@
         "category": "Video Production",
         "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         "url": "https://youtube.com/shorts/mJBSLGXcCPs?feature=share",
+        "duration": "4:05"
+      },
+      {
+        "id":5,
+        "title": "Branded Content Series - Lifestyle Fit",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtube.com/shorts/YjneDmG2KF0?feature=share",
+        "duration": "4:05"
+      }
+    ],
+    "long_videos": [
+      {
+        "id": 1,
+        "title": "Long Video 1",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtu.be/y7uMakOFVOA",
+        "duration": "4:05"
+      },
+      {
+        "id": 2,
+        "title": "Long Video 2",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtu.be/fo6Yvy7L_WM",
+        "duration": "4:05"
+      },
+      {
+        "id": 3,
+        "title": "Long Video 3",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtu.be/qf2rY1T3ARU",
+        "duration": "4:05"
+      },
+      {
+        "id": 4,
+        "title": "Long Video 4",
+        "category": "Video Production",
+        "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "url": "https://youtu.be/DEnK0pZh0UU",
         "duration": "4:05"
       }
     ]
@@ -238,7 +280,8 @@
         "name": "Sarah Johnson",
         "role": "Marketing Director, TechNova",
         "content": "Working with this agency transformed our content strategy completely. Their video production team captured our brand's essence perfectly, and we saw a 45% increase in engagement within just two months.",
-        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+        "videoSrc": "https://www.youtube.com/"
       },
       {
         "id": 2,
