@@ -12,8 +12,6 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react({
-      // Enable Fast Refresh for development
-      fastRefresh: mode === 'development',
       // Use SWC for faster builds
       plugins: []
     }),
