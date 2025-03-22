@@ -12,25 +12,39 @@
     const controls = useAnimation();
     const { badge, title, subtitle, ctaButton, shorts, long_videos } = data.portfolio;
     const [scrollPosition, setScrollPosition] = useState(0);
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const shortsRef = useRef<HTMLDivElement>(null);
+    const longVideosRef = useRef<HTMLDivElement>(null);
+    const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
-      const scroll = () => {
-        if (scrollRef.current) {
-          setScrollPosition((prev) => {
-            const newPosition = prev + 1;
-            if (newPosition >= scrollRef.current!.scrollWidth / 2) {
-              return 0;
-            }
-            return newPosition;
-          });
-          scrollRef.current.scrollLeft = scrollPosition;
+      const scrollShorts = () => {
+        if (shortsRef.current && !isPaused) {
+          if (shortsRef.current.scrollLeft >= shortsRef.current.scrollWidth / 2) {
+            shortsRef.current.scrollLeft = 0;
+          } else {
+            shortsRef.current.scrollLeft += 2; // Increased from 1 to 2
+          }
         }
       };
 
-      const scrollInterval = setInterval(scroll, 20);
-      return () => clearInterval(scrollInterval);
-    }, [scrollPosition]);
+      const scrollLongVideos = () => {
+        if (longVideosRef.current && !isPaused) {
+          if (longVideosRef.current.scrollLeft >= longVideosRef.current.scrollWidth / 2) {
+            longVideosRef.current.scrollLeft = 0;
+          } else {
+            longVideosRef.current.scrollLeft += 2; // Increased from 1 to 2
+          }
+        }
+      };
+
+      const shortsInterval = setInterval(scrollShorts, 20); // Decreased from 30 to 20
+      const longVideosInterval = setInterval(scrollLongVideos, 25); // Decreased from 40 to 25
+
+      return () => {
+        clearInterval(shortsInterval);
+        clearInterval(longVideosInterval);
+      };
+    }, [isPaused]);
 
     const getYoutubeId = (url: string) => {
       try {
@@ -75,35 +89,16 @@
           </div>
 
           {/* Shorts Section */}
-          <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-            <div className="flex items-center justify-center animate-infinite-scroll">
-              {shorts.map((item, index) => (
+          <div 
+            ref={shortsRef}
+            className="w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="flex items-center justify-center min-w-full pt-10">
+              {[...shorts, ...shorts].map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  className="flex-none mx-8 w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl border-agency-orange/70"
-                >
-                  <motion.div
-                    className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10 h-[400px] sm:h-[480px] md:h-[534px]"
-                    whileHover={{ y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <AspectRatio ratio={9 / 16}>
-                      <iframe
-                        src={`https://www.youtube.com/embed/${getYoutubeId(item.url)}`}
-                        title={item.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full rounded-xl"
-                      />
-                    </AspectRatio>
-                  </motion.div>
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-center animate-infinite-scroll" aria-hidden="true">
-              {shorts.map((item, index) => (
-                <div
-                  key={`${item.id}-${index}-clone`}
                   className="flex-none mx-8 w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl border-agency-orange/70"
                 >
                   <motion.div
@@ -127,53 +122,30 @@
           </div>
 
           {/* Long Videos Section */}
-          <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mt-8">
-            <div className="flex items-center justify-center animate-infinite-scroll">
-              {long_videos.map((item, index) => (
+          <div 
+            ref={longVideosRef}
+            className="w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)] mt-8"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+
+          >
+            <div className="flex items-center justify-center min-w-full">
+              {[...long_videos, ...long_videos].map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
                   className="flex-none mx-8 w-[280px] sm:w-[340px] md:w-[404px] border rounded-xl bg-agency-orange/20 p-2"
                 >
                   <motion.div
                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10"
-                    whileHover={{ y: -10 }}
+                    whileHover={{ y: -10  } }
                     transition={{ duration: 0.3 }}
                   >
                     <AspectRatio ratio={16 / 9}>
                       <YouTube
                         videoId={getYoutubeId(item.url)}
                         className="w-full h-full"
-                        opts={{
-                          width: "100%",
-                          height: "100%",
-                          playerVars: {
-                            autoplay: 0,
-                            controls: 1,
-                            modestbranding: 1,
-                            rel: 0
-                          }
-                        }}
-                      />
-                    </AspectRatio>
-                  </motion.div>
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-center animate-infinite-scroll" aria-hidden="true">
-              {long_videos.map((item, index) => (
-                <div
-                  key={`${item.id}-${index}-clone`}
-                  className="flex-none mx-8 w-[280px] sm:w-[340px] md:w-[404px] border rounded-xl bg-agency-orange/20 p-2"
-                >
-                  <motion.div
-                    className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10"
-                    whileHover={{ y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <AspectRatio ratio={16 / 9}>
-                      <YouTube
-                        videoId={getYoutubeId(item.url)}
-                        className="w-full h-full"
+                        onPlay={() => setIsPaused(true)}
+                        onPause={() => setIsPaused(false)}
                         opts={{
                           width: "100%",
                           height: "100%",
