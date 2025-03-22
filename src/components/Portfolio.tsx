@@ -1,50 +1,14 @@
-  import React, { useState, useEffect, useRef } from 'react';
+  import React from 'react';
   import AnimatedSection from './AnimatedSection';
   import { Button } from '@/components/ui/button';
   import { ArrowRight, Sparkles } from 'lucide-react';
-  import { motion, useAnimation } from 'framer-motion';
+  import { motion } from 'framer-motion';
   import { AspectRatio } from '@/components/ui/aspect-ratio';
   import data from '../data/data.json';
   import YouTube from 'react-youtube';
-  import { useIsMobile } from '@/hooks/use-mobile';
 
   const Portfolio: React.FC = () => {
-    const controls = useAnimation();
     const { badge, title, subtitle, ctaButton, shorts, long_videos } = data.portfolio;
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const shortsRef = useRef<HTMLDivElement>(null);
-    const longVideosRef = useRef<HTMLDivElement>(null);
-    const [isPaused, setIsPaused] = useState(false);
-
-    useEffect(() => {
-      const scrollShorts = () => {
-        if (shortsRef.current && !isPaused) {
-          if (shortsRef.current.scrollLeft >= shortsRef.current.scrollWidth / 2) {
-            shortsRef.current.scrollLeft = 0;
-          } else {
-            shortsRef.current.scrollLeft += 2; // Increased from 1 to 2
-          }
-        }
-      };
-
-      const scrollLongVideos = () => {
-        if (longVideosRef.current && !isPaused) {
-          if (longVideosRef.current.scrollLeft >= longVideosRef.current.scrollWidth / 2) {
-            longVideosRef.current.scrollLeft = 0;
-          } else {
-            longVideosRef.current.scrollLeft += 2; // Increased from 1 to 2
-          }
-        }
-      };
-
-      const shortsInterval = setInterval(scrollShorts, 20); // Decreased from 30 to 20
-      const longVideosInterval = setInterval(scrollLongVideos, 25); // Decreased from 40 to 25
-
-      return () => {
-        clearInterval(shortsInterval);
-        clearInterval(longVideosInterval);
-      };
-    }, [isPaused]);
 
     const getYoutubeId = (url: string) => {
       try {
@@ -89,17 +53,12 @@
           </div>
 
           {/* Shorts Section */}
-          <div 
-            ref={shortsRef}
-            className="w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div className="flex items-center justify-center min-w-full pt-10">
+          <div className="w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]">
+            <div className="flex gap-8 px-8 pt-10 pb-4 overflow-x-auto scrollbar-hide">
               {[...shorts, ...shorts].map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  className="flex-none mx-8 w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl border-agency-orange/70"
+                  className="flex-none w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl border-agency-orange/70"
                 >
                   <motion.div
                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10 h-[400px] sm:h-[480px] md:h-[534px]"
@@ -122,30 +81,22 @@
           </div>
 
           {/* Long Videos Section */}
-          <div 
-            ref={longVideosRef}
-            className="w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)] mt-8"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-
-          >
-            <div className="flex items-center justify-center min-w-full">
+          <div className="w-full mt-8 [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]">
+            <div className="flex gap-8 px-8 pb-4 overflow-x-auto scrollbar-hide">
               {[...long_videos, ...long_videos].map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  className="flex-none mx-8 w-[280px] sm:w-[340px] md:w-[404px] border rounded-xl bg-agency-orange/20 p-2"
+                  className="flex-none w-[280px] sm:w-[340px] md:w-[404px] border rounded-xl bg-agency-orange/20 p-2"
                 >
                   <motion.div
                     className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-agency-orange/10"
-                    whileHover={{ y: -10  } }
+                    whileHover={{ y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
                     <AspectRatio ratio={16 / 9}>
                       <YouTube
                         videoId={getYoutubeId(item.url)}
                         className="w-full h-full"
-                        onPlay={() => setIsPaused(true)}
-                        onPause={() => setIsPaused(false)}
                         opts={{
                           width: "100%",
                           height: "100%",
