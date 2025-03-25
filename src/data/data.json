@@ -1,4 +1,3 @@
-
 {
   "meta": {
     "siteName": "Content Finix",
@@ -145,7 +144,7 @@
         "duration": "4:05"
       },
       {
-        "id":5,
+        "id": 5,
         "title": "Branded Content Series - Lifestyle Fit",
         "category": "Video Production",
         "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -346,7 +345,6 @@
         "description": "Your high-quality videos go live, and we continuously optimize, analyze, and scale for maximum reach."
       }
     ]
-    
   },
   "clientResults": {
     "badge": "Client Results",
@@ -355,6 +353,7 @@
     "clients": [
       {
         "name": "Young Trader Viraj",
+        "image": "https://volnovaportfolio.my.canva.site/case-studies/media/436ed98b1bf57305f619b28c4127c003.jpg",
         "platforms": ["Instagram", "YouTube"],
         "instagramFollowers": "155k",
         "youtubeSubscribers": "167k",
@@ -372,7 +371,39 @@
         "results": "In just 35 days, the channel experienced 3.5x growth in reach."
       },
       {
+        "name": "Joy Anand",
+        "platforms": ["Instagram", "YouTube"],
+        "image": "https://volnovaportfolio.my.canva.site/case-studies/media/58886d3ef3545499a8794dd75d3f60b2.jpg",
+        "instagramFollowers": "77k",
+        "youtubeSubscribers": "20.8k",
+        "overview": "Joy Anand creates content focused on personal finance and investment strategies. Before working with us, his content lacked engagement and reach.",
+        "approach": [
+          "Content Strategy: Suggested a trending video idea backed by research.",
+          "Thumbnail Optimization: Created A/B tested thumbnails for higher CTR.",
+          "Engaging Editing: Improved video retention, boosting performance.",
+          "Secret CTAs: Increased engagement rates with smart CTAs.",
+          "SEO-Optimized Upload: Applied an effective SEO strategy using high-ranking keywords in the title, tags, and description to boost video reach by 5x."
+        ],
+        "results": "This wasn't a one-off success—Joy’s other videos also performed remarkably well. On Instagram, Joy experienced rapid growth, with multiple videos hitting millions of views. A major success factor was our creation of a 17-day challenge series, where Joy documented how he earned 17 lakh rupees in 17 days. This format captivated his audience."
+      },
+      {
+        "name": "Sahil Marketer",
+        "image": "https://volnovaportfolio.my.canva.site/case-studies/media/433e792650f3be23a69a75c037d31bf3.jpg",
+        "platforms": ["Instagram", "YouTube"],
+        "instagramFollowers": "51k",
+        "youtubeSubscribers": "5.9k",
+        "overview": "Sahil Marketer creates content focused on digital marketing strategies and online business growth. Before working with us, his content lacked engagement and reach.",
+        "approach": [
+          "Content Selection: Chose a broad topic on 'make money online' to appeal to a wide audience, rather than a specific niche.",
+          "Engaging Hook: Started with the names of two big inspirations, challenging viewers by saying, 'You can never be like that,' which kept them watching.",
+          "High-Quality Editing: Utilized engaging motion graphics and animations to enhance viewer interest.",
+          "Strong CTAs: Encouraged viewers to comment with business ideas, resulting in 22k comments and a viral video."
+        ],
+        "results": "This wasn't a one-off success—Sahil’s other videos also performed remarkably well."
+      },
+      {
         "name": "Decode_with_anvit",
+        "image": "https://volnovaportfolio.my.canva.site/case-studies/media/436ed98b1bf57305f619b28c4127c003.jpg",
         "platforms": ["Instagram"],
         "instagramFollowers": "63.5k",
         "overview": "Anvit Tyagi, widely known as Decode with Anvit, creates content in the business and entrepreneurship niche. When he approached us, his growth had stagnated. He struggled with content ideas, was inconsistent in his uploads, and received minimal engagement.",
@@ -389,23 +420,9 @@
         "results": "Don’t Get Shocked, I have shown only 30% of the Results we gave to him."
       },
       {
-        "name": "Joy Anand",
-        "platforms": ["Instagram", "YouTube"],
-        "instagramFollowers": "77k",
-        "youtubeSubscribers": "20.8k",
-        "overview": "Joy Anand creates content focused on personal finance and investment strategies. Before working with us, his content lacked engagement and reach.",
-        "approach": [
-          "Content Strategy: Suggested a trending video idea backed by research.",
-          "Thumbnail Optimization: Created A/B tested thumbnails for higher CTR.",
-          "Engaging Editing: Improved video retention, boosting performance.",
-          "Secret CTAs: Increased engagement rates with smart CTAs.",
-          "SEO-Optimized Upload: Applied an effective SEO strategy using high-ranking keywords in the title, tags, and description to boost video reach by 5x."
-        ],
-        "results": "This wasn't a one-off success—Joy’s other videos also performed remarkably well. On Instagram, Joy experienced rapid growth, with multiple videos hitting millions of views. A major success factor was our creation of a 17-day challenge series, where Joy documented how he earned 17 lakh rupees in 17 days. This format captivated his audience."
-      },
-      {
         "name": "Ron Ecom Gyan",
         "platforms": ["YouTube"],
+        "image": "https://volnovaportfolio.my.canva.site/case-studies/media/436ed98b1bf57305f619b28c4127c003.jpg",
         "youtubeSubscribers": "51k",
         "overview": "Ron Ecom Gyan creates content focused on e-commerce strategies and business growth. Before working with us, his content lacked engagement and reach.",
         "approach": [
@@ -416,20 +433,6 @@
           "SEO-Optimized Upload: Applied an effective SEO strategy using high-ranking keywords in the title, tags, and description to boost video reach by 5x."
         ],
         "results": "This wasn't a one-off success—EcomGyan’s other videos also performed remarkably well."
-      },
-      {
-        "name": "Sahil Marketer",
-        "platforms": ["Instagram", "YouTube"],
-        "instagramFollowers": "51k",
-        "youtubeSubscribers": "5.9k",
-        "overview": "Sahil Marketer creates content focused on digital marketing strategies and online business growth. Before working with us, his content lacked engagement and reach.",
-        "approach": [
-          "Content Selection: Chose a broad topic on 'make money online' to appeal to a wide audience, rather than a specific niche.",
-          "Engaging Hook: Started with the names of two big inspirations, challenging viewers by saying, 'You can never be like that,' which kept them watching.",
-          "High-Quality Editing: Utilized engaging motion graphics and animations to enhance viewer interest.",
-          "Strong CTAs: Encouraged viewers to comment with business ideas, resulting in 22k comments and a viral video."
-        ],
-        "results": "This wasn't a one-off success—Sahil’s other videos also performed remarkably well."
       }
     ]
   },

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, TrendingUp, Instagram, Youtube, Sparkles } from 'lucide-react';
+import { X, TrendingUp, Instagram, Youtube, Sparkles, ArrowRight } from 'lucide-react';
 import data from '../data/data.json';
 import AnimatedSection from './AnimatedSection';
+import { Button } from './ui/button';
 
 const ClientCard = ({ client, index, onClick }) => (
   <div onClick={onClick} className="cursor-pointer">
@@ -12,23 +13,23 @@ const ClientCard = ({ client, index, onClick }) => (
     >
       <motion.div className="rounded-lg overflow-hidden mb-4" whileHover={{ scale: 1.05 }}>
         <div className="relative w-full h-full group rounded-xl border border-agency-orange/20 bg-white/90 backdrop-blur-sm hover:border-agency-gold/40 transition-all duration-300 glow-on-hover">
-          {client.thumbnailSrc ? (
+          {client.image ? (
             <img
-              src={client.thumbnailSrc}
+              src={client.image}
               className="w-full h-full object-cover rounded-xl"
               alt={client.name}
             />
           ) : (
             <TrendingUp className="w-full h-full text-agency-orange opacity-70" />
           )}
-          <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 rounded-xl bg-white/40 backdrop-blur-sm">
+          {/* <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 rounded-xl bg-white/40 backdrop-blur-sm">
             <div className="w-1/3 h-1/3 object-cover text-agency-orange opacity-70">
               <span className="text-2xl font-bold">{client.name}</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </motion.div>
-      <h3 className="text-xl font-bold text-agency-dark mb-2 text-center">{client.name}</h3>
+      {/* <h3 className="text-xl font-bold text-agency-dark mb-2 text-center">{client.name}</h3>
       <div className="text-gray-600 text-center flex flex-col items-center gap-2">
         {client.platforms.includes('Instagram') && (
           <div className="text-agency-orange flex items-center gap-1">
@@ -40,7 +41,7 @@ const ClientCard = ({ client, index, onClick }) => (
             <Youtube className="w-5 h-5" /> <strong>{client.youtubeSubscribers}</strong> subscribers
           </div>
         )}
-      </div>
+      </div> */}
     </AnimatedSection>
   </div>
 );
@@ -62,7 +63,7 @@ const ClientResults = () => {
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <AnimatedSection>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/90 shadow-sm px-5 py-2 mb-4 border border-agency-gold/20">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/90 shadow-sm px-5 py-2 mb-4 border border-agency-orange/20">
               <Sparkles className="h-4 w-4 text-agency-orange" />
               <span className="text-agency-dark font-medium text-sm">Client Results</span>
             </div>
@@ -72,15 +73,10 @@ const ClientResults = () => {
             <h2 className="text-agency-dark mb-6" dangerouslySetInnerHTML={{ __html: title.replace('text-agency-gold', 'text-agency-orange') }} />
           </AnimatedSection>
 
-          <AnimatedSection delay={300}>
-            <p className="text-gray-600 text-lg">
-              Transforming Personal Brands
-            </p>
-          </AnimatedSection>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2  justify-center lg:grid-cols-3 gap-12 w-[90%] mx-auto">
-          {clients.map((client, index) => (
+          {clients.slice(0, 3).map((client, index) => (
             <ClientCard
               key={index}
               client={client}
@@ -103,16 +99,16 @@ const ClientResults = () => {
             <h2 className="text-2xl font-bold text-agency-dark mb-4">{selectedClient.name}</h2>
             <p className="text-gray-600 mb-4">{selectedClient.overview}</p>
             {
-                selectedClient?.challenges && (
-                    <div className="mb-4">
-                        <h3 className="text-xl font-bold text-agency-dark mb-2">Challenges</h3>
-                        <ul className="list-disc list-inside text-gray-600">
-                            {selectedClient.challenges.map((challenge, index) => (
-                                <li key={index}>{challenge}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )
+              selectedClient?.challenges && (
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-agency-dark mb-2">Challenges</h3>
+                  <ul className="list-disc list-inside text-gray-600">
+                    {selectedClient.challenges.map((challenge, index) => (
+                      <li key={index}>{challenge}</li>
+                    ))}
+                  </ul>
+                </div>
+              )
             }
             <div className="mb-4">
               <h3 className="text-xl font-bold text-agency-dark mb-2">Approach</h3>
@@ -129,6 +125,16 @@ const ClientResults = () => {
           </div>
         </div>
       )}
+      <AnimatedSection delay={600} className="mt-8 sm:mt-12 text-center">
+        <Button
+          variant="outline"
+          className="border-agency-orange bg-white hover:text-agency-orange/80 text-agency-orange hover:bg-agency-orange/10 px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base"
+          onClick={() => window.open('https://volnovaportfolio.my.canva.site/case-studies', '_blank')}
+        >
+          View All
+          <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+        </Button>
+      </AnimatedSection>
     </section>
   );
 };

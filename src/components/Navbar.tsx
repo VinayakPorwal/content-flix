@@ -47,12 +47,15 @@ const Navbar: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button size="sm" className="bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
+            <Button size="sm" className="relative bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
             onClick={() => {
               window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
             }}
             >
               Book Call
+              <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+                1
+              </div>
             </Button>
           </motion.div>
         </nav>
@@ -110,15 +113,20 @@ const Navbar: React.FC = () => {
           >
             Testimonials
           </a>
-          <Button 
-            size="lg" 
-            className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
-            onClick={() => {
-              window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
-            }}
-          >
-           Book Call
-          </Button>
+          <div className="relative">
+            <Button 
+              size="lg" 
+              className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
+              onClick={() => {
+                window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
+              }}
+            >
+             Book Call
+            </Button>
+            <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+              1
+            </div>
+          </div>
         </div>
       </div>
     </header>
