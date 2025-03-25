@@ -58,7 +58,7 @@ const ClientResults = () => {
   };
 
   return (
-    <section id="client-results" className="section-spacing relative overflow-hidden">
+    <section id="results" className="section-spacing relative overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <AnimatedSection>
