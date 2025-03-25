@@ -348,6 +348,91 @@
     ]
     
   },
+  "clientResults": {
+    "badge": "Client Results",
+    "title": "Our <span class='text-agency-gold'>Client Results</span>",
+    "subtitle": "Discover how we've helped brands achieve their goals through our strategic content and video production services.",
+    "clients": [
+      {
+        "name": "Young Trader Viraj",
+        "platforms": ["Instagram", "YouTube"],
+        "instagramFollowers": "155k",
+        "youtubeSubscribers": "167k",
+        "overview": "Viraj, widely known as Young Trader Viraj, is a trader whose content focuses on trading strategies, market analysis, and updates. Before working with us, his YouTube channel was struggling with declining metrics due to a lack of strategy. His approach was limited to livestreams and random videos like weekly market analysis and news updates.",
+        "challenges": [
+          "Randomized Content: The channel lacked direction, with inconsistent and unorganized content.",
+          "Outdated Strategy: Viraj wasn’t optimizing for YouTube’s algorithms, which affected discoverability.",
+          "Focus on Livestreams Only: Over-reliance on livestreams made it difficult to attract new audiences and retain existing ones."
+        ],
+        "approach": [
+          "Channel Audit & Strategy: We conducted a comprehensive channel audit and designed a personalized strategy to revive his YouTube presence.",
+          "Organized Content Categories: We divided his content into three niches: Evergreen Topics, Trending Topics, Personalized Content.",
+          "Optimized Content Schedule: Instead of random uploads, we implemented a consistent schedule, posting 8–9 videos monthly (2–3 videos per niche)."
+        ],
+        "results": "In just 35 days, the channel experienced 3.5x growth in reach."
+      },
+      {
+        "name": "Decode_with_anvit",
+        "platforms": ["Instagram"],
+        "instagramFollowers": "63.5k",
+        "overview": "Anvit Tyagi, widely known as Decode with Anvit, creates content in the business and entrepreneurship niche. When he approached us, his growth had stagnated. He struggled with content ideas, was inconsistent in his uploads, and received minimal engagement.",
+        "challenges": [
+          "Inconsistent Uploads: Posting only 4–5 reels per month led to low engagement and poor reach.",
+          "Outdated Content Strategy: Videos lacked hooks, retention points, and engaging CTAs.",
+          "Limited Creativity: The content ideas were generic and failed to capture audience interest."
+        ],
+        "approach": [
+          "Content Research and Trend Selection: We started by identifying viral trends that could be repurposed into business content with actionable lessons.",
+          "Decoding Famous Personalities & Controversial Brands: We picked globally trending names like MrBeast and decoded their business strategies.",
+          "Decoding Local Businesses: We chose to decode the business models of famous local businesses, like Sarojini Market."
+        ],
+        "results": "Don’t Get Shocked, I have shown only 30% of the Results we gave to him."
+      },
+      {
+        "name": "Joy Anand",
+        "platforms": ["Instagram", "YouTube"],
+        "instagramFollowers": "77k",
+        "youtubeSubscribers": "20.8k",
+        "overview": "Joy Anand creates content focused on personal finance and investment strategies. Before working with us, his content lacked engagement and reach.",
+        "approach": [
+          "Content Strategy: Suggested a trending video idea backed by research.",
+          "Thumbnail Optimization: Created A/B tested thumbnails for higher CTR.",
+          "Engaging Editing: Improved video retention, boosting performance.",
+          "Secret CTAs: Increased engagement rates with smart CTAs.",
+          "SEO-Optimized Upload: Applied an effective SEO strategy using high-ranking keywords in the title, tags, and description to boost video reach by 5x."
+        ],
+        "results": "This wasn't a one-off success—Joy’s other videos also performed remarkably well. On Instagram, Joy experienced rapid growth, with multiple videos hitting millions of views. A major success factor was our creation of a 17-day challenge series, where Joy documented how he earned 17 lakh rupees in 17 days. This format captivated his audience."
+      },
+      {
+        "name": "Ron Ecom Gyan",
+        "platforms": ["YouTube"],
+        "youtubeSubscribers": "51k",
+        "overview": "Ron Ecom Gyan creates content focused on e-commerce strategies and business growth. Before working with us, his content lacked engagement and reach.",
+        "approach": [
+          "Content Strategy: Identified a highly searchable topic in the niche that addressed a common problem many viewers faced, and suggested creating a video around it for maximum reach.",
+          "Thumbnail Optimization: To boost search-driven views, we created a clear thumbnail that highlighted the video’s topic, adding a map and the names of two nations for instant clarity.",
+          "Engaging Editing: Improved video retention, boosting performance.",
+          "Secret CTAs: Increased engagement rates with smart CTAs.",
+          "SEO-Optimized Upload: Applied an effective SEO strategy using high-ranking keywords in the title, tags, and description to boost video reach by 5x."
+        ],
+        "results": "This wasn't a one-off success—EcomGyan’s other videos also performed remarkably well."
+      },
+      {
+        "name": "Sahil Marketer",
+        "platforms": ["Instagram", "YouTube"],
+        "instagramFollowers": "51k",
+        "youtubeSubscribers": "5.9k",
+        "overview": "Sahil Marketer creates content focused on digital marketing strategies and online business growth. Before working with us, his content lacked engagement and reach.",
+        "approach": [
+          "Content Selection: Chose a broad topic on 'make money online' to appeal to a wide audience, rather than a specific niche.",
+          "Engaging Hook: Started with the names of two big inspirations, challenging viewers by saying, 'You can never be like that,' which kept them watching.",
+          "High-Quality Editing: Utilized engaging motion graphics and animations to enhance viewer interest.",
+          "Strong CTAs: Encouraged viewers to comment with business ideas, resulting in 22k comments and a viral video."
+        ],
+        "results": "This wasn't a one-off success—Sahil’s other videos also performed remarkably well."
+      }
+    ]
+  },
   "footer": {
     "logoText": "Agency<span class='text-agency-gold'>Flow</span>",
     "description": "Premium content marketing and video production agency helping brands tell their stories.",

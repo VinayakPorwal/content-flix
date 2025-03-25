@@ -15,7 +15,7 @@ const ProcessSteps = lazy(() => import('../components/ProcessSteps'));
 const WhoThisIsFor = lazy(() => import('../components/WhoThisIsFor'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
 const CaseStudies = lazy(() => import('@/components/CaseStudies'));
-
+const ClientResults = lazy(() => import('@/components/ClientResults')); 
 // Simple loading component
 const SectionLoading = () => (
   <div className="w-full py-16 flex items-center justify-center">
@@ -125,6 +125,10 @@ const Index = () => {
         </Suspense>
         
         <Suspense fallback={<SectionLoading />}>
+          <ClientResults />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoading />}>
           <Testimonials />
         </Suspense>
         
@@ -132,9 +136,9 @@ const Index = () => {
           <CallToAction />
         </Suspense>
         
-        <Suspense fallback={<SectionLoading />}>
+        {/* <Suspense fallback={<SectionLoading />}>
           <CaseStudies />
-        </Suspense>
+        </Suspense> */}
         
         <Suspense fallback={<SectionLoading />}>
           <Footer />
