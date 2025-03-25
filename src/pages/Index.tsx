@@ -14,7 +14,7 @@ const Footer = lazy(() => import('../components/Footer'));
 const ProcessSteps = lazy(() => import('../components/ProcessSteps'));
 const WhoThisIsFor = lazy(() => import('../components/WhoThisIsFor'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
-const CaseStudies = lazy(() => import('@/components/CaseStudies'));
+// const CaseStudies = lazy(() => import('@/components/CaseStudies'));
 const ClientResults = lazy(() => import('@/components/ClientResults')); 
 // Simple loading component
 const SectionLoading = () => (
@@ -120,9 +120,9 @@ const Index = () => {
           <ProcessSteps />
         </Suspense>
         
-        <Suspense fallback={<SectionLoading />}>
+        {/* <Suspense fallback={<SectionLoading />}> */}
           <Portfolio />
-        </Suspense>
+        {/* </Suspense> */}
         
         <Suspense fallback={<SectionLoading />}>
           <ClientResults />
