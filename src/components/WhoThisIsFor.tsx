@@ -30,6 +30,10 @@ const PricingPlans: React.FC = () => {
       }
     }
   };
+  const handleBookCall = () => {
+    document.getElementById('calendly-container')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
 
   return (
     <section id="pricing" className="section-spacing relative overflow-hidden">
@@ -89,12 +93,12 @@ const PricingPlans: React.FC = () => {
 
       <div className="container-custom relative z-10">
         <div className="text-center max-w-2xl mx-auto">
-          <AnimatedSection>
+          {/* <AnimatedSection>
             <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 sm:px-5 py-1.5 sm:py-2 mb-4 border border-agency-orange/20 shadow-sm">
               <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-agency-orange" />
               <span className="text-agency-dark font-medium text-xs sm:text-sm">Pick Your Path</span>
             </div>
-          </AnimatedSection>
+          </AnimatedSection> */}
 
           <AnimatedSection delay={200}>
             <h2 className="text-agency-dark mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl">Who's This For?</h2>
@@ -185,9 +189,7 @@ const PricingPlans: React.FC = () => {
                 </div>
 
                 <Button
-                  onClick={() => {
-                    window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
-                  }}
+                  onClick={handleBookCall}
                   className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white rounded-xl h-10 sm:h-12 text-sm sm:text-base"
                 >
                   Schedule a Call
@@ -201,7 +203,7 @@ const PricingPlans: React.FC = () => {
             <div className='sm:-rotate-3'>
               <AnimatedSection delay={500}>
                   <div className="flex items-center justify-end gap-2">
-                    <h3 className="text-xl sm:text-2xl font-bold text-agency-dark">Businesses</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-agency-dark">Business Owners</h3>
                     <Briefcase className="h-5 w-5 sm:h-6 sm:w-6 text-agency-orange" />
                   </div>
                 <motion.div
@@ -222,9 +224,7 @@ const PricingPlans: React.FC = () => {
                   </div>
 
                   <Button
-                    onClick={() => {
-                      window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
-                    }}
+                    onClick={handleBookCall}
                     className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white rounded-xl h-10 sm:h-12 text-sm sm:text-base"
                   >
                     Schedule a Call

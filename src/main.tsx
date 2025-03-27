@@ -1,6 +1,7 @@
 
 import { createRoot } from 'react-dom/client';
 import { lazy, Suspense } from 'react';
+ 
 
 // Inline critical CSS
 const injectCriticalCss = () => {
@@ -49,7 +50,9 @@ import('./index.css').then(() => {
   if (rootElement) {
     createRoot(rootElement).render(
       <Suspense fallback={<LoadingSpinner />}>
-        <App />
+     
+          <App />
+ 
       </Suspense>
     );
   }

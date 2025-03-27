@@ -33,8 +33,8 @@ const StepCard: React.FC<StepCardProps> = ({ number, title, description, index, 
       }}
     >
       <div className="flex items-start gap-3 sm:gap-4">
-        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-agency-orange/30 flex items-center justify-center glass">
-          <span className="text-lg sm:text-xl md:text-2xl font-bold text-agency-dark">{number}</span>
+        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-agency-orange flex items-center justify-center">
+          <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">{number}</span>
         </div>
         <div>
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-agency-dark mb-2 md:mb-4">{title}</h3>
@@ -74,6 +74,10 @@ const ProcessSteps: React.FC = () => {
       }
     }
   };
+  const handleBookCall = () => {
+    document.getElementById('calendly-container')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
 
   return (
     <section id="process" className="process-section bg-transparent" ref={sectionRef}>
@@ -140,11 +144,9 @@ const ProcessSteps: React.FC = () => {
               <div className="mt-4 md:mt-8">
                 <motion.button
                   className="bg-agency-orange hover:bg-agency-orange/90 text-white font-medium px-4 py-2 md:px-6 md:py-3 rounded-full flex items-center gap-2 text-xs sm:text-sm md:text-base"
-                  onClick={() => {
-                    window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
-                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={handleBookCall}
                 >
                   <span>Book a Strategy Call</span>
                   <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />

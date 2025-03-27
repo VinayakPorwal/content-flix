@@ -77,7 +77,7 @@ export default {
 					'purple': '#8B5CF6',
 					'pink': '#D946EF',
 					'gold': '#F8BD59',
-					'orange': '#F97316',
+					'orange': '#fa5421',
 					'light-orange': '#FEC6A1',
 					'cream': '#FEF7CD',
 					'magenta': '#FF3EA5',

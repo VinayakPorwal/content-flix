@@ -1,0 +1,26 @@
+  <svg
+          className="absolute top-0 left-0 w-full h-full pointer-events-none"
+          viewBox="0 0 1000 600"
+          fill="none"
+        >
+          {/* Paths connecting to cards in a pipeline style */}
+          <path
+            ref={pathRefs[0]}
+            d="M 500,50 S 500,100 500,150 C 500,150 300,150 100,150 S 100,250 100,350" // Using S command for smoother curves
+            stroke="rgba(255,255,255,0.15)"
+            strokeWidth="3"
+          />
+          <path
+            ref={pathRefs[1]}
+            d="M 500,50 S 500,100 500,150 S 500,250 500,350" // Smooth vertical path with S command
+            stroke="rgba(255,255,255,0.15)"
+            strokeWidth="3"
+          />
+          <path
+            ref={pathRefs[2]}
+            d="M 500,50 S 500,100 500,150 C 500,150 700,150 900,150 S 900,250 900,350" // Using S command for smoother curves
+            stroke="rgba(255,255,255,0.15)"
+            strokeWidth="3"
+          />
+
+          </svg>

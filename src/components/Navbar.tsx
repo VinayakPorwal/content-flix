@@ -17,6 +17,9 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  const handleBookCall = () => {
+    document.getElementById('calendly-container')?.scrollIntoView({ behavior: 'smooth' });
+  }
 
   return (
     <header 
@@ -48,9 +51,7 @@ const Navbar: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Button size="sm" className="relative bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
-            onClick={() => {
-              window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
-            }}
+            onClick={handleBookCall}
             >
               Book Call
               <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">

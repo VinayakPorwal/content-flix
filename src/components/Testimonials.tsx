@@ -146,7 +146,7 @@ const Testimonials: React.FC = () => {
           </AnimatedSection>
         </div>
 
-        <div ref={testimonialsRef} className="relative max-w-4xl mx-auto px-4">
+        <div ref={testimonialsRef} className="relative max-w-6xl mx-auto px-4">
           <div
             className="overflow-hidden"
             style={{ minHeight: '360px', marginBottom: '40px' }}
@@ -155,7 +155,7 @@ const Testimonials: React.FC = () => {
               <div
                 key={testimonial.id}
                 className={cn(
-                  "absolute w-full transition-all duration-500 ease-in-out bg-white/90 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-agency-orange/20",
+                  "absolute w-full transition-all duration-500 ease-in-out bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col md:flex-row items-center",
                   index === currentIndex
                     ? "opacity-100 translate-x-0"
                     : index < currentIndex
@@ -163,34 +163,33 @@ const Testimonials: React.FC = () => {
                       : "opacity-0 translate-x-full"
                 )}
               >
-
-                <Quote size={48} className="text-agency-orange/30 mb-6" />
-                <div className='flex flex-col md:flex-row gap-4 w-full'>
-                  <div className="relative mb-6 cursor-pointer group w-full" onClick={() => setIsVideoModalOpen(true)}>
-                    <div className="relative rounded-xl overflow-hidden w-full">
-                      <img
-                        src={testimonial.thumbnailUrl}
-                        alt={`${testimonial.name}'s video testimonial`}
-                        className="min-w-[200px] w-full h-[200px] object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                          <Play className="w-8 h-8 text-agency-orange ml-1" />
-                        </div>
+                 <div className="md:w-1/2 bg-agency-orange flex justify-center items-center p-6">
+                  <div className="relative w-full max-w-sm cursor-pointer group" onClick={() => setIsVideoModalOpen(true)}>
+                    <img
+                      src={testimonial.thumbnailUrl}
+                      alt={`${testimonial.name}'s video testimonial`}
+                      className="w-full h-auto rounded-xl shadow-lg aspect-square object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+                        <Play className="w-8 h-8 text-agency-orange ml-1" />
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <div className='flex items-center gap-2'>
-                      <h4 className="text-agency-dark text-xl font-semibold">{testimonial.name}</h4>
-                      <p className="text-xs text-white font-medium border border-agency-orange/20 rounded-full px-2.5 py-0.5 inline-block shadow-sm bg-agency-orange/80">{testimonial.niche}</p>
-                    </div>
-                    <p className="text-agency-orange/70 font-medium">{testimonial.role}</p>
-                    <p className="text-gray-600 text-md md:text-lg mt-2 leading-relaxed lg:block hidden">
-                      "{testimonial.content}"
-                    </p>
-                  </div>
                 </div>
+                <div className="p-8 md:w-1/2">
+                  <Quote size={48} className="text-agency-orange/30 mb-6" />
+                  <div className='flex items-center gap-2'>
+                    <h4 className="text-agency-dark text-xl font-semibold">{testimonial.name}</h4>
+                    <p className="text-xs text-white font-medium border border-agency-orange/20 rounded-full px-2.5 py-0.5 inline-block shadow-sm bg-agency-orange/80">{testimonial.niche}</p>
+                  </div>
+                  <p className="text-agency-orange/70 font-medium">{testimonial.role}</p>
+                  <p className="text-gray-600 text-md md:text-lg mt-2 leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
+                </div>
+
+               
               </div>
             ))}
           </div>

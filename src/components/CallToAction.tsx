@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import data from '../data/data.json';
 
 const CallToAction: React.FC = () => {
-  
   // Floating icons animation variants
   const floatingIconVariants = {
     animate: {
@@ -21,6 +20,30 @@ const CallToAction: React.FC = () => {
   };
 
   const { ctaButton, steps } = data.callToAction;
+
+  // useEffect to load Calendly widget script and initialize the widget
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      // Wait until Calendly is available on window
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: 'https://calendly.com/rashidmukhtar205/discoverycall',
+          parentElement: document.getElementById("calendly-container"),
+          prefill: {},
+          utm: {}
+        });
+      }
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section id="contact" className="pb-10 relative overflow-hidden">
@@ -62,7 +85,8 @@ const CallToAction: React.FC = () => {
 
           <AnimatedSection delay={200}>
             <h2 className="text-agency-dark mb-6">Still Haven't booked?
-              <span className="text-agency-orange"> Oh!</span></h2>
+              <span className="text-agency-orange"> Oh!</span>
+            </h2>
           </AnimatedSection>
 
           <AnimatedSection delay={300}>
@@ -71,23 +95,27 @@ const CallToAction: React.FC = () => {
             </p>
           </AnimatedSection>
         </div>
-         {/* CTA Button */}
-         <AnimatedSection delay={400} className="text-center mb-10">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  size="lg"
-                  className="bg-agency-orange hover:bg-agency-orange/90 text-white px-12 rounded-full h-14 text-lg font-medium"
-                >
-                  {ctaButton.text}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </motion.div>
-            </AnimatedSection>
 
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-agency-orange/20 p-6 md:p-12">
+        {/* CTA Button */}
+        <AnimatedSection delay={400} className="text-center mb-10">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button
+              size="lg"
+              className="bg-agency-orange hover:bg-agency-orange/90 text-white px-12 rounded-full h-14 text-lg font-medium"
+            >
+              {ctaButton.text}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </AnimatedSection>
+
+        {/* Calendly Widget Container */}
+        <div id="calendly-container" style={{ minWidth: 320, height: 700 }} />
+
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-agency-orange/20 p-6 md:p-12 mt-10">
           <div className="max-w-6xl mx-auto">
             {/* Section Title */}
             <AnimatedSection className="text-center mb-8 md:mb-16">
@@ -130,8 +158,6 @@ const CallToAction: React.FC = () => {
                 ))}
               </div>
             </AnimatedSection>
-
-            
           </div>
         </div>
       </div>

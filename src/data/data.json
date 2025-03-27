@@ -74,30 +74,57 @@
     "subtitle": "We offer a comprehensive range of content creation and marketing services to help your business stand out and connect with your audience.",
     "items": [
       {
-        "title": "YouTube/Long Form Videos",
-        "description": "High-quality long-form content to engage and inform viewers.",
-        "videoSrc": "/videos/youtube-preview.mp4",
-        "thumbnailSrc": "./og-image.png",
+        "title": "Content Strategy & Planning",
+        "description": "Custom content strategy tailored to your niche & goals",
+        "videoSrc": "/videos/strategy.mp4",
+        "thumbnailSrc": "/images/strategy.jpg",
         "aspectClass": "aspect-video",
-        "icon": "Youtube",
+        "icon": "Strategy",
         "rotate": "-rotate-12"
       },
       {
-        "title": "Reels/Shorts",
-        "description": "Eye-catching short videos designed for social media platforms.",
-        "videoSrc": "/videos/reels-preview.mp4",
-        "thumbnailSrc": "./og-image.png",
-        "aspectClass": "aspect-[9/16]",
-        "icon": "Instagram",
+        "title": "Content Ideas",
+        "description": "Trending topics and proven content frameworks",
+        "videoSrc": "/videos/ideas.mp4", 
+        "thumbnailSrc": "/images/ideas.jpg",
+        "aspectClass": "aspect-video",
+        "icon": "Idea",
         "rotate": "rotate-0"
       },
       {
-        "title": "Content Strategy",
-        "description": "Strategic planning for content that resonates with your audience.",
-        "videoSrc": "/videos/content-strategy-preview.mp4",
-        "thumbnailSrc": "./og-image.png",
-        "aspectClass": "aspect-square",
-        "icon": "Target",
+        "title": "Video Scripting & Frameworks",
+        "description": "Bulletproof scripts that align with your brand voice",
+        "videoSrc": "/videos/scripting.mp4",
+        "thumbnailSrc": "/images/scripting.jpg",
+        "aspectClass": "aspect-video",
+        "icon": "Script",
+        "rotate": "rotate-12"
+      },
+      {
+        "title": "Video Editing",
+        "description": "Premium, fast-paced editing that stops the scroll",
+        "videoSrc": "/videos/editing.mp4",
+        "thumbnailSrc": "/images/editing.jpg",
+        "aspectClass": "aspect-video",
+        "icon": "Video",
+        "rotate": "-rotate-12"
+      },
+      {
+        "title": "Thumbnails",
+        "description": "High-CTR thumbnails designed for maximum visibility",
+        "videoSrc": "/videos/thumbnails.mp4",
+        "thumbnailSrc": "/images/thumbnails.jpg",
+        "aspectClass": "aspect-video",
+        "icon": "Thumbnails",
+        "rotate": "rotate-0"
+      },
+      {
+        "title": "Management",
+        "description": "Full posting & management across all platforms",
+        "videoSrc": "/videos/management.mp4",
+        "thumbnailSrc": "/images/management.jpg",
+        "aspectClass": "aspect-video",
+        "icon": "Management",
         "rotate": "rotate-12"
       }
     ]
@@ -357,6 +384,11 @@
         "platforms": ["Instagram", "YouTube"],
         "instagramFollowers": "155k",
         "youtubeSubscribers": "167k",
+        "hw": {
+          "w": "300px",
+          "h": "520px"
+        },
+        "rotate": "-6",
         "overview": "Viraj, widely known as Young Trader Viraj, is a trader whose content focuses on trading strategies, market analysis, and updates. Before working with us, his YouTube channel was struggling with declining metrics due to a lack of strategy. His approach was limited to livestreams and random videos like weekly market analysis and news updates.",
         "challenges": [
           "Randomized Content: The channel lacked direction, with inconsistent and unorganized content.",
@@ -376,6 +408,11 @@
         "image": "https://volnovaportfolio.my.canva.site/case-studies/media/58886d3ef3545499a8794dd75d3f60b2.jpg",
         "instagramFollowers": "77k",
         "youtubeSubscribers": "20.8k",
+        "hw": {
+          "w": "340px",
+          "h": "620px"
+        },
+        "rotate": "0",
         "overview": "Joy Anand creates content focused on personal finance and investment strategies. Before working with us, his content lacked engagement and reach.",
         "approach": [
           "Content Strategy: Suggested a trending video idea backed by research.",
@@ -392,6 +429,11 @@
         "platforms": ["Instagram", "YouTube"],
         "instagramFollowers": "51k",
         "youtubeSubscribers": "5.9k",
+        "hw": {
+          "w": "300px",
+          "h": "520px"
+        },
+        "rotate": "6",
         "overview": "Sahil Marketer creates content focused on digital marketing strategies and online business growth. Before working with us, his content lacked engagement and reach.",
         "approach": [
           "Content Selection: Chose a broad topic on 'make money online' to appeal to a wide audience, rather than a specific niche.",

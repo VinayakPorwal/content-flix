@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, TrendingUp, Instagram, Youtube, Sparkles, ArrowRight } from 'lucide-react';
+import { X, TrendingUp, Instagram, Youtube, Sparkles, ArrowRight, Volume2 } from 'lucide-react';
 import data from '../data/data.json';
 import AnimatedSection from './AnimatedSection';
 import { Button } from './ui/button';
@@ -11,9 +11,9 @@ const ClientCard = ({ client, index, onClick }) => (
       delay={100 * index}
       className="rounded-xl p-4 transition-all duration-300"
     >
-      <motion.div className="rounded-lg overflow-hidden mb-4" whileHover={{ scale: 1.05 }}>
-        <div className="relative w-full h-full group rounded-xl border border-agency-orange/20 bg-white/90 backdrop-blur-sm hover:border-agency-gold/40 transition-all duration-300 glow-on-hover">
-          {client.image ? (
+      {/* <motion.div className="rounded-lg overflow-hidden mb-4" whileHover={{ scale: 1.05 }}> */}
+        {/* <div className="relative w-full h-full group rounded-xl border border-agency-orange/20 bg-white/90 backdrop-blur-sm hover:border-agency-gold/40 transition-all duration-300 glow-on-hover"> */}
+          {/* {client.image ? (
             <img
               src={client.image}
               className="w-full h-full object-cover rounded-xl"
@@ -21,14 +21,14 @@ const ClientCard = ({ client, index, onClick }) => (
             />
           ) : (
             <TrendingUp className="w-full h-full text-agency-orange opacity-70" />
-          )}
+          )} */}
           {/* <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 rounded-xl bg-white/40 backdrop-blur-sm">
             <div className="w-1/3 h-1/3 object-cover text-agency-orange opacity-70">
               <span className="text-2xl font-bold">{client.name}</span>
             </div>
           </div> */}
-        </div>
-      </motion.div>
+        {/* </div> */}
+      {/* </motion.div> */}
       {/* <h3 className="text-xl font-bold text-agency-dark mb-2 text-center">{client.name}</h3>
       <div className="text-gray-600 text-center flex flex-col items-center gap-2">
         {client.platforms.includes('Instagram') && (
@@ -42,6 +42,57 @@ const ClientCard = ({ client, index, onClick }) => (
           </div>
         )}
       </div> */}
+
+
+           
+
+          {/* MIDDLE CARD */}
+          <div
+            className={`
+              bg-blue-900
+              rounded-2xl
+              relative
+              shadow-2xl
+              transform
+             
+              transition-transform
+              duration-300
+              border-8 border-agency-dark
+            `
+          }
+          style={
+            {
+              width: client.hw.w,
+              height: client.hw.h,
+              rotate: `${client.rotate}deg`,
+            }
+          }
+          >
+            {/* Top “speaker/volume” icon */}
+            <div className="absolute top-2 right-2 text-white">
+              <Volume2 className="w-6 h-6 opacity-90" />
+            </div>
+            {/* Content */}
+            <img src={client.image} alt={client.name} className="w-full h-full object-cover rounded-xl" />
+            {/* <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <h3 className="text-white text-xl font-bold mb-2">
+                Watch full video
+              </h3>
+              <p className="text-white text-sm">on youtube</p>
+              <div className="bg-gray-200 w-[180px] h-[100px] mt-4 flex items-center justify-center rounded-lg">
+                <span className="text-gray-700 font-semibold">Subscribe</span>
+              </div>
+            </div> */}
+            
+            {/* <div className="absolute bottom-4 w-full px-2">
+              <div className="bg-gray-700 w-full h-1 rounded-full">
+                <div className="bg-red-500 h-1 w-1/4 rounded-full"></div>
+              </div>
+            </div> */}
+          </div>
+
+           
+      
     </AnimatedSection>
   </div>
 );
@@ -75,7 +126,7 @@ const ClientResults = () => {
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2  justify-center lg:grid-cols-3 gap-12 w-[90%] mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
           {clients.slice(0, 3).map((client, index) => (
             <ClientCard
               key={index}
@@ -131,7 +182,7 @@ const ClientResults = () => {
           className="border-agency-orange bg-white hover:text-agency-orange/80 text-agency-orange hover:bg-agency-orange/10 px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base"
           onClick={() => window.open('https://volnovaportfolio.my.canva.site/case-studies', '_blank')}
         >
-          View All
+          View All Case Studies
           <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
         </Button>
       </AnimatedSection>
