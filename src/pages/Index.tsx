@@ -9,6 +9,7 @@ import data from '../data/data.json';
 const Services = lazy(() => import('../components/Services'));
 // const Portfolio = lazy(() => import('../components/Portfolio'));
 import Portfolio from '../components/Portfolio';
+import ClientReviews from '@/components/ClientReviews';
 const Testimonials = lazy(() => import('../components/Testimonials'));
 const CallToAction = lazy(() => import('../components/CallToAction'));
 const Footer = lazy(() => import('../components/Footer'));
@@ -69,6 +70,9 @@ const Index = () => {
         
         <Suspense fallback={<SectionLoading />}>
           <Portfolio />
+        </Suspense>
+        <Suspense fallback={<SectionLoading />}>
+          <ClientReviews />
         </Suspense>
         
         <Suspense fallback={<SectionLoading />}>

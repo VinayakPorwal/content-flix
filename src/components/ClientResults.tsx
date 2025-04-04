@@ -4,7 +4,7 @@ import { X, TrendingUp, Instagram, Youtube, Sparkles, ArrowRight, Volume2 } from
 import data from '../data/data.json';
 import AnimatedSection from './AnimatedSection';
 import { Button } from './ui/button';
-
+import { useNavigate } from 'react-router-dom';
 const ClientCard = ({ client, index, onClick }) => (
   <div onClick={onClick} className="cursor-pointer">
     <AnimatedSection
@@ -100,7 +100,7 @@ const ClientCard = ({ client, index, onClick }) => (
 const ClientResults = () => {
   const { title, clients } = data.clientResults;
   const [selectedClient, setSelectedClient] = useState(null);
-
+  const navigate = useNavigate();
   const openModal = (client) => {
     setSelectedClient(client);
   };
@@ -132,7 +132,7 @@ const ClientResults = () => {
               key={index}
               client={client}
               index={index}
-              onClick={() => openModal(client)}
+              onClick={() => navigate(`/case-studies/`)}
             />
           ))}
         </div>

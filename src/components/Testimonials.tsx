@@ -164,7 +164,7 @@ const Testimonials: React.FC = () => {
                 )}
               >
                  <div className="md:w-1/2 bg-agency-orange flex justify-center items-center p-6">
-                  <div className="relative w-full max-w-sm cursor-pointer group" onClick={() => setIsVideoModalOpen(true)}>
+                  <div className="relative w-full max-w-sm cursor-pointer group border overflow-hidden border-white rounded-xl p-2" onClick={() => setIsVideoModalOpen(true)}>
                     <img
                       src={testimonial.thumbnailUrl}
                       alt={`${testimonial.name}'s video testimonial`}

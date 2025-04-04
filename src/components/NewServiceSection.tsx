@@ -74,6 +74,7 @@ const ThreeDotsTimeline = () => {
 
   return (
     <section
+    id="services"
       ref={containerRef}
       className="relative  h-max bg-gradient-to-b from-black to-gray-900 text-white flex flex-col items-center px-4 py-20"
     >
