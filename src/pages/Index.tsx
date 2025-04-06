@@ -1,15 +1,14 @@
 
-import React, { useEffect, useRef, useCallback, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import { AnimatePresence } from 'framer-motion';
-import data from '../data/data.json';
+// Import Portfolio directly since it's used without lazy loading
+import Portfolio from '../components/Portfolio';
+import ClientReviews from '@/components/ClientReviews';
 
 // Lazy load components that are not immediately visible
 const Services = lazy(() => import('../components/Services'));
-// const Portfolio = lazy(() => import('../components/Portfolio'));
-import Portfolio from '../components/Portfolio';
-import ClientReviews from '@/components/ClientReviews';
 const Testimonials = lazy(() => import('../components/Testimonials'));
 const CallToAction = lazy(() => import('../components/CallToAction'));
 const Footer = lazy(() => import('../components/Footer'));
@@ -18,16 +17,15 @@ const WhoThisIsFor = lazy(() => import('../components/WhoThisIsFor'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
 const NewServiceSection = lazy(() => import('../components/NewServiceSection'));
 const ClientResults = lazy(() => import('../components/ClientResults')); 
+
 // Simple loading component
 const SectionLoading = () => (
-  <div className="w-full py-16 flex items-center justify-center">
-    <div className="animate-pulse bg-agency-orange/10 h-32 w-full max-w-3xl rounded-xl"></div>
+  <div className="w-full py-8 sm:py-16 flex items-center justify-center">
+    <div className="animate-pulse bg-agency-orange/10 h-20 sm:h-32 w-full max-w-xl sm:max-w-3xl rounded-xl"></div>
   </div>
 );
 
 const Index = () => {
- 
-
   return (
     <AnimatePresence mode="wait">
       <div className="min-h-screen bg-[#FBF5F1] relative smooth-scroll">
@@ -43,8 +41,6 @@ const Index = () => {
           </svg>
         </div>
         
-       
-        
         <Navbar />
         <Hero />
         
@@ -55,10 +51,6 @@ const Index = () => {
         <Suspense fallback={<SectionLoading />}>
           <WhyUs />
         </Suspense>
-        
-        {/* <Suspense fallback={<SectionLoading />}>
-          <Services />
-        </Suspense> */}
         
         <Suspense fallback={<SectionLoading />}>
           <NewServiceSection />
@@ -71,6 +63,7 @@ const Index = () => {
         <Suspense fallback={<SectionLoading />}>
           <Portfolio />
         </Suspense>
+
         <Suspense fallback={<SectionLoading />}>
           <ClientReviews />
         </Suspense>
@@ -86,7 +79,6 @@ const Index = () => {
         <Suspense fallback={<SectionLoading />}>
           <CallToAction />
         </Suspense>
- 
         
         <Suspense fallback={<SectionLoading />}>
           <Footer />

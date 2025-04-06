@@ -2,9 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import AnimatedSection from './AnimatedSection';
-import { Sparkles, Camera, Film, Presentation, BarChart3, TrendingUp, Video, ArrowRight } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import data from "../data/data.json"
+import { Sparkles, Camera, Film, Presentation, TrendingUp, Video, ArrowRight } from 'lucide-react';
+import { motion, useScroll } from 'framer-motion';
+import data from "../data/data.json";
+import SectionBadge from './SectionBadge';
 
 interface StepCardProps {
   number: number;
@@ -22,7 +23,7 @@ const StepCard: React.FC<StepCardProps> = ({ number, title, description, index, 
     <div 
       ref={cardRef}
       className={cn(
-        "process-card bg-white p-5 sm:p-6 md:p-8 rounded-2xl border border-agency-orange/20 min-h-[180px] md:min-h-[250px]",
+        "process-card bg-white p-4 sm:p-6 md:p-8 rounded-2xl border border-agency-orange/20 min-h-[180px] md:min-h-[250px]",
         "transition-all duration-800 ease-out",
         "sticky md:sticky",
         isActive ? "opacity-100" : "opacity-50 md:translate-y-[100px]"
@@ -33,12 +34,12 @@ const StepCard: React.FC<StepCardProps> = ({ number, title, description, index, 
       }}
     >
       <div className="flex items-start gap-3 sm:gap-4">
-        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-agency-orange flex items-center justify-center">
-          <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">{number}</span>
+        <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 rounded-full bg-agency-orange flex items-center justify-center">
+          <span className="text-base sm:text-lg md:text-2xl font-bold text-white">{number}</span>
         </div>
         <div>
-          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-agency-dark mb-2 md:mb-4">{title}</h3>
-          <p className="text-gray-600 text-xs sm:text-sm md:text-lg">{description}</p>
+          <h3 className="text-base sm:text-lg md:text-2xl font-bold text-agency-dark mb-1 md:mb-4">{title}</h3>
+          <p className="text-xs sm:text-sm md:text-lg text-gray-600">{description}</p>
         </div>
       </div>
     </div>
@@ -74,10 +75,10 @@ const ProcessSteps: React.FC = () => {
       }
     }
   };
+  
   const handleBookCall = () => {
     document.getElementById('calendly-container')?.scrollIntoView({ behavior: 'smooth' });
   }
-
 
   return (
     <section id="process" className="process-section bg-transparent" ref={sectionRef}>
@@ -108,6 +109,7 @@ const ProcessSteps: React.FC = () => {
         >
           <Video size={70} />
         </motion.div>
+        
         <motion.div 
           className="hidden md:block absolute left-[40%] bottom-[2%] text-agency-orange/30"
           variants={floatingIconVariants}
@@ -126,18 +128,19 @@ const ProcessSteps: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <AnimatedSection animation="fade-in">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 sm:px-5 sm:py-2 mb-4 border border-agency-orange/20 shadow-sm">
-                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-agency-orange" />
-                <span className="text-agency-dark font-medium text-xs sm:text-sm">Our 5-Step Process</span>
-              </div>
+              <SectionBadge text="Our 5-Step Process" />
             </AnimatedSection>
             
             <AnimatedSection delay={200} animation="fade-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-agency-dark mb-3 md:mb-6" dangerouslySetInnerHTML={{ __html: data.process.title.replace('text-agency-gold', 'text-agency-orange') }}></h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-agency-dark mb-3 md:mb-6" 
+                dangerouslySetInnerHTML={{ __html: data.process.title.replace('text-agency-gold', 'text-agency-orange') }}>
+              </h2>
             </AnimatedSection>
             
             <AnimatedSection delay={300} animation="fade-up">
-              <p className="text-sm sm:text-base md:text-lg text-gray-600" dangerouslySetInnerHTML={{ __html: data.process.subtitle.replace('text-agency-gold', 'text-agency-orange') }}></p>
+              <p className="text-sm sm:text-base md:text-lg text-gray-600" 
+                dangerouslySetInnerHTML={{ __html: data.process.subtitle.replace('text-agency-gold', 'text-agency-orange') }}>
+              </p>
             </AnimatedSection>
 
             <AnimatedSection delay={400} animation="fade-up">
@@ -155,7 +158,7 @@ const ProcessSteps: React.FC = () => {
             </AnimatedSection>
           </motion.div>
           
-          <div className="w-full md:w-2/3 space-y-3 md:space-y-0">
+          <div className="w-full md:w-2/3 space-y-3 md:space-y-0 px-3 sm:px-0">
             {data.process.steps.map((step, index) => (
               <StepCard
                 key={index}

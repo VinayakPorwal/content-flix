@@ -1,9 +1,10 @@
+
 import React, { useRef, useEffect } from 'react';
 import AnimatedSection from './AnimatedSection';
-import { Sparkles } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import data from '../data/data.json';
 import YouTube from 'react-youtube';
+import SectionBadge from './SectionBadge';
 
 const Portfolio: React.FC = () => {
   const { badge, title, subtitle, shorts, long_videos } = data.portfolio;
@@ -127,19 +128,14 @@ const Portfolio: React.FC = () => {
     <section id="portfolio" className="section-spacing relative overflow-hidden">
       <div className="relative z-10">
         {/* Heading & Subtitle */}
-        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 sm:px-5 py-1.5 sm:py-2 mb-4 border border-agency-orange/20 shadow-sm">
-            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-agency-orange" />
-            <span className="text-agency-dark font-medium text-xs sm:text-sm">
-              {badge}
-            </span>
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 px-4">
+          <SectionBadge text={badge} />
 
           <h2
             className="text-agency-dark mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8">
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 lg:mb-8">
             {subtitle}
           </p>
         </div>
@@ -155,26 +151,26 @@ const Portfolio: React.FC = () => {
           />
         </AnimatedSection>
 
-        <div className="w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]">
+        <div className="w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_40px,_black_calc(100%-40px),transparent_100%)] sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]">
           <div
             ref={shortsRef}
-            className="flex gap-8 px-8 pt-10 pb-4 overflow-x-auto scrollbar-hide"
+            className="flex gap-4 sm:gap-8 px-4 sm:px-8 pt-6 sm:pt-10 pb-2 sm:pb-4 overflow-x-auto scrollbar-hide"
           >
             {[...shorts, ...shorts].map((item, index) => {
               const videoId = getYoutubeId(item.url);
               return (
                 <div
                   key={`${item.id}-${index}`}
-                  className="flex-none w-[250px] sm:w-[280px] md:w-[300px] border rounded-xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                  className="flex-none w-[180px] sm:w-[250px] md:w-[280px] lg:w-[300px] border rounded-xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 >
-                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
+                  <div className="relative rounded-xl overflow-hidden">
                     <AspectRatio ratio={9 / 16}>
                       <iframe
                         src={`https://www.youtube-nocookie.com/embed/${videoId}?modestbranding=1&rel=0`}
                         title={item.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
-                        className="w-full h-full rounded-xl border-4 border-agency-dark hover:border-agency-orange"
+                        className="w-full h-full rounded-xl border-2 sm:border-4 border-agency-dark hover:border-agency-orange"
                         loading="eager"
                       />
                     </AspectRatio>
@@ -188,7 +184,7 @@ const Portfolio: React.FC = () => {
         {/* Long Videos Section */}
         <AnimatedSection delay={200}>
           <h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-agency-dark mt-10 mx-auto text-center"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-agency-dark mt-6 sm:mt-10 mx-auto text-center"
             dangerouslySetInnerHTML={{
               __html:
                 '<span class="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Long Videos</span>',
@@ -196,23 +192,23 @@ const Portfolio: React.FC = () => {
           />
         </AnimatedSection>
 
-        <div className="w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]">
+        <div className="w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_40px,_black_calc(100%-40px),transparent_100%)] sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_80px,_black_calc(100%-80px),transparent_100%)]">
           <div
             ref={longVideosRef}
-            className="flex gap-8 px-8 pb-4 pt-10 overflow-x-auto scrollbar-hide"
+            className="flex gap-4 sm:gap-8 px-4 sm:px-8 pb-2 sm:pb-4 pt-6 sm:pt-10 overflow-x-auto scrollbar-hide"
           >
             {[...long_videos, ...long_videos].map((item, index) => {
               const videoId = getYoutubeId(item.url);
               return (
                 <div
                   key={`${item.id}-${index}`}
-                  className="flex-none w-[280px] sm:w-[340px] md:w-[404px] border rounded-xl p-2 transition-transform duration-300 hover:scale-105"
+                  className="flex-none w-[220px] sm:w-[280px] md:w-[340px] lg:w-[404px] border rounded-xl p-1 sm:p-2 transition-transform duration-300 hover:scale-105"
                 >
-                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
+                  <div className="relative rounded-xl overflow-hidden">
                     <AspectRatio ratio={16 / 9}>
                       <YouTube
                         videoId={videoId || ''}
-                        className="w-full h-full border-4 border-agency-dark hover:border-agency-orange"
+                        className="w-full h-full border-2 sm:border-4 border-agency-dark hover:border-agency-orange"
                         opts={youtubeOpts}
                         loading="eager"
                       />
