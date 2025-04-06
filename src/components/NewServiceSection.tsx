@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -31,8 +30,8 @@ const getIconComponent = (iconName: string) => {
       return <Image className="w-full h-full" />;
     case 'Idea':
       return <Lightbulb className="w-full h-full" />;
-      case 'Script':
-        return <File className="w-full h-full" />;
+    case 'Script':
+      return <File className="w-full h-full" />;
     default:
       return null;
   }
@@ -58,19 +57,21 @@ const ThreeDotsTimeline = () => {
         duration: 2,
       };
 
-      // Animate dots along paths
-      dotRefs.forEach((dotRef, i) => {
-        gsap.to(dotRef.current, {
-          ...motionSettings,
-          delay: i * 0.05,
-          motionPath: {
-            path: pathRefs[i].current,
-            align: pathRefs[i].current,
-            alignOrigin: [0.5, 0.5],
-            autoRotate: true
-          }
+      // Only animate on desktop
+      if (window.innerWidth >= 640) {
+        dotRefs.forEach((dotRef, i) => {
+          gsap.to(dotRef.current, {
+            ...motionSettings,
+            delay: i * 0.05,
+            motionPath: {
+              path: pathRefs[i].current,
+              align: pathRefs[i].current,
+              alignOrigin: [0.5, 0.5],
+              autoRotate: true
+            }
+          });
         });
-      });
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -80,11 +81,10 @@ const ThreeDotsTimeline = () => {
     <section
       id="services"
       ref={containerRef}
-      className="relative h-max bg-gradient-to-b from-black to-gray-900 text-white flex flex-col items-center px-4 py-16 sm:py-20"
+      className="relative bg-gradient-to-b from-black to-gray-900 text-white flex flex-col items-center px-4 py-16"
     >
-      {/* Interactive Timeline */}
-      <div className="relative w-full max-w-6xl h-[900px] sm:h-[1050px]">
-        <div className="text-center max-w-3xl mx-auto pb-24 sm:pb-32">
+      <div className="relative w-full max-w-6xl">
+        <div className="text-center max-w-3xl mx-auto pb-12 sm:pb-24">
           <AnimatedSection>
             <SectionBadge text="Services" />
           </AnimatedSection>
@@ -102,63 +102,64 @@ const ThreeDotsTimeline = () => {
           </AnimatedSection>
         </div>
         
-        <svg
-          className="absolute top-0 left-0 w-full h-full pointer-events-none mt-16 hidden sm:block"
-          viewBox="0 0 1000 600"
-          fill="none"
-        >
-          {/* Paths connecting to cards in a pipeline style */}
-          <path
-            ref={pathRefs[0]}
-            d="M 500,50 L 500,150 Q 500,150 150,150 L 150,350"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="3"
-          />
-          <path
-            ref={pathRefs[1]}
-            d="M 500,50 L 500,350"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="3"
-          />
-          <path
-            ref={pathRefs[2]}
-            d="M 500,50 L 500,150 Q 500,150 850,150 L 850,350"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="3"
-          />
-
-          {/* Glowing dots */}
-          {dotRefs.map((ref, i) => (
-            <circle
-              key={i}
-              ref={ref}
-              r="6"
-              fill="#FF4500"
-              cx="500"
-              cy="50"
-              style={{ filter: "drop-shadow(0 0 20px rgba(255,69,0,0.9)) drop-shadow(0 0 40px rgba(255,69,0,0.8)) drop-shadow(0 0 60px rgba(255,69,0,0.6))", zIndex: 20, display: "block"}}
+        {/* SVG Timeline - Only visible on desktop */}
+        <div className="hidden sm:block">
+          <svg
+            className="absolute top-0 left-0 w-full h-full pointer-events-none md:mt-0"
+            viewBox="0 0 1000 600"
+            fill="none"
+          >
+            <path
+              ref={pathRefs[0]}
+              d="M 500,50 L 500,150 Q 500,150 150,150 L 150,350"
+              stroke="rgba(255,255,255,0.15)"
+              strokeWidth="3"
             />
-          ))}
-        </svg>
-        
-        <AnimatedSection className="z-10 w-24 h-24 absolute top-56 sm:top-0 left-1/2 transform -translate-x-1/2">
-          <VideoIcon className="z-10 w-24 h-24 absolute text-agency-orange" stroke="rgb(250 84 33)" strokeWidth="1" />
-        </AnimatedSection>
+            <path
+              ref={pathRefs[1]}
+              d="M 500,50 L 500,350"
+              stroke="rgba(255,255,255,0.15)"
+              strokeWidth="3"
+            />
+            <path
+              ref={pathRefs[2]}
+              d="M 500,50 L 500,150 Q 500,150 850,150 L 850,350"
+              stroke="rgba(255,255,255,0.15)"
+              strokeWidth="3"
+            />
 
-        {/* Service Cards - Made more responsive */}
-        <div className="absolute grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 w-full" style={{ top: "400px" }}>
+            {dotRefs.map((ref, i) => (
+              <circle
+                key={i}
+                ref={ref}
+                r="6"
+                fill="#FF4500"
+                cx="500"
+                cy="50"
+                style={{ filter: "drop-shadow(0 0 20px rgba(255,69,0,0.9)) drop-shadow(0 0 40px rgba(255,69,0,0.8)) drop-shadow(0 0 60px rgba(255,69,0,0.6))", zIndex: 20 }}
+              />
+            ))}
+          </svg>
+          
+          <AnimatedSection className="z-10 w-24 h-24 absolute top-0 left-1/2 -translate-x-1/2">
+            <VideoIcon className="w-24 h-24 absolute top-60 -left-8 text-agency-orange" stroke="rgb(250 84 33)" strokeWidth="1" />
+          </AnimatedSection>
+        </div>
+
+        {/* Service Cards */}
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 w-full ${window.innerWidth >= 640 ? 'mt-[300px]' : 'mt-0'}`}>
           {data.services.items.map((service, i) => (
-            <AnimatedSection key={i} delay={i * 100} className="transform hover:-translate-y-2 transition-all duration-300">
-              <div className="bg-agency-dark/40 backdrop-blur border border-gray-500/50 rounded-xl p-6 sm:p-8 text-center shadow-xl hover:shadow-2xl hover:border-agency-orange/30">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 object-cover text-agency-orange opacity-70 mx-auto mb-4">
+            <div key={i} className="transform hover:-translate-y-2 transition-all duration-300">
+              <div className="bg-agency-dark/40 backdrop-blur border border-gray-500/50 rounded-xl p-8 text-center shadow-xl hover:shadow-2xl hover:border-agency-orange/30">
+                <div className="w-10 h-10 sm:w-1/4 sm:h-1/4 object-cover text-agency-orange opacity-70 mx-auto">
                   {typeof service.icon === 'string' ? getIconComponent(service.icon) : service.icon}
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#E6E6E7]">
+                <h3 className="text-md sm:text-2xl font-bold my-4 text-[#E6E6E7]">
                   {service.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-300">{service.description}</p>
+                <p className="text-gray-300 text-xs sm:text-base">{service.description}</p>
               </div>
-            </AnimatedSection>
+            </div>
           ))}
         </div>
       </div>

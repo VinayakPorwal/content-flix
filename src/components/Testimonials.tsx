@@ -146,9 +146,9 @@ const Testimonials: React.FC = () => {
           </AnimatedSection>
         </div>
 
-        <div ref={testimonialsRef} className="relative max-w-6xl mx-auto px-4">
+        <div ref={testimonialsRef} className="relative max-w-6xl mx-auto px-4 pl-0">
           <div
-            className="overflow-hidden"
+            className="overflow-hidden h-max"
             style={{ minHeight: '360px', marginBottom: '40px' }}
           >
             {testimonials.map((testimonial, index) => (
@@ -159,37 +159,35 @@ const Testimonials: React.FC = () => {
                   index === currentIndex
                     ? "opacity-100 translate-x-0"
                     : index < currentIndex
-                      ? "opacity-0 -translate-x-full"
+                      ? "opacity-0 -translate-x-full" 
                       : "opacity-0 translate-x-full"
                 )}
               >
-                 <div className="md:w-1/2 bg-agency-orange flex justify-center items-center p-6">
-                  <div className="relative w-full max-w-sm cursor-pointer group border overflow-hidden border-white rounded-xl p-2" onClick={() => setIsVideoModalOpen(true)}>
+                 <div className="w-full md:w-1/2 bg-agency-orange flex justify-center items-center p-4 md:p-6">
+                  <div className="relative w-full max-w-[280px] md:max-w-sm cursor-pointer group border overflow-hidden border-white rounded-xl p-2" onClick={() => setIsVideoModalOpen(true)}>
                     <img
                       src={testimonial.thumbnailUrl}
                       alt={`${testimonial.name}'s video testimonial`}
                       className="w-full h-auto rounded-xl shadow-lg aspect-square object-cover"
                     />
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                        <Play className="w-8 h-8 text-agency-orange ml-1" />
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/90 flex items-center justify-center">
+                        <Play className="w-6 h-6 md:w-8 md:h-8 text-agency-orange ml-1" />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="p-8 md:w-1/2">
-                  <Quote size={48} className="text-agency-orange/30 mb-6" />
-                  <div className='flex items-center gap-2'>
-                    <h4 className="text-agency-dark text-xl font-semibold">{testimonial.name}</h4>
+                <div className="p-4 md:p-8 w-full md:w-1/2">
+                  <Quote size={36} className="text-agency-orange/30 mb-4 md:mb-6" />
+                  <div className='flex flex-wrap items-center gap-2'>
+                    <h4 className="text-agency-dark text-lg md:text-xl font-semibold">{testimonial.name}</h4>
                     <p className="text-xs text-white font-medium border border-agency-orange/20 rounded-full px-2.5 py-0.5 inline-block shadow-sm bg-agency-orange/80">{testimonial.niche}</p>
                   </div>
-                  <p className="text-agency-orange/70 font-medium">{testimonial.role}</p>
-                  <p className="text-gray-600 text-md md:text-lg mt-2 leading-relaxed">
+                  <p className="text-agency-orange/70 font-medium text-sm md:text-base">{testimonial.role}</p>
+                  <p className="hidden md:block text-gray-600 text-sm md:text-lg mt-2 leading-relaxed">
                     "{testimonial.content}"
                   </p>
                 </div>
-
-               
               </div>
             ))}
           </div>
