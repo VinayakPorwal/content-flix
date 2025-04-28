@@ -1,8 +1,8 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 // Content data (unchanged)
 const reasons = [
@@ -39,8 +39,47 @@ const floatingAnimation = {
     }
 };
 
-// A simple card component with white background and orange accents
-const ReasonCard = ({ title, description, index }) => (
+// Mobile Reason Card Component
+interface MobileReasonCardProps {
+    title: string;
+    description: string;
+    index: number;
+    progress: number;
+    maxHeight?: number;
+    className?: string;
+}
+
+const MobileReasonCard: React.FC<MobileReasonCardProps> = ({ title, description, index, progress, maxHeight, className }) => {
+    const isActive = progress >= index / reasons.length;
+    const cardRef = useRef(null);
+    
+    return (
+        <motion.div
+            ref={cardRef}
+            className={cn(
+                "p-6 bg-white rounded-xl shadow-lg border border-agency-orange/30",
+                "transition-all duration-800 ease-out",
+                "sticky",
+                isActive ? "opacity-100" : "opacity-50 translate-y-[100px]",
+                className
+            )}
+            style={{
+                top: `${index*10 + 80}px`,
+                zIndex: index
+            }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+            <div className="mb-4 h-full flex flex-col">
+                <span className="text-agency-orange font-bold text-lg bg-agency-orange/10 rounded-full py-2 px-3 m-2">{index + 1}</span>
+                <div className="flex-grow">{description}</div>
+            </div>
+        </motion.div>
+    );
+};
+
+// Desktop Reason Card Component
+const DesktopReasonCard = ({ title, description, index }) => (
     <motion.div
         className="p-6 bg-white rounded-xl shadow-lg border border-agency-orange/30 cursor-pointer"
         variants={floatingAnimation}
@@ -58,6 +97,48 @@ const ReasonCard = ({ title, description, index }) => (
 
 // This component creates a 500x500 container for desktop, but stacks cards vertically on mobile
 const CircleLayout = () => {
+    const containerRef = useRef(null);
+    const headingRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+    const [progressValue, setProgressValue] = useState(0);
+    const [maxCardHeight, setMaxCardHeight] = useState(0);
+    const [headingVisible, setHeadingVisible] = useState(true);
+
+    React.useEffect(() => {
+        const unsubscribe = scrollYProgress.onChange(value => {
+            setProgressValue(value);
+            // Hide heading when last card is in view (progress > 0.8)
+            setHeadingVisible(value < 0.7);
+        });
+        
+        return () => unsubscribe();
+    }, [scrollYProgress]);
+
+    // Calculate max height of cards on mount and resize
+    React.useEffect(() => {
+        const calculateMaxHeight = () => {
+            if (window.innerWidth >= 768) return; // Only for mobile view
+            
+            const cards = document.querySelectorAll('.mobile-reason-card');
+            let maxHeight = 0;
+            
+            cards.forEach(card => {
+                const height = card.getBoundingClientRect().height;
+                maxHeight = Math.max(maxHeight, height);
+            });
+            
+            setMaxCardHeight(maxHeight);
+        };
+
+        calculateMaxHeight();
+        window.addEventListener('resize', calculateMaxHeight);
+        
+        return () => window.removeEventListener('resize', calculateMaxHeight);
+    }, []);
+
     // Dimensions of container and circle
     const containerSize = 500;
     const centerX = containerSize / 2;
@@ -103,7 +184,7 @@ const CircleLayout = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.2 }}
                         >
-                            <ReasonCard index={index} title={reason.title} description={reason.description} />
+                            <DesktopReasonCard index={index} title={reason.title} description={reason.description} />
                         </motion.div>
                     );
                 })}
@@ -120,23 +201,32 @@ const CircleLayout = () => {
             </div>
 
             {/* Mobile layout - Shown only on mobile */}
-            <div className="md:hidden space-y-6 px-4 py-6">
-                <div className="flex items-center justify-center mb-8">
+            <div ref={containerRef} className="md:hidden space-y-3 px-4 py-6">
+                <motion.div 
+                    ref={headingRef}
+                    className={cn(
+                        "sticky top-0 z-50 bg-transparent py-4 flex items-center justify-center mb-8",
+                        "transition-all duration-300",
+                        headingVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
+                    )}
+                >
                     <span className="text-agency-orange font-bold text-4xl">3</span>
                     <p className="text-gray-600 px-2 text-lg font-medium">Reasons</p>
-                </div>
+                </motion.div>
                 
-                {reasons.map((reason, index) => (
-                    <motion.div
-                        key={index}
-                        className="w-full"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.2 }}
-                    >
-                        <ReasonCard index={index} title={reason.title} description={reason.description} />
-                    </motion.div>
-                ))}
+                <div className='space-y-3'>
+                    {reasons.map((reason, index) => (
+                        <MobileReasonCard
+                            key={index}
+                            index={index}
+                            title={reason.title}
+                            description={reason.description}
+                            progress={progressValue}
+                            maxHeight={maxCardHeight}
+                            className="mobile-reason-card"
+                        />
+                    ))}
+                </div>
             </div>
         </>
     );

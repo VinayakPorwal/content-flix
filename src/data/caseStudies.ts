@@ -72,35 +72,35 @@ export const caseStudies = [
       youtube: {
         title: "Reach Growth",
         value: "3.5x",
-        description: "Increase in channel reach within 35 days",
-
+        description: "Increase in channel reach within 28+ days",
+        channelDashboard: "./yt-1.png",
         insights: [
           {
             title: "Wider Audience Appeal",
             description:
               "Videos now reaching 2-3 times more viewers than usual",
             video:
-              "https://volnovaportfolio.my.canva.site/case-studies/media/11165064e83af0d841d8947adadc3e84.png",
+              "./viraj-v-1.png",
             insight:
-              "https://volnovaportfolio.my.canva.site/case-studies/media/4bbd81cb5b34d3a00e76d6ec14bb8d0b.png",
+              "./yt-4.png",
           },
           {
             title: "Improved Engagement",
             description:
               "Significant increase in viewer interaction and watch time",
             video:
-              "https://volnovaportfolio.my.canva.site/case-studies/media/c10426cb94033c9dfe0193696c8112c4.png",
+              "./viraj-v-2.png",
             insight:
-              "https://volnovaportfolio.my.canva.site/case-studies/media/f7f3fc5a3c3ae21467f20e4cb3592f0e.png",
+              "./yt-3.png",
           },
           {
             title: "Improved Engagement",
             description:
               "Significant increase in viewer interaction and watch time",
             video:
-              "https://volnovaportfolio.my.canva.site/case-studies/media/88d7734a401a2d09972d455581fea65b.png",
+              "./viraj-v-3.png",
             insight:
-              "https://volnovaportfolio.my.canva.site/case-studies/media/91ca8f05452f8c0ba16182184cce6e8a.png",
+              "./yt-2.png",
           },
         ],
       },

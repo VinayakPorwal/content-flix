@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Volume2, Sparkles } from 'lucide-react';
 import data from '../data/data.json';
 import AnimatedSection from './AnimatedSection';
@@ -77,15 +77,14 @@ const ClientResults = () => {
           ))}
         </div>
 
-        <AnimatedSection delay={600} className="mt-8 sm:mt-12 text-center">
-          <Button
-            variant="outline"
-            className="border-agency-orange bg-white hover:text-agency-orange/80 text-agency-orange hover:bg-agency-orange/10 px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base"
-            onClick={() => window.open('https://volnovaportfolio.my.canva.site/case-studies', '_blank')}
+        <AnimatedSection delay={600} className="mt-8 sm:mt-12 text-center w-max mx-auto">
+          <Link
+            to="/case-studies"
+            className=" flex items-center justify-center border-agency-orange bg-white hover:text-agency-orange/80 text-agency-orange hover:bg-agency-orange/10 px-6 sm:px-8 py-2 rounded-full text-sm sm:text-base"
           >
             View All Case Studies
             <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-          </Button>
+          </Link>
         </AnimatedSection>
       </div>
     </section>

@@ -1,7 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { useScroll } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 import { Sparkles, Youtube, Instagram, Target, Video, PenTool, BarChart, Edit, Upload, Layout, Image, Lightbulb, VideoIcon, File } from 'lucide-react';
@@ -37,10 +39,52 @@ const getIconComponent = (iconName: string) => {
   }
 };
 
+const ServiceCard: React.FC<{ service: any; index: number; progress: number }> = ({ service, index, progress }) => {
+  const isActive = progress >= index / data.services.items.length;
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  return (
+    <div 
+      ref={cardRef}
+      className={cn(
+        "service-card bg-agency-dark/40 backdrop-blur border border-gray-500/50 rounded-xl p-8 text-center shadow-xl hover:shadow-2xl hover:border-agency-orange/30",
+        "transition-all duration-800 ease-out",
+        "sticky",
+        isActive ? "opacity-100" : "opacity-50 translate-y-[100px]"
+      )}
+      style={{
+        top: `${index*10 + 120}px`,
+        zIndex: index
+      }}
+    >
+      <div className="w-10 h-10 sm:w-1/4 sm:h-1/4 object-cover text-agency-orange opacity-70 mx-auto">
+        {typeof service.icon === 'string' ? getIconComponent(service.icon) : service.icon}
+      </div>
+      <h3 className="text-md sm:text-2xl font-bold my-4 text-[#E6E6E7]">
+        {service.title}
+      </h3>
+      <p className="text-gray-300 text-xs sm:text-base">{service.description}</p>
+    </div>
+  );
+};
+
 const ThreeDotsTimeline = () => {
   const containerRef = useRef(null);
   const pathRefs = [useRef(null), useRef(null), useRef(null)];
   const dotRefs = [useRef(null), useRef(null), useRef(null)];
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  const [progressValue, setProgressValue] = useState(0);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange(value => {
+      setProgressValue(value);
+    });
+    
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -147,20 +191,35 @@ const ThreeDotsTimeline = () => {
         </div>
 
         {/* Service Cards */}
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 w-full ${window.innerWidth >= 640 ? 'mt-[300px]' : 'mt-0'}`}>
-          {data.services.items.map((service, i) => (
-            <div key={i} className="transform hover:-translate-y-2 transition-all duration-300">
-              <div className="bg-agency-dark/40 backdrop-blur border border-gray-500/50 rounded-xl p-8 text-center shadow-xl hover:shadow-2xl hover:border-agency-orange/30">
-                <div className="w-10 h-10 sm:w-1/4 sm:h-1/4 object-cover text-agency-orange opacity-70 mx-auto">
-                  {typeof service.icon === 'string' ? getIconComponent(service.icon) : service.icon}
+        <div className="w-full">
+          {/* Desktop View */}
+          <div className="hidden sm:grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 w-full mt-[300px]">
+            {data.services.items.map((service, i) => (
+              <div key={i} className="transform hover:-translate-y-2 transition-all duration-300">
+                <div className="bg-agency-dark/40 backdrop-blur border border-gray-500/50 rounded-xl p-8 text-center shadow-xl hover:shadow-2xl hover:border-agency-orange/30">
+                  <div className="w-10 h-10 sm:w-1/4 sm:h-1/4 object-cover text-agency-orange opacity-70 mx-auto">
+                    {typeof service.icon === 'string' ? getIconComponent(service.icon) : service.icon}
+                  </div>
+                  <h3 className="text-md sm:text-2xl font-bold my-4 text-[#E6E6E7]">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-300 text-xs sm:text-base">{service.description}</p>
                 </div>
-                <h3 className="text-md sm:text-2xl font-bold my-4 text-[#E6E6E7]">
-                  {service.title}
-                </h3>
-                <p className="text-gray-300 text-xs sm:text-base">{service.description}</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Mobile View */}
+          <div className="sm:hidden space-y-3 px-3">
+            {data.services.items.map((service, index) => (
+              <ServiceCard
+                key={index}
+                service={service}
+                index={index}
+                progress={progressValue}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

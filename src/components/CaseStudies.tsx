@@ -5,7 +5,7 @@ import {
   ChevronLeft, ChevronRight, CheckCircle2, Target, BarChart2
 } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
-import { caseStudies } from '@/data/caseStudies';
+import { caseStudies } from '../data/caseStudies';
 import { useParams } from 'react-router-dom';
 interface MetricCardProps {
   icon: string;
@@ -241,25 +241,40 @@ const CaseStudies: React.FC = () => {
 
             {/* Results */}
             {currentStudy?.results?.youtube && (
-            <div className="mb-12">
+              <div className="mb-12">
               <div className="flex items-center gap-3">
                 <TrendingUp className="w-6 h-6 text-agency-orange" />
                 <h3 className="text-xl font-semibold text-agency-dark">Results & Impact</h3>
               </div>
-              <p className="text-gray-600 p-4 mb-2">{currentStudy?.results?.youtube?.description || 'No results available.'}</p>
-              <div className="flex flex-wrap justify-center w-full gap-6 mb-6">
+              <p className="text-gray-600 px-4 mb-2">{currentStudy?.results?.youtube?.description || 'No results available.'}</p>
+              {currentStudy?.results?.youtube?.channelDashboard && (
+                <div className="w-full px-4 pb-8">
+                  <h4 className="text-lg font-semibold text-agency-dark mb-2">Channel Analytics Dashboard</h4>
+                  <img 
+                    src={currentStudy.results.youtube.channelDashboard} 
+                    alt="Channel Dashboard" 
+                    className="w-full rounded-2xl border-2 border-agency-orange/70"
+                  />
+                </div>
+              )}
+              <div className="flex px-4 flex-wrap justify-center w-full gap-6 mb-6">
                 {currentStudy?.results?.youtube?.insights ? currentStudy.results.youtube.insights.map((insight, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl overflow-hidden  border-agency-orange/20">
-                    <div className="flex flex-col md:flex-row">
-                      <div className={`p-6 ${insight.insight ? 'md:w-3/5' : 'md:w-full'}`}>
+                  <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-agency-orange/20">
+                    <div className="flex flex-col md:flex-row items-center relative">
+                      <div className="absolute w-1/2 top-1/2 left-10 right-0 h-0.5 bg-agency-orange z-0" />
+                      <div className={`p-6 relative z-10 ${insight.insight ? 'md:w-[30%]' : 'md:w-full'}`}>
                         <img src={insight.video} alt={`${insight.title} insight`} className="mt-4 w-full" />
                       </div>
-                      <div className="md:w-1/10"></div>
-                      {insight.insight && <img src={insight.insight} alt={insight.title} className="rounded-2xl w-full object-scale-down border-2 border-dashed border-agency-orange/40" />}
+                      {insight.insight && (
+                        <div className="w-full p-6 relative z-10">
+                          <img src={insight.insight} alt={insight.title} className="rounded-2xl w-full h-full object-contain border-2 border-dashed border-agency-orange/40" />
+                        </div>
+                      )}
                     </div>
                   </div>
                 )) : <p>No insights available.</p>}
               </div>
+              
             </div>
             )}
 

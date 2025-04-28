@@ -141,14 +141,12 @@ const CallToAction: React.FC = () => {
                     className="relative"
                   >
                     <div className="absolute lg:-top-10 top-0 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-2 border-agency-orange flex items-center justify-center">
-                      <motion.div
-                        initial={{ scale: 1 }}
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
+                      <div
+                        
                         className="text-agency-orange font-bold text-2xl"
                       >
                         {index + 1}
-                      </motion.div>
+                      </div>
                     </div>
                     <div className="pt-20 bg-gray-50/80 p-4 md:p-6 rounded-lg border border-agency-orange/10 h-full">
                       <h3 className="text-agency-orange text-lg font-medium mb-2">{step.title}</h3>

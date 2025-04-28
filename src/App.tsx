@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
 import CaseStudies from "./components/CaseStudies";
+import BookCall from "./components/BookCall";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/terms-of-use" element={<TermsOfUse />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/case-studies/:name" element={<CaseStudies/>} />
+          <Route path="/schedule-call" element={<BookCall />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

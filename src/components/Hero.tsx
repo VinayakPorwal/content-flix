@@ -112,7 +112,7 @@ const Hero: React.FC = () => {
             </motion.div>
 
             {/* VSL Section */}
-            <div className="vsl-container bg-agency-dark/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-2 shadow-lg border border-agency-orange/20 mb-8 md:mb-16">
+            {/* <div className="vsl-container bg-agency-dark/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-2 shadow-lg border border-agency-orange/20 mb-8 md:mb-16">
               <div className="relative w-full h-0 pb-[56.25%] bg-gray-100 rounded-lg md:rounded-xl overflow-hidden">
                 {!selectedRole ? (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 md:gap-6 p-4">
@@ -191,7 +191,7 @@ const Hero: React.FC = () => {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
           </AnimatedSection>
         </div>
       </div>
