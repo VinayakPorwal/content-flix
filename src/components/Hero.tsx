@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
                 <span className='text-agency-dark text-2xl md:text-5xl'>'Playing the Game'</span>
               </span>
               <br className="hidden md:block mb-2" />
-              <span className="bg-gradient-to-r from-agency-orange to-red-500 bg-clip-text text-transparent text-3xl md:text-6xl tracking-wider block mt-2"> Start Owning It</span>
+              <span className="bg-gradient-to-r from-agency-orange to-red-500 bg-clip-text text-transparent text-3xl md:text-6xl tracking-wider block mt-2 pb-2.5"> Start Owning It</span>
             </div>
           </AnimatedSection>
 
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
           <AnimatedSection delay={500} animation="fade-up" className="w-full max-w-5xl mx-auto mt-6 md:mt-10">
             {/* Book a Call Button below VSL */}
             <motion.div
-              className="flex justify-center mb-6 md:mb-10"
+              className="flex justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}

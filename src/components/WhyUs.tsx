@@ -205,7 +205,7 @@ const CircleLayout = () => {
                 <motion.div 
                     ref={headingRef}
                     className={cn(
-                        "sticky top-0 z-50 bg-transparent py-4 flex items-center justify-center mb-8",
+                        "sticky top-0 z-40 bg-transparent py-4 flex items-center justify-center mb-8",
                         "transition-all duration-300",
                         headingVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
                     )}

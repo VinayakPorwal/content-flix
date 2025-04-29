@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -17,6 +16,7 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const handleBookCall = () => {
     document.getElementById('calendly-container')?.scrollIntoView({ behavior: 'smooth' });
   }
@@ -27,15 +27,16 @@ const Navbar: React.FC = () => {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
         isScrolled 
           ? 'bg-transparent lg:bg-white/60 lg:backdrop-blur-md lg:shadow-sm py-4 lg:w-[85%] mx-auto rounded-xl mt-2' 
-          : 'bg-transparent py-6 '
+          : 'bg-transparent py-6'
       )}
     >
       <div className="container-custom flex items-center justify-between">
-        <a href="#" className="items-center lg:flex hidden">
+        {/* Logo - visible on both mobile and desktop */}
+        <a href="#" className="flex items-center">
           <span className="font-bold text-2xl text-agency-dark">
-            <img src="/logo.png" alt="Content Finix" className="h-12" />
+            <img src="/logo.png" alt="Content Finix" className="h-8 lg:h-12" />
           </span>
-          <span className="ml-2 text-agency-dark text-2xl font-semibold">
+          <span className="ml-2 text-agency-dark text-xl lg:text-2xl font-semibold hidden sm:block">
             Content<span className="text-agency-orange">Finix</span> 
           </span>
         </a>
@@ -64,7 +65,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-agency-dark p-2  backdrop-blur-md bg-white/60 rounded-full"
+          className="md:hidden text-agency-dark p-2 backdrop-blur-md bg-white/60 rounded-full"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -73,10 +74,10 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div className={cn(
-        "fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out pt-24 lg:hidden h-full",
+        "fixed inset-0 z-50 bg-white/95 backdrop-blur-sm transform transition-all duration-300 ease-in-out pt-20 lg:hidden",
         mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <div className="container flex flex-col space-y-6 p-6 bg-white">
+        <div className="container flex flex-col space-y-8 p-6">
           {/* Close button in top right corner */}
           <button 
             onClick={() => setMobileMenuOpen(false)}
@@ -88,41 +89,42 @@ const Navbar: React.FC = () => {
           
           <a 
             href="#services" 
-            className="text-xl font-medium text-agency-dark hover:text-agency-orange transition-colors"
+            className="text-2xl font-semibold text-agency-dark hover:text-agency-orange transition-colors py-2"
             onClick={() => setMobileMenuOpen(false)}
           >
             Services
           </a>
           <a 
-            href="#pricing" 
-            className="text-xl font-medium text-agency-dark hover:text-agency-orange transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Pricing
-          </a>
-          <a 
             href="#process" 
-            className="text-xl font-medium text-agency-dark hover:text-agency-orange transition-colors"
+            className="text-2xl font-semibold text-agency-dark hover:text-agency-orange transition-colors py-2"
             onClick={() => setMobileMenuOpen(false)}
           >
             Process
           </a>
           <a 
+            href="#results" 
+            className="text-2xl font-semibold text-agency-dark hover:text-agency-orange transition-colors py-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Results
+          </a>
+          <a 
             href="#testimonials" 
-            className="text-xl font-medium text-agency-dark hover:text-agency-orange transition-colors"
+            className="text-2xl font-semibold text-agency-dark hover:text-agency-orange transition-colors py-2"
             onClick={() => setMobileMenuOpen(false)}
           >
             Testimonials
           </a>
-          <div className="relative">
+          <div className="relative mt-4">
             <Button 
               size="lg" 
-              className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white font-medium"
+              className="w-full bg-agency-orange hover:bg-agency-orange/90 text-white font-medium py-6 text-lg"
               onClick={() => {
+                setMobileMenuOpen(false);
                 window.open('https://calendly.com/rashidmukhtar205/discoverycall', '_blank');
               }}
             >
-             Book Call
+              Book Call
             </Button>
             <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
               1

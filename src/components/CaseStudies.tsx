@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   ArrowRight, Instagram, Youtube, TrendingUp, Users, Heart, MessageCircle, 
-  ChevronLeft, ChevronRight, CheckCircle2, Target, BarChart2
+  ChevronLeft, ChevronRight, CheckCircle2, Target, BarChart2, ArrowLeft, X
 } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { caseStudies } from '../data/caseStudies';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
+
 interface MetricCardProps {
   icon: string;
   title: string;
@@ -115,6 +121,12 @@ const StrategyCard: React.FC<StrategyCardProps> = ({ title, description, points 
 
 const CaseStudies: React.FC = () => {
   const { name } = useParams();
+  const navigate = useNavigate();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [activeIndex, setActiveIndex] = useState(() => {
     if (name) {
@@ -137,6 +149,15 @@ const CaseStudies: React.FC = () => {
   return (
     <section className="py-20 bg-gray-100">
       <div className="container-custom">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-8 flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow border border-agency-orange/20"
+        >
+          <ArrowLeft className="w-5 h-5 text-agency-orange" />
+          <span className="text-agency-dark">Back</span>
+        </button>
+
         <div className="text-center mb-10">
           <AnimatedSection animation="fade-in">
             <div className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 mb-6 border border-agency-orange/20 shadow-sm">
@@ -171,7 +192,8 @@ const CaseStudies: React.FC = () => {
                 <img 
                   src={currentStudy?.overview?.image || 'default-image.jpg'} 
                   alt={currentStudy.client || 'Client Image'}
-                  className="w-full h-[300px] object-cover rounded-2xl mix-blend-multiply border-4 border-agency-orange/40"
+                  className="w-full h-[300px] object-cover rounded-2xl mix-blend-multiply border-4 border-agency-orange/40 cursor-pointer"
+                  onClick={() => setSelectedImage(currentStudy?.overview?.image)}
                 />
               </div>
               <div className="md:w-2/3">
@@ -253,7 +275,8 @@ const CaseStudies: React.FC = () => {
                   <img 
                     src={currentStudy.results.youtube.channelDashboard} 
                     alt="Channel Dashboard" 
-                    className="w-full rounded-2xl border-2 border-agency-orange/70"
+                    className="w-full rounded-2xl border-2 border-agency-orange/70 cursor-pointer"
+                    onClick={() => setSelectedImage(currentStudy.results.youtube.channelDashboard)}
                   />
                 </div>
               )}
@@ -263,11 +286,21 @@ const CaseStudies: React.FC = () => {
                     <div className="flex flex-col md:flex-row items-center relative">
                       <div className="absolute w-1/2 top-1/2 left-10 right-0 h-0.5 bg-agency-orange z-0" />
                       <div className={`p-6 relative z-10 ${insight.insight ? 'md:w-[30%]' : 'md:w-full'}`}>
-                        <img src={insight.video} alt={`${insight.title} insight`} className="mt-4 w-full" />
+                        <img 
+                          src={insight.video} 
+                          alt={`${insight.title} insight`} 
+                          className="mt-4 w-full cursor-pointer"
+                          onClick={() => setSelectedImage(insight.video)}
+                        />
                       </div>
                       {insight.insight && (
                         <div className="w-full p-6 relative z-10">
-                          <img src={insight.insight} alt={insight.title} className="rounded-2xl w-full h-full object-contain border-2 border-dashed border-agency-orange/40" />
+                          <img 
+                            src={insight.insight} 
+                            alt={insight.title} 
+                            className="rounded-2xl w-full h-full object-contain border-2 border-dashed border-agency-orange/40 cursor-pointer"
+                            onClick={() => setSelectedImage(insight.insight)}
+                          />
                         </div>
                       )}
                     </div>
@@ -289,8 +322,12 @@ const CaseStudies: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {currentStudy?.results?.instagram?.insights ? currentStudy.results.instagram.insights.map((reel, idx) => (
                   <div key={idx} className="relative bg-white rounded-2xl overflow-hidden border border-agency-orange/20 shadow-sm hover:shadow-md transition-shadow">
-                    <img src={reel.video} alt={`Instagram Reel ${idx + 1}`} className="w-full h-full object-cover" />
-                    {/* <img src={"/orange-circle.png"} alt={`Instagram Reel ${idx + 1}`} className="absolute -bottom-6 left-0 w-1/2" /> */}
+                    <img 
+                      src={reel.video} 
+                      alt={`Instagram Reel ${idx + 1}`} 
+                      className="w-full h-full object-cover cursor-pointer"
+                      onClick={() => setSelectedImage(reel.video)}
+                    />
                   </div>
                 )) : <p>No Instagram insights available.</p>}
               </div>
@@ -312,27 +349,22 @@ const CaseStudies: React.FC = () => {
           </div>
         </div>
       </div>
-    {/* <footer className="bg-gray-900 text-white py-8">
-      <div className="container-custom mx-auto text-center">
-        <h4 className="text-lg font-semibold mb-4">Connect with Us</h4>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-          <div>
-            <p className="text-agency-orange">My Instagram ID</p>
-            <a href="https://instagram.com/_rashidmukhrtar" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-              @_rashidmukhrtar
-            </a>
-          </div>
-          <div>
-            <p className="text-agency-orange">My Email</p>
-            <a href="mailto:rashidmukhtar205@gmail.com" className="text-blue-400 hover:underline">
-              rashidmukhtar205@gmail.com
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer> */}
 
-      
+      {/* Image Dialog */}
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] md:max-w-[800px] p-0 bg-transparent border-none">
+          <div className="relative flex items-center justify-center">
+            <img 
+              src={selectedImage || ""} 
+              alt="Zoomed view" 
+              className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg"
+            />
+            <DialogClose className="absolute -top-10 right-0 text-white hover:text-agency-orange">
+              <X className="h-6 w-6" />
+            </DialogClose>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

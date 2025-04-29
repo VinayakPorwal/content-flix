@@ -1,47 +1,61 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, Volume2, Sparkles } from 'lucide-react';
+import { ArrowRight, Volume2, Sparkles, X, MousePointer } from 'lucide-react';
 import data from '../data/data.json';
 import AnimatedSection from './AnimatedSection';
 import { Button } from './ui/button';
 import SectionBadge from './SectionBadge';
+import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 const ClientCard = ({ client, index, onClick }) => {
   const isMobile = useIsMobile();
   
   return (
-    <div onClick={onClick} className="cursor-pointer">
+    <div onClick={onClick} className="cursor-pointer w-full max-w-[120px] mx-auto relative">
       <AnimatedSection
         delay={100 * index}
-        className="rounded-xl p-2 sm:p-4 transition-all duration-300"
+        className="rounded-lg p-1 transition-all duration-300"
       >
         <div
           className={`
             bg-blue-900
-            rounded-2xl
+            rounded-lg
             relative
             shadow-2xl
             transform
             transition-transform
             duration-300
-            border-4 sm:border-8 border-agency-dark
+            border-2 border-agency-dark
+            hover:scale-[1.02]
+            active:scale-[0.98]
+            overflow-hidden
           `}
           style={{
-            width: client.hw.w,
-            height: client.hw.h,
+            width: isMobile ? "100%" : client.hw.w,
+            height: isMobile ? "auto" : client.hw.h,
+            aspectRatio: isMobile ? "9/16" : "auto",
             rotate: isMobile ? "0deg" : `${client.rotate}deg`,
           }}
         >
           {/* Top "speaker/volume" icon */}
-          <div className="absolute top-2 right-2 text-white">
-            <Volume2 className="w-4 h-4 sm:w-6 sm:h-6 opacity-90" />
+          <div className="absolute top-1 right-1 text-white z-10">
+            <Volume2 className="w-3 h-3 opacity-90" />
           </div>
           {/* Content */}
-          <img src={client.image} alt={client.name} className="w-full h-full object-cover rounded-xl" />
+          <img 
+            src={client.image} 
+            alt={client.name} 
+            className="w-full h-full object-cover rounded-lg" 
+          />
         </div>
       </AnimatedSection>
+      
     </div>
   );
 };
@@ -50,11 +64,12 @@ const ClientResults = () => {
   const { title, clients } = data.clientResults;
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <section id="results" className="section-spacing relative overflow-hidden">
       <div className="container-custom relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-16">
           <AnimatedSection>
             <SectionBadge text="Client Results" />
           </AnimatedSection>
@@ -65,17 +80,112 @@ const ClientResults = () => {
             />
           </AnimatedSection>
         </div>
+<div className='relative'>
 
-        <div className={`flex flex-col ${isMobile ? 'gap-6' : 'md:flex-row'} items-center justify-center gap-4 md:gap-8`}>
+        <div className={`flex flex-row ${isMobile ? 'gap-2' : 'md:flex-row gap-8'} items-center justify-center overflow-x-auto pb-4 relative`}>
           {clients.slice(0, 3).map((client, index) => (
             <ClientCard
-              key={index}
-              client={client}
-              index={index}
-              onClick={() => navigate(`/case-studies/`)}
+            key={index}
+            client={client}
+            index={index}
+            onClick={() => setSelectedImage(client.image)}
             />
           ))}
         </div>
+          {isMobile && (
+             
+            <motion.div
+            initial={{ y: 0 }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute -right-2 top-1/2 -translate-y-1/2 text-agency-orange  ">
+              <MousePointer className="w-6 h-6" />
+            </motion.div>
+          )}
+
+          </div>
+        {/* YouTube Insights Cards */}
+        <div className={`relative flex flex-col ${isMobile ? 'gap-6' : 'md:flex-row'} items-center justify-center gap-4 md:gap-8 mt-8`}>
+          <div className="cursor-pointer" onClick={() => setSelectedImage("/yt-2.png")}>
+            <AnimatedSection
+              delay={400}
+              className="rounded-xl p-2 sm:p-4 transition-all duration-300"
+            >
+              <div
+                className={`
+                  rounded-2xl
+                  relative
+                  shadow-2xl
+                  transform
+                  transition-transform
+                  duration-300
+                  border-2 sm:border-4 border-agency-dark
+                  ${isMobile ? 'w-[90vw]' : ''}
+                `}
+                style={{
+                  width: isMobile ? undefined : "500px",
+                  rotate: isMobile ? "0deg" : "-5deg",
+                }}
+              >
+                <img 
+                  src="/yt-2.png" 
+                  loading='lazy'
+                  alt="YouTube Analytics" 
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+          
+ 
+
+          <div className="cursor-pointer" onClick={() => setSelectedImage("/yt-3.png")}>
+            <AnimatedSection
+              delay={500}
+              className="rounded-xl p-2 sm:p-4 transition-all duration-300"
+            >
+              <div
+                className={`
+                  rounded-2xl
+                  relative
+                  shadow-2xl
+                  transform
+                  transition-transform
+                  duration-300
+                  border-2 sm:border-4 border-agency-dark
+                  ${isMobile ? 'w-[90vw]' : ''}
+                `}
+                style={{
+                  width: isMobile ? undefined : "500px",
+                  rotate: isMobile ? "0deg" : "5deg",
+                }}
+              >
+                <img 
+                  src="/yt-3.png" 
+                  loading='lazy'
+                  alt="Channel Growth" 
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+
+        {/* Image Dialog */}
+        <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+          <DialogContent className="max-w-[90vw] max-h-[90vh] md:max-w-[800px] p-0 bg-transparent border-none">
+            <div className="relative flex items-center justify-center">
+              <img 
+                src={selectedImage || ""} 
+                alt="Zoomed view" 
+                className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg"
+              />
+              <DialogClose className="absolute -top-10 right-0 text-white hover:text-agency-orange">
+                <X className="h-6 w-6" />
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         <AnimatedSection delay={600} className="mt-8 sm:mt-12 text-center w-max mx-auto">
           <Link
