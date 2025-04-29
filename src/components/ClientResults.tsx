@@ -15,9 +15,9 @@ import {
 
 const ClientCard = ({ client, index, onClick }) => {
   const isMobile = useIsMobile();
-  
+
   return (
-    <div onClick={onClick} className="cursor-pointer w-full max-w-[120px] mx-auto relative">
+    <div onClick={onClick} className="cursor-pointer w-full relative">
       <AnimatedSection
         delay={100 * index}
         className="rounded-lg p-1 transition-all duration-300"
@@ -35,6 +35,7 @@ const ClientCard = ({ client, index, onClick }) => {
             hover:scale-[1.02]
             active:scale-[0.98]
             overflow-hidden
+            mx-auto
           `}
           style={{
             width: isMobile ? "100%" : client.hw.w,
@@ -44,18 +45,18 @@ const ClientCard = ({ client, index, onClick }) => {
           }}
         >
           {/* Top "speaker/volume" icon */}
-          <div className="absolute top-1 right-1 text-white z-10">
+          {/* <div className="absolute top-1 right-1 text-white z-10">
             <Volume2 className="w-3 h-3 opacity-90" />
-          </div>
+          </div> */}
           {/* Content */}
-          <img 
-            src={client.image} 
-            alt={client.name} 
-            className="w-full h-full object-cover rounded-lg" 
+          <img
+            src={client.image}
+            alt={client.name}
+            className="w-full h-full object-cover rounded-lg"
           />
         </div>
       </AnimatedSection>
-      
+
     </div>
   );
 };
@@ -75,35 +76,34 @@ const ClientResults = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <h2 className="text-agency-dark mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl" 
-              dangerouslySetInnerHTML={{ __html: title.replace('text-agency-gold', 'text-agency-orange') }} 
+            <h2 className="text-agency-dark mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+              dangerouslySetInnerHTML={{ __html: title.replace('text-agency-gold', 'text-agency-orange') }}
             />
           </AnimatedSection>
         </div>
-<div className='relative'>
 
-        <div className={`flex flex-row ${isMobile ? 'gap-2' : 'md:flex-row gap-8'} items-center justify-center overflow-x-auto pb-4 relative`}>
-          {clients.slice(0, 3).map((client, index) => (
-            <ClientCard
-            key={index}
-            client={client}
-            index={index}
-            onClick={() => setSelectedImage(client.image)}
-            />
-          ))}
-        </div>
-          {isMobile && (
-             
-            <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute -right-2 top-1/2 -translate-y-1/2 text-agency-orange  ">
-              <MousePointer className="w-6 h-6" />
-            </motion.div>
-          )}
-
+         
+          <div className={`relative flex mx-auto ${isMobile ? 'gap-2' : 'md:flex-row gap-8'} items-center justify-center pb-4`}>
+            {clients.slice(0, 3).map((client, index) => (
+              <ClientCard
+                key={index}
+                client={client}
+                index={index}
+                onClick={() => setSelectedImage(client.image)}
+              />
+            ))}
+            {isMobile && (
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute -right-3 top-1/2 -translate-y-1/2 text-agency-orange">
+                <MousePointer className="w-6 h-6" />
+              </motion.div>
+            )}
           </div>
+        
+
         {/* YouTube Insights Cards */}
         <div className={`relative flex flex-col ${isMobile ? 'gap-6' : 'md:flex-row'} items-center justify-center gap-4 md:gap-8 mt-8`}>
           <div className="cursor-pointer" onClick={() => setSelectedImage("/yt-2.png")}>
@@ -127,17 +127,15 @@ const ClientResults = () => {
                   rotate: isMobile ? "0deg" : "-5deg",
                 }}
               >
-                <img 
-                  src="/yt-2.png" 
+                <img
+                  src="/yt-2.png"
                   loading='lazy'
-                  alt="YouTube Analytics" 
+                  alt="YouTube Analytics"
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
             </AnimatedSection>
           </div>
-          
- 
 
           <div className="cursor-pointer" onClick={() => setSelectedImage("/yt-3.png")}>
             <AnimatedSection
@@ -160,10 +158,10 @@ const ClientResults = () => {
                   rotate: isMobile ? "0deg" : "5deg",
                 }}
               >
-                <img 
-                  src="/yt-3.png" 
+                <img
+                  src="/yt-3.png"
                   loading='lazy'
-                  alt="Channel Growth" 
+                  alt="Channel Growth"
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
@@ -175,9 +173,9 @@ const ClientResults = () => {
         <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
           <DialogContent className="max-w-[90vw] max-h-[90vh] md:max-w-[800px] p-0 bg-transparent border-none">
             <div className="relative flex items-center justify-center">
-              <img 
-                src={selectedImage || ""} 
-                alt="Zoomed view" 
+              <img
+                src={selectedImage || ""}
+                alt="Zoomed view"
                 className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg"
               />
               <DialogClose className="absolute -top-10 right-0 text-white hover:text-agency-orange">
