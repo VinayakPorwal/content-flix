@@ -3,8 +3,15 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white py-6 border-t border-gray-200">
-        <div className="flex flex-col sm:flex-row items-center justify-center mb-2 gap-4 sm:gap-8">
+    <>
+        <div className="container-custom">
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-agency-dark mb-3">
+              Let's Create Something <span className="text-agency-orange">Amazing</span> Together
+            </h2>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-8">
               <a href="tel:+918368607268" className="text-agency-orange hover:text-gray-800 text-base sm:text-lg font-semibold flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -24,6 +31,7 @@ const Footer: React.FC = () => {
                 </a>
               </div>
             </div>
+    <footer className="bg-white py-6 border-t border-gray-200">
       <div className="container-custom">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-4 lg:gap-0">
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left">
@@ -47,6 +55,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
