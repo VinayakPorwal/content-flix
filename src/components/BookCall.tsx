@@ -7,27 +7,40 @@ const BookCall: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    let script: HTMLScriptElement | null = null;
+    let timeoutId: NodeJS.Timeout;
+
+    const initializeCalendly = () => {
+      const calendlyContainer = document.getElementById('calendly-container');
+      if (calendlyContainer && window.Calendly) {
+        calendlyContainer.innerHTML = '';
+        window.Calendly.initInlineWidget({
+          url: 'https://calendly.com/rashidmukhtar205/discoverycall',
+          parentElement: calendlyContainer,
+          prefill: {},
+          utm: {}
+        });
+      }
+    };
+
     // Create and append Calendly script
-    const script = document.createElement('script');
+    script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
+    script.onload = () => {
+      // Give some time for the Calendly object to be fully initialized
+      timeoutId = setTimeout(initializeCalendly, 1000);
+    };
     document.body.appendChild(script);
-
-    // Initialize Calendly widget
-    const calendlyContainer = document.getElementById('calendly-container');
-    if (calendlyContainer) {
-      calendlyContainer.innerHTML = '';
-      window.Calendly?.initInlineWidget({
-        url: 'https://calendly.com/rashidmukhtar205/discoverycall',
-        parentElement: calendlyContainer,
-        prefill: {},
-        utm: {}
-      });
-    }
 
     // Cleanup
     return () => {
-      document.body.removeChild(script);
+      if (script && document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
     };
   }, []);
 
@@ -73,7 +86,7 @@ const BookCall: React.FC = () => {
             id="calendly-container" 
             className="w-full h-full bg-white md:bg-transparent rounded-2xl md:rounded-none overflow-hidden"
             style={{
-              minWidth: '320px',
+              minWidth: '290px',
               height: '100vh'
             }}
           />
